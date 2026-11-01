@@ -24,8 +24,6 @@ Está en `js/config.js`. El teléfono visible en Contacto y el de los datos estr
 
 ## Publicar en Vercel
 
-Importa la carpeta en Vercel con **Framework Preset: Other**, sin comando de build. También se puede publicar desde la terminal:
-
-```bash
-npx vercel --prod
-```
+1. Sube el contenido de esta carpeta a un repositorio privado de GitHub.
+2. En Vercel, importa ese repositorio con **Framework Preset: Other**, sin comando de build.
+3. Para actualizar la web, sube los archivos cambiados a GitHub: Vercel publica solo.
