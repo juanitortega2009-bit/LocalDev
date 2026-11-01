@@ -1,0 +1,105 @@
+/* Reset, tipografía y utilidades */
+*, *::before, *::after { box-sizing: border-box; }
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 88px;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--canvas);
+  color: var(--text-body);
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+h1, h2, h3, p, ul, pre { margin: 0; }
+ul { padding: 0; list-style: none; }
+a { color: inherit; text-decoration: none; }
+button, input, select, textarea { font: inherit; color: inherit; }
+button { cursor: pointer; }
+svg { display: block; }
+
+:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 3px;
+}
+
+.icon { width: 16px; height: 16px; flex: none; }
+
+.skip-link {
+  position: fixed;
+  top: 8px;
+  left: 8px;
+  z-index: 100;
+  padding: 10px 14px;
+  border-radius: var(--radius-sm);
+  background: var(--text);
+  color: var(--ink);
+  transform: translateY(-200%);
+}
+.skip-link:focus { transform: none; }
+
+/* Voces tipográficas: serif para emoción, sans para interfaz, mono para datos */
+.display,
+.heading {
+  color: var(--text-heading);
+  font-family: var(--font-display);
+  font-weight: 300;
+  font-optical-sizing: auto;
+  letter-spacing: -.02em;
+  text-wrap: balance;
+}
+.display { font-size: var(--text-display); line-height: .98; }
+.heading { font-size: var(--text-heading-lg); line-height: 1.02; }
+.display em, .heading em { font-style: italic; }
+
+.label {
+  font-family: var(--font-mono);
+  font-size: .75rem;
+  font-weight: 400;
+  letter-spacing: .08em;
+  line-height: 1.6;
+  text-transform: uppercase;
+}
+
+/* Estructura */
+.container {
+  width: min(100%, calc(var(--page-max) + var(--gutter) * 2));
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+.section { padding-block: var(--section-y); }
+.section--deep { background: var(--deep); }
+
+.section__head {
+  display: grid;
+  justify-items: center;
+  gap: 16px;
+  max-width: 800px;
+  margin: 0 auto clamp(40px, 6vw, 68px);
+  text-align: center;
+}
+.section__lead {
+  max-width: 560px;
+  font-size: var(--text-lead);
+  font-weight: 300;
+}
+
+/* Aparición al hacer scroll: solo se oculta si hay JavaScript */
+.js .reveal {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity .7s var(--ease-reveal), transform .7s var(--ease-reveal);
+}
+.js .reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}

@@ -1,0 +1,393 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>LocalDev — Diseño web profesional para negocios locales</title>
+  <meta name="description" content="Webs profesionales y ultrarrápidas para negocios locales. Sin líos técnicos, 100% de tu propiedad y optimizadas para convertir visitas en clientes. Desde 300 €, con pago dividido.">
+  <meta name="theme-color" content="#0f1011">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="es_ES">
+  <meta property="og:site_name" content="LocalDev">
+  <meta property="og:title" content="LocalDev — Diseño web profesional para negocios locales">
+  <meta property="og:description" content="Webs ultrarrápidas, 100% de tu propiedad y pensadas para convertir visitas en clientes.">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500&family=Geist:wght@300;400;500&family=Newsreader:ital,opsz,wght@0,6..72,300;1,6..72,300&display=swap">
+
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/sections.css">
+
+  <script>document.documentElement.classList.add('js');</script>
+  <script defer src="js/config.js"></script>
+  <script defer src="js/main.js"></script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "name": "LocalDev",
+    "description": "Agencia de desarrollo web para negocios locales.",
+    "telephone": "+34644144961",
+    "priceRange": "300 € - 600 €"
+  }
+  </script>
+</head>
+<body>
+
+  <!-- Iconos -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <symbol id="i-arrow" viewBox="0 0 16 16"><path d="M3 8h9.5M8.5 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-pin" viewBox="0 0 16 16"><path d="M8 14.5s4.8-4.3 4.8-8.2A4.8 4.8 0 1 0 3.2 6.3c0 3.9 4.8 8.2 4.8 8.2z" fill="none" stroke="currentColor" stroke-width="1.3"/><circle cx="8" cy="6.3" r="1.6" fill="currentColor"/></symbol>
+    <symbol id="i-search" viewBox="0 0 16 16"><circle cx="7" cy="7" r="4.3" fill="none" stroke="currentColor" stroke-width="1.3"/><path d="M10.3 10.3L14 14" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></symbol>
+    <symbol id="i-wa" viewBox="0 0 24 24"><path fill="currentColor" d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></symbol>
+  </svg>
+
+  <a class="skip-link" href="#contenido">Saltar al contenido</a>
+
+  <!-- ============ NAVEGACIÓN ============ -->
+  <header class="nav" data-nav>
+    <div class="nav__bar">
+      <a class="logo" href="#inicio" aria-label="LocalDev, ir al inicio">
+        <span class="logo__local">Local</span><span class="logo__dev">Dev</span>
+      </a>
+      <nav class="nav__links" id="nav-menu" aria-label="Principal">
+        <a href="#ventajas">Ventajas</a>
+        <a href="#demos">Demos</a>
+        <a href="#precios">Precios</a>
+        <a href="#contacto">Contacto</a>
+      </nav>
+      <div class="nav__actions">
+        <a class="btn btn--primary btn--sm" href="#contacto" data-wa="Hola, me gustaría información sobre una web para mi negocio.">WhatsApp</a>
+        <button class="nav__toggle" type="button" aria-expanded="false" aria-controls="nav-menu" aria-label="Abrir menú" data-nav-toggle>
+          <span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="contenido">
+
+    <!-- ============ 1. HERO ============ -->
+    <section class="hero" id="inicio">
+      <div class="hero__inner">
+        <p class="chip hero__chip">Webs a medida desde 300 €</p>
+        <h1 class="display hero__title">Diseño web profesional y <em>ultrarrápido</em> para negocios locales</h1>
+        <p class="hero__lead">Creamos la presencia digital de tu empresa sin líos técnicos, 100% de tu propiedad y optimizada para convertir visitas en clientes.</p>
+        <div class="hero__actions">
+          <a class="btn btn--primary" href="#contacto" data-wa="Hola, me gustaría hablar sobre una web para mi negocio.">
+            Hablar por WhatsApp <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg>
+          </a>
+          <a class="btn btn--ghost" href="#demos">Ver demostraciones</a>
+        </div>
+      </div>
+
+      <!-- Una calle de comercios al anochecer -->
+      <svg class="hero__street" viewBox="0 0 1440 240" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
+        <path class="street__back" d="M0 240V92h96v-30h84v46h110V58h90v56h120V40h76v70h130V66h100v44h120V50h104v64h110V74h120v-22h80v188z"/>
+        <path class="street__front" d="M0 240V120h70V96h70l35-30 35 30v34h80V84h70v56h70l40-40 40 40v-30h90V70h30V50h30v20h30v54h80V92h80l35-30 35 30v44h80V78h80v40h70l40-32 40 32v-18h90v32h60V94h60v146z"/>
+        <g class="street__glow">
+          <rect x="16" y="196" width="72" height="28" rx="1"/>
+          <rect x="166" y="190" width="44" height="34"/>
+          <rect x="306" y="198" width="66" height="26"/>
+          <rect x="446" y="192" width="70" height="32" class="tw tw--2"/>
+          <rect x="612" y="196" width="68" height="28"/>
+          <rect x="782" y="192" width="56" height="32" class="tw tw--3"/>
+          <rect x="866" y="198" width="44" height="26"/>
+          <rect x="1014" y="190" width="54" height="34"/>
+          <rect x="1166" y="196" width="72" height="28" class="tw tw--1"/>
+          <rect x="1336" y="194" width="84" height="30"/>
+        </g>
+        <g class="street__windows">
+          <rect x="24" y="136" width="10" height="16"/>
+          <rect x="52" y="136" width="10" height="16" class="tw tw--1"/>
+          <rect x="95" y="118" width="10" height="16" class="tw tw--3"/>
+          <rect x="170" y="112" width="10" height="16"/>
+          <rect x="312" y="102" width="10" height="16"/>
+          <rect x="340" y="134" width="10" height="16" class="tw tw--2"/>
+          <rect x="465" y="130" width="10" height="16" class="tw tw--1"/>
+          <rect x="540" y="126" width="10" height="16"/>
+          <rect x="565" y="156" width="10" height="16"/>
+          <rect x="640" y="72" width="10" height="16" class="tw tw--2"/>
+          <rect x="640" y="108" width="10" height="16"/>
+          <rect x="795" y="110" width="10" height="16"/>
+          <rect x="880" y="104" width="10" height="16" class="tw tw--1"/>
+          <rect x="1020" y="96" width="10" height="16"/>
+          <rect x="1050" y="132" width="10" height="16" class="tw tw--3"/>
+          <rect x="1185" y="130" width="10" height="16"/>
+          <rect x="1262" y="118" width="10" height="16" class="tw tw--2"/>
+          <rect x="1294" y="152" width="10" height="16"/>
+          <rect x="1400" y="112" width="10" height="16"/>
+        </g>
+      </svg>
+    </section>
+
+    <!-- ============ 2. POR QUÉ ELEGIRNOS ============ -->
+    <section class="section" id="ventajas">
+      <div class="container">
+        <header class="section__head reveal">
+          <p class="label">Por qué elegirnos</p>
+          <h2 class="heading">Lo que cambia cuando tu web es <em>tuya</em></h2>
+        </header>
+
+        <div class="bento">
+          <article class="card bento__own reveal">
+            <pre class="tree" aria-hidden="true"><span>tu-negocio/</span>
+├─ hosting
+├─ dominio
+└─ código
+<b>propietario: tú</b></pre>
+            <h3 class="card__title">Propiedad 100% tuya</h3>
+            <p class="card__text">El hosting y el dominio se contratan a tu nombre, así que el control total es tuyo. Te guiamos en 2 minutos y nosotros nos encargamos del resto.</p>
+          </article>
+
+          <article class="card card--inverted bento__speed reveal">
+            <div class="speed" data-speed>
+              <p class="speed__value" data-speed-value>&lt; 1 s</p>
+              <div class="speed__track" aria-hidden="true"><span data-speed-bar></span></div>
+              <p class="label speed__note" data-speed-note>Nuestro objetivo de carga en cada web</p>
+            </div>
+            <h3 class="card__title">Carga en menos de 1 segundo</h3>
+            <p class="card__text">Código optimizado y sin peso de sobra. Tu cliente ve lo que busca antes de pensar en irse a otra página.</p>
+          </article>
+
+          <article class="card bento__mobile reveal">
+            <div class="devices" aria-hidden="true">
+              <span class="devices__item devices__item--phone"><i></i><small>360</small></span>
+              <span class="devices__item devices__item--tablet"><i></i><small>768</small></span>
+              <span class="devices__item devices__item--desktop"><i></i><small>1440</small></span>
+            </div>
+            <h3 class="card__title">Diseño 100% móvil</h3>
+            <p class="card__text">Empezamos por la pantalla desde la que te busca la mayoría: el teléfono. Después se adapta a tablet y ordenador sin perder nada.</p>
+          </article>
+
+          <article class="card bento__seo reveal">
+            <div class="searchbox" aria-hidden="true">
+              <svg class="icon"><use href="#i-search"/></svg>
+              <span>taller mecánico cerca de mí</span>
+            </div>
+            <div class="searchresult" aria-hidden="true">
+              <svg class="icon"><use href="#i-pin"/></svg>
+              <span>Tu negocio, en tu zona</span>
+            </div>
+            <h3 class="card__title">SEO Local optimizado</h3>
+            <p class="card__text">Para que te encuentre quien ya está buscando lo que ofreces, a pocas calles de ti.</p>
+            <p class="label card__foot">Incluido en el plan Avanzado / Pro</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 3. DEMOS ============ -->
+    <section class="section section--deep" id="demos">
+      <div class="container">
+        <header class="section__head reveal">
+          <p class="label">Demostraciones</p>
+          <h2 class="heading">Tres webs modelo. <em>Entra</em> y pruébalas.</h2>
+          <p class="section__lead">Funcionan de verdad dentro de cada teléfono, o puedes abrirlas a pantalla completa. Los negocios y sus datos son de ejemplo.</p>
+        </header>
+
+        <div class="demos">
+
+          <!-- Taller mecánico -->
+          <article class="tile tile--taller reveal">
+            <div class="tile__copy">
+              <p class="label">Taller mecánico</p>
+              <h3 class="tile__title">Bahía Performance</h3>
+              <p class="tile__text">Enfoque en confianza, servicios claros y cita previa.</p>
+              <a class="btn btn--primary tile__cta" href="demos/taller/index.html" target="_blank" rel="noopener">
+                Abrir a pantalla completa <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg>
+              </a>
+              <a class="tile__link" href="#contacto" data-wa="Hola, he visto la demo de Bahía Performance y quiero una web así para mi taller.">Quiero una web así</a>
+            </div>
+            <div class="phone" data-demo="demos/taller/index.html" data-demo-title="Demo interactiva de Bahía Performance">
+              <div class="phone__screen">
+                <img src="assets/demos/taller.jpg" width="469" height="1015" alt="Web de Bahía Performance en un móvil" loading="lazy" decoding="async">
+                <button class="phone__start" type="button" data-demo-start>Tocar para probar</button>
+              </div>
+            </div>
+          </article>
+
+          <!-- Peluquería / Estética -->
+          <article class="tile tile--peluqueria reveal">
+            <div class="tile__copy">
+              <p class="label">Peluquería y estética</p>
+              <h3 class="tile__title">Corteza</h3>
+              <p class="tile__text">Diseño elegante, catálogo a la vista y reserva por WhatsApp.</p>
+              <a class="btn btn--primary tile__cta" href="demos/peluqueria/index.html" target="_blank" rel="noopener">
+                Abrir a pantalla completa <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg>
+              </a>
+              <a class="tile__link" href="#contacto" data-wa="Hola, he visto la demo de Corteza y quiero una web así para mi negocio.">Quiero una web así</a>
+            </div>
+            <div class="phone" data-demo="demos/peluqueria/index.html" data-demo-title="Demo interactiva de Corteza">
+              <div class="phone__screen">
+                <img src="assets/demos/peluqueria.jpg" width="469" height="1015" alt="Web de Corteza en un móvil" loading="lazy" decoding="async">
+                <button class="phone__start" type="button" data-demo-start>Tocar para probar</button>
+              </div>
+            </div>
+          </article>
+
+          <!-- Gimnasio -->
+          <article class="tile tile--gimnasio reveal">
+            <div class="tile__copy">
+              <p class="label">Gimnasio y centro deportivo</p>
+              <h3 class="tile__title">Atlas</h3>
+              <p class="tile__text">Alto impacto desde el primer vistazo, con horarios y tarifas.</p>
+              <a class="btn btn--primary tile__cta" href="demos/gimnasio/index.html" target="_blank" rel="noopener">
+                Abrir a pantalla completa <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg>
+              </a>
+              <a class="tile__link" href="#contacto" data-wa="Hola, he visto la demo de Atlas y quiero una web así para mi centro deportivo.">Quiero una web así</a>
+            </div>
+            <div class="phone" data-demo="demos/gimnasio/index.html" data-demo-title="Demo interactiva de Atlas">
+              <div class="phone__screen">
+                <img src="assets/demos/gimnasio.jpg" width="469" height="1015" alt="Web de Atlas en un móvil" loading="lazy" decoding="async">
+                <button class="phone__start" type="button" data-demo-start>Tocar para probar</button>
+              </div>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 4. PRECIOS ============ -->
+    <section class="section" id="precios">
+      <div class="container">
+        <header class="section__head reveal">
+          <p class="label">Servicios y precios</p>
+          <h2 class="heading">Precios <em>claros</em> desde el principio</h2>
+          <p class="section__lead">Escríbenos por WhatsApp y te contamos qué incluye cada plan.</p>
+        </header>
+
+        <div class="plans">
+          <article class="plan reveal">
+            <h3 class="plan__name">Sitio web corporativo esencial</h3>
+            <p class="plan__price">300–400 €</p>
+            <p class="label plan__terms">Pago dividido</p>
+            <p class="plan__text">Para negocios que buscan presencia oficial directa y limpia.</p>
+            <a class="btn btn--ghost plan__cta" href="#contacto" data-wa="Hola, me gustaría saber qué incluye el sitio web corporativo Esencial.">
+              Preguntar por WhatsApp <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg>
+            </a>
+          </article>
+
+          <article class="plan plan--pro reveal">
+            <h3 class="plan__name">Sitio web corporativo avanzado / Pro</h3>
+            <p class="plan__price">500–600 €</p>
+            <p class="label plan__terms">Pago dividido</p>
+            <p class="plan__text">Para negocios que quieren destacar con galería, reseñas e integración de SEO Local.</p>
+            <a class="btn btn--dark plan__cta" href="#contacto" data-wa="Hola, me gustaría saber qué incluye el sitio web corporativo Avanzado / Pro.">
+              Preguntar por WhatsApp <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg>
+            </a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ MANTENIMIENTO ============ -->
+    <section class="section section--deep" id="mantenimiento">
+      <div class="container">
+        <header class="section__head reveal">
+          <p class="label">Suscripción mensual opcional</p>
+          <h2 class="heading">Mantenimiento y <em>tranquilidad</em> digital</h2>
+          <p class="section__lead">Para que no tengas que preocuparte por nada técnico. Pregúntanos qué incluye cada plan.</p>
+        </header>
+
+        <div class="tiers">
+          <article class="tier reveal">
+            <h3 class="tier__name">Básico</h3>
+            <p class="tier__price">25 €<small>/mes</small></p>
+            <a class="btn btn--ghost tier__cta" href="#contacto" data-wa="Hola, me gustaría saber qué incluye el mantenimiento Básico (25 €/mes).">Preguntar por WhatsApp</a>
+          </article>
+
+          <article class="tier tier--featured reveal">
+            <h3 class="tier__name">Recomendado</h3>
+            <p class="tier__price">45 €<small>/mes</small></p>
+            <a class="btn btn--primary tier__cta" href="#contacto" data-wa="Hola, me gustaría saber qué incluye el mantenimiento Recomendado (45 €/mes).">Preguntar por WhatsApp</a>
+          </article>
+
+          <article class="tier reveal">
+            <h3 class="tier__name">Profesional</h3>
+            <p class="tier__price">65 €<small>/mes</small></p>
+            <a class="btn btn--ghost tier__cta" href="#contacto" data-wa="Hola, me gustaría saber qué incluye el mantenimiento Profesional (65 €/mes).">Preguntar por WhatsApp</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 5. CONTACTO ============ -->
+    <section class="section" id="contacto">
+      <div class="container contact">
+        <div class="contact__intro reveal">
+          <p class="label">Contacto</p>
+          <h2 class="heading">Cuéntanos qué necesita tu <em>negocio</em></h2>
+          <p class="section__lead">Escribe cuatro líneas sobre lo que haces y te decimos qué plan encaja mejor. Sin tecnicismos.</p>
+          <a class="btn btn--primary" href="#formulario" data-wa="Hola, me gustaría hablar sobre una web para mi negocio.">
+            Hablar por WhatsApp <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg>
+          </a>
+          <a class="contact__phone" href="tel:+34644144961">644 14 49 61</a>
+        </div>
+
+        <form class="form reveal" id="formulario" data-contact-form novalidate>
+          <div class="form__row">
+            <div class="field">
+              <label for="f-name">Nombre</label>
+              <input id="f-name" name="nombre" type="text" autocomplete="name" required>
+            </div>
+            <div class="field">
+              <label for="f-business">Negocio</label>
+              <input id="f-business" name="negocio" type="text" autocomplete="organization" required>
+            </div>
+          </div>
+          <div class="field">
+            <label for="f-plan">Plan que te interesa</label>
+            <select id="f-plan" name="plan">
+              <option>Aún no lo sé</option>
+              <option>Esencial</option>
+              <option>Avanzado / Pro</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="f-message">¿Qué necesitas?</label>
+            <textarea id="f-message" name="mensaje" rows="4" required></textarea>
+          </div>
+          <label class="check">
+            <input type="checkbox" name="privacidad" required>
+            <span>He leído y acepto la <a href="privacidad.html" target="_blank" rel="noopener">política de privacidad</a>.</span>
+          </label>
+          <button class="btn btn--primary form__submit" type="submit">
+            Enviar por WhatsApp <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg>
+          </button>
+          <p class="form__status" role="status" data-form-status>Al enviar se abre WhatsApp con tu mensaje ya escrito. Esta web no guarda tus datos.</p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============ PIE ============ -->
+  <footer class="footer">
+    <div class="container footer__inner">
+      <a class="logo" href="#inicio" aria-label="LocalDev, volver al inicio">
+        <span class="logo__local">Local</span><span class="logo__dev">Dev</span>
+      </a>
+      <nav class="footer__links" aria-label="Pie de página">
+        <a href="#ventajas">Ventajas</a>
+        <a href="#demos">Demos</a>
+        <a href="#precios">Precios</a>
+        <a href="#contacto">Contacto</a>
+        <a href="privacidad.html">Privacidad</a>
+      </nav>
+      <p class="label footer__credit">LocalDev — Desarrollo web con código optimizado</p>
+    </div>
+  </footer>
+
+  <!-- Botón flotante de WhatsApp -->
+  <a class="wa-float" href="#contacto" data-wa="Hola, me gustaría información sobre una web para mi negocio." aria-label="Escríbenos por WhatsApp">
+    <svg aria-hidden="true"><use href="#i-wa"/></svg>
+  </a>
+
+</body>
+</html>

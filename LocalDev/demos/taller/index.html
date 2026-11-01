@@ -1,0 +1,321 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Bahía Performance — Taller mecánico y preparación</title>
+  <meta name="description" content="Bahía Performance: mecánica, diagnosis electrónica, reprogramación, frenos y neumáticos. Un taller que te explica lo que hace y lo hace bien." />
+  <meta name="theme-color" content="#000000" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath d='M4 28 L16 4 L28 28 Z' fill='none' stroke='%238052ff' stroke-width='3'/%3E%3C/svg%3E" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;600&display=swap" />
+  <link rel="stylesheet" href="styles.css?v=20261008" />
+</head>
+<body>
+  <a class="skip-link" href="#contenido">Saltar al contenido</a>
+
+  <!-- Splash -->
+  <div class="splash" data-splash aria-hidden="true">
+    <div class="splash-inner">
+      <svg class="splash-mark" viewBox="0 0 32 32"><path d="M4 28 L16 4 L28 28 Z" /></svg>
+      <span class="splash-name">Bahía Performance</span>
+      <span class="splash-count" data-splash-count>000</span>
+    </div>
+  </div>
+
+  <!-- Constelación de partículas (fija, detrás del contenido) -->
+  <canvas class="field" data-field aria-hidden="true"></canvas>
+
+  <!-- Cursor -->
+  <div class="cursor" data-cursor aria-hidden="true"><span class="cursor-ring"></span></div>
+
+  <!-- Navegación -->
+  <header class="nav" data-nav>
+    <a class="logo" href="#inicio" aria-label="Bahía Performance, inicio">
+      <svg class="logo-mark" viewBox="0 0 32 32" aria-hidden="true">
+        <defs><linearGradient id="lg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#8052ff"/><stop offset="1" stop-color="#15846e"/></linearGradient></defs>
+        <path d="M3 29 L16 3 L29 29 Z" fill="url(#lg)" />
+        <path d="M11 29 L16 18 L21 29 Z" fill="#000" />
+      </svg>
+      <span>Bahía Performance</span>
+    </a>
+    <nav class="nav-links" aria-label="Principal">
+      <a href="#servicios">Servicios</a>
+      <a href="#proceso">Proceso</a>
+      <a href="#cifras">Taller</a>
+      <a href="#opiniones">Opiniones</a>
+    </nav>
+    <a class="btn btn-primary nav-cta" href="#contacto">Pedir cita</a>
+    <button class="burger" data-burger aria-label="Abrir menú" aria-expanded="false"><span></span><span></span></button>
+  </header>
+
+  <div class="menu" data-menu aria-hidden="true">
+    <nav aria-label="Móvil">
+      <a href="#servicios">Servicios</a>
+      <a href="#proceso">Proceso</a>
+      <a href="#cifras">Taller</a>
+      <a href="#opiniones">Opiniones</a>
+      <a href="#contacto">Pedir cita</a>
+    </nav>
+  </div>
+
+  <!-- HUD: sección actual -->
+  <div class="hud" aria-hidden="true">
+    <span class="hud-num" data-hud-num>01</span>
+    <span class="hud-bar"><i data-hud-bar></i></span>
+    <span class="hud-name" data-hud-name>Inicio</span>
+  </div>
+
+  <main id="contenido">
+
+    <!-- HERO -->
+    <section class="hero" id="inicio" data-shape="car" data-side="right" data-my="0.78" data-label="Inicio">
+      <div class="wrap hero-grid">
+        <div class="hero-copy">
+          <p class="label">Taller mecánico · Preparación · Diagnosis</p>
+          <h1 class="display" data-lines>Precisión que<br>se siente al <em>volante</em>.</h1>
+          <p class="lead reveal">Mecánica de confianza y puesta a punto para quien conduce con criterio. Te explicamos qué tiene tu coche, cuánto cuesta y cuándo estará listo. Sin sorpresas en la factura.</p>
+          <div class="hero-actions reveal">
+            <a class="btn btn-primary" href="#contacto" data-magnetic>Pedir cita</a>
+            <a class="btn-ghost" href="#servicios">Ver servicios <span aria-hidden="true">→</span></a>
+          </div>
+        </div>
+      </div>
+      <div class="hero-foot wrap">
+        <span>Desliza</span>
+        <span class="scroll-line" aria-hidden="true"></span>
+      </div>
+    </section>
+
+    <!-- Marquesina de marcas -->
+    <div class="marquee" aria-label="Trabajamos con todas las marcas">
+      <div class="marquee-track">
+        <span>Audi</span><span>BMW</span><span>Mercedes-Benz</span><span>Volkswagen</span><span>Porsche</span><span>Seat · Cupra</span><span>Toyota</span><span>Mini</span><span>Ford</span><span>Renault</span>
+        <span aria-hidden="true">Audi</span><span aria-hidden="true">BMW</span><span aria-hidden="true">Mercedes-Benz</span><span aria-hidden="true">Volkswagen</span><span aria-hidden="true">Porsche</span><span aria-hidden="true">Seat · Cupra</span><span aria-hidden="true">Toyota</span><span aria-hidden="true">Mini</span><span aria-hidden="true">Ford</span><span aria-hidden="true">Renault</span>
+      </div>
+    </div>
+
+    <!-- MANIFIESTO -->
+    <section class="manifesto" id="manifiesto" data-shape="scatter" data-label="Manifiesto">
+      <div class="wrap">
+        <p class="label">Cómo trabajamos</p>
+        <p class="manifesto-text" data-words>Un coche no es una lista de piezas. Es la forma en la que llegas a trabajar, el viaje de cada verano y esa carretera de curvas que guardas para los domingos. Por eso lo tratamos con <em>paciencia</em>, herramientas de verdad y una regla sencilla: no tocamos nada sin explicártelo antes.</p>
+      </div>
+    </section>
+
+    <!-- SERVICIOS -->
+    <section class="services" id="servicios" data-shape="gear" data-side="left" data-label="Servicios">
+      <div class="wrap services-grid">
+        <div class="services-head">
+          <p class="label">Servicios</p>
+          <h2 class="h-lg" data-lines>Todo lo que tu coche necesita, bajo un mismo techo.</h2>
+          <p class="body-soft reveal">Pasa el cursor o toca cada servicio para ver el detalle.</p>
+        </div>
+
+        <ol class="svc-list" data-svc-list>
+          <li class="svc" data-svc-shape="wrench">
+            <button class="svc-row" aria-expanded="false">
+              <span class="svc-num">01</span>
+              <span class="svc-name">Mecánica y mantenimiento</span>
+              <span class="svc-plus" aria-hidden="true"></span>
+            </button>
+            <div class="svc-body"><div>
+              <p>Revisiones según el plan del fabricante sin perder la garantía oficial. Aceite, filtros, distribución, embrague y todo lo que suena raro. Lo que tu coche necesita, nada que no.</p>
+              <ul class="tags"><li>Revisión oficial</li><li>Distribución</li><li>Embrague</li><li>Pre-ITV</li></ul>
+            </div></div>
+          </li>
+          <li class="svc" data-svc-shape="chip">
+            <button class="svc-row" aria-expanded="false">
+              <span class="svc-num">02</span>
+              <span class="svc-name">Diagnosis electrónica</span>
+              <span class="svc-plus" aria-hidden="true"></span>
+            </button>
+            <div class="svc-body"><div>
+              <p>Equipos de diagnosis multimarca y lectura en vivo de sensores. Encontramos el origen del testigo encendido en lugar de cambiar piezas a ciegas.</p>
+              <ul class="tags"><li>Multimarca</li><li>Testigos y averías</li><li>Electricidad</li></ul>
+            </div></div>
+          </li>
+          <li class="svc" data-svc-shape="gauge">
+            <button class="svc-row" aria-expanded="false">
+              <span class="svc-num">03</span>
+              <span class="svc-name">Reprogramación y performance</span>
+              <span class="svc-plus" aria-hidden="true"></span>
+            </button>
+            <div class="svc-body"><div>
+              <p>Mapas a medida, medición antes y después, y una entrega más fina: más par donde lo usas y un consumo que no se dispara. Siempre dentro de márgenes seguros para el motor.</p>
+              <ul class="tags"><li>Stage 1 · Stage 2</li><li>Medición en banco</li><li>Cambio DSG</li></ul>
+            </div></div>
+          </li>
+          <li class="svc" data-svc-shape="disc">
+            <button class="svc-row" aria-expanded="false">
+              <span class="svc-num">04</span>
+              <span class="svc-name">Frenos y suspensión</span>
+              <span class="svc-plus" aria-hidden="true"></span>
+            </button>
+            <div class="svc-body"><div>
+              <p>Discos, pastillas, latiguillos y líquido. Amortiguadores, muelles y coilovers ajustados a cómo conduces, no a un catálogo.</p>
+              <ul class="tags"><li>Kits de freno</li><li>Coilovers</li><li>Silentblocks</li></ul>
+            </div></div>
+          </li>
+          <li class="svc" data-svc-shape="wheel">
+            <button class="svc-row" aria-expanded="false">
+              <span class="svc-num">05</span>
+              <span class="svc-name">Neumáticos y geometría</span>
+              <span class="svc-plus" aria-hidden="true"></span>
+            </button>
+            <div class="svc-body"><div>
+              <p>Montaje, equilibrado y alineado por ordenador. Un buen reglaje se nota en la dirección, en los neumáticos y en la tranquilidad de cada curva.</p>
+              <ul class="tags"><li>Alineado 3D</li><li>Equilibrado</li><li>Todas las medidas</li></ul>
+            </div></div>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- PROCESO (sticky por pasos) -->
+    <section class="process" id="proceso" data-shape="chip" data-side="right" data-my="0.22" data-label="Proceso" data-process>
+      <div class="process-sticky">
+        <div class="wrap process-grid">
+          <div class="process-copy">
+            <p class="label">Proceso</p>
+            <div class="steps">
+              <article class="step is-active" data-step data-step-shape="chip">
+                <span class="step-num">01 / 04</span>
+                <h3 class="h-lg">Diagnóstico.</h3>
+                <p class="body-soft">Escuchamos lo que nos cuentas, probamos el coche contigo y conectamos la diagnosis. Primero entender, después tocar.</p>
+              </article>
+              <article class="step" data-step data-step-shape="euro">
+                <span class="step-num">02 / 04</span>
+                <h3 class="h-lg">Presupuesto cerrado.</h3>
+                <p class="body-soft">Recibes el precio por escrito antes de empezar. Si aparece algo más, te llamamos. Nunca al revés.</p>
+              </article>
+              <article class="step" data-step data-step-shape="gear">
+                <span class="step-num">03 / 04</span>
+                <h3 class="h-lg">Manos a la obra.</h3>
+                <p class="body-soft">Recambio de calidad original o superior, par de apriete correcto y fotos del proceso si las quieres.</p>
+              </article>
+              <article class="step" data-step data-step-shape="check">
+                <span class="step-num">04 / 04</span>
+                <h3 class="h-lg">Entrega y seguimiento.</h3>
+                <p class="body-soft">Te enseñamos lo que hemos cambiado, te devolvemos las piezas viejas y te recordamos la próxima revisión.</p>
+              </article>
+            </div>
+            <div class="step-dots" aria-hidden="true"><i class="is-active"></i><i></i><i></i><i></i></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CIFRAS -->
+    <section class="stats" id="cifras" data-shape="bp" data-side="right" data-label="Taller">
+      <div class="wrap">
+        <p class="label">El taller</p>
+        <h2 class="h-lg stats-title" data-lines>Pequeños a propósito. Exigentes por costumbre.</h2>
+        <dl class="stats-grid">
+          <div class="stat reveal"><dt>Años en la bahía</dt><dd><span data-count="12">12</span><sup>+</sup></dd></div>
+          <div class="stat reveal"><dt>Coches al año</dt><dd><span data-count="2400" data-sep>2.400</span></dd></div>
+          <div class="stat reveal"><dt>Meses de garantía</dt><dd><span data-count="24">24</span></dd></div>
+          <div class="stat reveal"><dt>Valoración media</dt><dd><span data-count="4.9" data-dec="1">4,9</span><sup>/5</sup></dd></div>
+        </dl>
+      </div>
+    </section>
+
+    <!-- OPINIONES -->
+    <section class="reviews" id="opiniones" data-shape="scatter" data-label="Opiniones">
+      <div class="wrap">
+        <p class="label">Opiniones</p>
+        <div class="slider" data-slider>
+          <figure class="slide is-active">
+            <blockquote>“Me explicaron la avería con el coche en el elevador y el precio final fue exactamente el del presupuesto. Así de simple.”</blockquote>
+            <figcaption><strong>Marta R.</strong> · Volkswagen Golf GTI</figcaption>
+          </figure>
+          <figure class="slide">
+            <blockquote>“Reprogramación y cambio de embrague. El coche empuja como nunca y sigue gastando lo mismo en el día a día.”</blockquote>
+            <figcaption><strong>Javier L.</strong> · Audi S3</figcaption>
+          </figure>
+          <figure class="slide">
+            <blockquote>“Llevaba meses con un testigo que nadie encontraba. Aquí lo localizaron en una mañana.”</blockquote>
+            <figcaption><strong>Carmen G.</strong> · BMW 320d</figcaption>
+          </figure>
+        </div>
+        <div class="slider-nav">
+          <div class="dots" data-dots role="tablist" aria-label="Opiniones">
+            <button class="is-active" aria-label="Opinión 1"></button>
+            <button aria-label="Opinión 2"></button>
+            <button aria-label="Opinión 3"></button>
+          </div>
+          <div class="arrows">
+            <button class="arrow" data-prev aria-label="Anterior">←</button>
+            <button class="arrow" data-next aria-label="Siguiente">→</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACTO -->
+    <section class="contact" id="contacto" data-shape="scatter" data-label="Contacto">
+      <div class="wrap contact-grid">
+        <div class="contact-copy">
+          <p class="label">Pedir cita</p>
+          <h2 class="display-sm" data-lines>Tu coche, en buenas <em>manos</em>.</h2>
+          <div class="contact-info reveal">
+            <div><span class="mini">Dirección</span><p>Polígono Industrial, Nave 7<br>La Bahía</p></div>
+            <div><span class="mini">Horario</span><p>Lun – Vie · 8:30 – 19:00<br>Sáb · 9:00 – 13:00</p></div>
+            <div><span class="mini">Teléfono</span><p><a href="tel:+34600000000">+34 600 000 000</a></p></div>
+            <div><span class="mini">Email</span><p><a href="mailto:hola@bahiaperformance.es">hola@bahiaperformance.es</a></p></div>
+          </div>
+        </div>
+
+        <form class="form reveal" data-form novalidate name="citas" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+          <!-- Netlify Forms: identifica el formulario al enviarlo por JavaScript -->
+          <input type="hidden" name="form-name" value="citas" />
+          <!-- Trampa anti-spam: invisible para personas, los bots la rellenan -->
+          <p hidden><label>No rellenar: <input name="bot-field" tabindex="-1" autocomplete="off" /></label></p>
+          <div class="field-row">
+            <label><span>Nombre</span><input name="nombre" required autocomplete="name" placeholder="Tu nombre" /></label>
+            <label data-contact-field="telefono"><span>Teléfono</span><input name="telefono" type="tel" autocomplete="tel" placeholder="600 000 000" /></label>
+            <label data-contact-field="email" hidden><span>Email</span><input name="email" type="email" autocomplete="email" placeholder="tu@email.com" /></label>
+          </div>
+          <fieldset class="chips">
+            <legend>¿Cómo te contactamos?</legend>
+            <label><input type="radio" name="contacto" value="Teléfono" checked /><span>Teléfono</span></label>
+            <label><input type="radio" name="contacto" value="Email" /><span>Email</span></label>
+          </fieldset>
+          <label><span>Coche</span><input name="coche" placeholder="Marca, modelo y año" /></label>
+          <fieldset class="chips">
+            <legend>Servicio</legend>
+            <label><input type="radio" name="servicio" value="Mantenimiento" checked /><span>Mantenimiento</span></label>
+            <label><input type="radio" name="servicio" value="Diagnosis" /><span>Diagnosis</span></label>
+            <label><input type="radio" name="servicio" value="Performance" /><span>Performance</span></label>
+            <label><input type="radio" name="servicio" value="Frenos / suspensión" /><span>Frenos</span></label>
+            <label><input type="radio" name="servicio" value="Neumáticos" /><span>Neumáticos</span></label>
+          </fieldset>
+          <label><span>Cuéntanos</span><textarea name="mensaje" rows="3" placeholder="¿Qué le pasa o qué quieres hacerle?"></textarea></label>
+          <button class="btn btn-primary form-submit" type="submit">Solicitar cita</button>
+          <p class="form-status" data-form-status role="status"></p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer" data-shape="scatter" data-label="Fin">
+    <div class="wrap">
+      <div class="footer-top">
+        <p>© <span data-year>2026</span> Bahía Performance</p>
+        <nav aria-label="Pie">
+          <a href="#servicios">Servicios</a><a href="#proceso">Proceso</a><a href="#contacto">Contacto</a>
+        </nav>
+        <a href="#inicio" class="btn-ghost">Volver arriba <span aria-hidden="true">↑</span></a>
+      </div>
+      <p class="wordmark" aria-hidden="true">Bahía Performance</p>
+    </div>
+  </footer>
+
+  <script defer src="lib/gsap.min.js"></script>
+  <script defer src="lib/ScrollTrigger.min.js"></script>
+  <script defer src="main.js?v=20261010b"></script>
+<a href="../../index.html#demos" style="position:fixed;right:12px;top:76px;z-index:2147483000;padding:8px 12px;border:1px solid rgba(255,255,255,.3);border-radius:999px;background:#0f1011;color:#fff;font:500 12px/1.2 system-ui,sans-serif;text-decoration:none">&larr; Web de ejemplo &middot; LocalDev</a><script>if(window.self!==window.top)document.currentScript.previousElementSibling.remove();</script>
+</body>
+</html>
