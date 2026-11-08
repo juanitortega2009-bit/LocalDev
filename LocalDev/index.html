@@ -33,7 +33,7 @@
     "name": "LocalDev",
     "description": "Agencia de desarrollo web para negocios locales.",
     "telephone": "+34644144961",
-    "priceRange": "300 € - 600 €"
+    "priceRange": "300 € - 900 €"
   }
   </script>
 </head>
@@ -176,7 +176,6 @@
             </div>
             <h3 class="card__title">SEO Local optimizado</h3>
             <p class="card__text">Para que te encuentre quien ya está buscando lo que ofreces, a pocas calles de ti.</p>
-            <p class="label card__foot">Incluido en el plan Avanzado / Pro</p>
           </article>
         </div>
       </div>
@@ -260,26 +259,36 @@
         <header class="section__head reveal">
           <p class="label">Servicios y precios</p>
           <h2 class="heading">Precios <em>claros</em> desde el principio</h2>
-          <p class="section__lead">Escríbenos por WhatsApp y te contamos qué incluye cada plan.</p>
+          <p class="section__lead">Pago dividido en dos partes: 50% antes de empezar y 50% al terminar. Escríbenos por WhatsApp y te contamos qué incluye cada plan.</p>
         </header>
 
         <div class="plans">
           <article class="plan reveal">
-            <h3 class="plan__name">Sitio web corporativo esencial</h3>
+            <h3 class="plan__name">Sitio web esencial</h3>
             <p class="plan__price">300–400 €</p>
-            <p class="label plan__terms">Pago dividido</p>
-            <p class="plan__text">Para negocios que buscan presencia oficial directa y limpia.</p>
-            <a class="btn btn--ghost plan__cta" href="#contacto" data-wa="Hola, me gustaría saber qué incluye el sitio web corporativo Esencial.">
+            <p class="label plan__terms">Básico</p>
+            <p class="plan__text">Ideal para pequeños negocios que buscan presencia online.</p>
+            <a class="btn btn--ghost plan__cta" href="#contacto" data-wa="Hola, me gustaría saber qué incluye el Sitio web esencial (300–400 €).">
               Preguntar por WhatsApp <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg>
             </a>
           </article>
 
-          <article class="plan plan--pro reveal">
-            <h3 class="plan__name">Sitio web corporativo avanzado / Pro</h3>
+          <article class="plan plan--featured reveal">
+            <h3 class="plan__name">Sitio web profesional</h3>
             <p class="plan__price">500–600 €</p>
-            <p class="label plan__terms">Pago dividido</p>
-            <p class="plan__text">Para negocios que quieren destacar con galería, reseñas e integración de SEO Local.</p>
-            <a class="btn btn--dark plan__cta" href="#contacto" data-wa="Hola, me gustaría saber qué incluye el sitio web corporativo Avanzado / Pro.">
+            <p class="label plan__terms">Recomendado</p>
+            <p class="plan__text">Para negocios que quieren mostrar más y destacar.</p>
+            <a class="btn btn--dark plan__cta" href="#contacto" data-wa="Hola, me gustaría saber qué incluye el Sitio web profesional (500–600 €).">
+              Preguntar por WhatsApp <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg>
+            </a>
+          </article>
+
+          <article class="plan reveal">
+            <h3 class="plan__name">Sitio web avanzado</h3>
+            <p class="plan__price">700–900 €</p>
+            <p class="label plan__terms">Premium</p>
+            <p class="plan__text">Para negocios con necesidades avanzadas y más funcionalidades.</p>
+            <a class="btn btn--ghost plan__cta" href="#contacto" data-wa="Hola, me gustaría saber qué incluye el Sitio web avanzado (700–900 €).">
               Preguntar por WhatsApp <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg>
             </a>
           </article>
@@ -300,21 +309,27 @@
           <article class="tier reveal">
             <h3 class="tier__name">Básico</h3>
             <p class="tier__price">25 €<small>/mes</small></p>
+            <p class="tier__text">Para negocios que quieren tener su web siempre funcionando.</p>
             <a class="btn btn--ghost tier__cta" href="#contacto" data-wa="Hola, me gustaría saber qué incluye el mantenimiento Básico (25 €/mes).">Preguntar por WhatsApp</a>
           </article>
 
           <article class="tier tier--featured reveal">
-            <h3 class="tier__name">Recomendado</h3>
+            <p class="chip tier__badge">Más popular</p>
+            <h3 class="tier__name">Plus</h3>
             <p class="tier__price">45 €<small>/mes</small></p>
-            <a class="btn btn--primary tier__cta" href="#contacto" data-wa="Hola, me gustaría saber qué incluye el mantenimiento Recomendado (45 €/mes).">Preguntar por WhatsApp</a>
+            <p class="tier__text">Para negocios que buscan mantener su web activa y mejorar su presencia.</p>
+            <a class="btn btn--primary tier__cta" href="#contacto" data-wa="Hola, me gustaría saber qué incluye el mantenimiento Plus (45 €/mes).">Preguntar por WhatsApp</a>
           </article>
 
           <article class="tier reveal">
             <h3 class="tier__name">Profesional</h3>
             <p class="tier__price">65 €<small>/mes</small></p>
+            <p class="tier__text">Para una gestión completa y el máximo rendimiento.</p>
             <a class="btn btn--ghost tier__cta" href="#contacto" data-wa="Hola, me gustaría saber qué incluye el mantenimiento Profesional (65 €/mes).">Preguntar por WhatsApp</a>
           </article>
         </div>
+
+        <p class="tiers__note reveal">El dominio y el alojamiento web (hosting) se contratan y pagan aparte, a nombre de tu negocio. No están incluidos en nuestros planes.</p>
       </div>
     </section>
 
@@ -346,8 +361,9 @@
             <label for="f-plan">Plan que te interesa</label>
             <select id="f-plan" name="plan">
               <option>Aún no lo sé</option>
-              <option>Esencial</option>
-              <option>Avanzado / Pro</option>
+              <option>Sitio web esencial</option>
+              <option>Sitio web profesional</option>
+              <option>Sitio web avanzado</option>
             </select>
           </div>
           <div class="field">
