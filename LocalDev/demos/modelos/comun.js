@@ -25,6 +25,45 @@
     if (strip) strip.remove();
   }
 
+  var framed = window.self !== window.top;
+
+  // Dentro de la ventana de LocalDev, un enlace "#seccion" movería también la
+  // página de LocalDev. Aquí solo se desplaza la propia web del modelo.
+  function scrollToTarget(target) {
+    var header = document.querySelector(".header");
+    var offset = header ? header.offsetHeight + 12 : 0;
+    var top = target.getBoundingClientRect().top + window.scrollY - offset;
+    window.scrollTo({ top: Math.max(0, top), behavior: "smooth" });
+  }
+
+  function initAnchors() {
+    document.addEventListener("click", function (event) {
+      var link = event.target.closest('a[href^="#"]');
+      if (!link || event.defaultPrevented) return;
+      var id = link.getAttribute("href").slice(1);
+      if (!id) {
+        event.preventDefault();
+        window.scrollTo({ top: 0, behavior: "smooth" });
+        return;
+      }
+      var target = document.getElementById(id);
+      if (!target) return;
+      event.preventDefault();
+      if (id === "inicio" || target === document.querySelector("main > :first-child")) {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      } else {
+        scrollToTarget(target);
+      }
+      if (!framed) history.replaceState(null, "", "#" + id);
+    });
+  }
+
+  // focus() también desplazaría la página de LocalDev
+  function focusField(field) {
+    field.focus({ preventScroll: framed });
+    if (framed) scrollToTarget(field);
+  }
+
   function initNav() {
     var toggle = document.querySelector("[data-nav-toggle]");
     var nav = document.querySelector("[data-nav]");
@@ -60,7 +99,9 @@
     document.querySelectorAll("[data-demo-wa]").forEach(function (link) {
       link.addEventListener("click", function (event) {
         event.preventDefault();
-        toast("En la web real, este botón abre el WhatsApp del gimnasio.");
+        toast(link.dataset.waMsg
+          ? "En la web real se abre WhatsApp con el mensaje: «" + link.dataset.waMsg + "»"
+          : "En la web real, este botón abre el WhatsApp del gimnasio.");
       });
     });
   }
@@ -84,7 +125,7 @@
         if (first) {
           status.textContent = "Rellena los campos marcados para continuar.";
           status.classList.add("is-error");
-          first.focus();
+          focusField(first);
           return;
         }
         status.textContent = form.dataset.demoForm || "Mensaje enviado. Te respondemos en menos de 24 horas.";
@@ -100,9 +141,9 @@
     });
   }
 
-  window.Olimpo = { toast: toast };
+  window.Olimpo = { toast: toast, framed: framed, scrollToTarget: scrollToTarget, focusField: focusField };
 
-  [initDemoStrip, initNav, initReveal, initWhatsapp, initForms].forEach(function (init) {
+  [initDemoStrip, initAnchors, initNav, initReveal, initWhatsapp, initForms].forEach(function (init) {
     try { init(); } catch (error) { console.error(init.name, error); }
   });
 })();

@@ -43,12 +43,12 @@
       show(index);
       box.hidden = false;
       document.body.style.overflow = "hidden";
-      box.querySelector("[data-lb-close]").focus();
+      box.querySelector("[data-lb-close]").focus({ preventScroll: true });
     }
     function close() {
       box.hidden = true;
       document.body.style.overflow = "";
-      if (opener) opener.focus();
+      if (opener) opener.focus({ preventScroll: true });
     }
 
     thumbs.forEach(function (thumb, index) {
