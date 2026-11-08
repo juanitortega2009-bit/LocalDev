@@ -42,11 +42,18 @@
       <nav class="nav" data-nav aria-label="Principal">
         <a href="#reservas">Reservar clase</a>
         <a href="#cuotas">Cuotas</a>
+        <a href="#tienda">Tienda</a>
         <a href="#eventos">Eventos</a>
         <a href="#test">¿Qué cuota?</a>
         <a href="#contacto">Contacto</a>
       </nav>
-      <a class="btn btn--accent magnetic" href="#cuotas">Hazte socio</a>
+      <div class="header__actions">
+        <button class="cart-btn" type="button" aria-label="Abrir carrito (0 productos)" data-cart-open>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 4h2l2.4 11.2a1 1 0 0 0 1 .8h9.2a1 1 0 0 0 1-.8L20 8H6.2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><circle cx="9.5" cy="19.5" r="1.4" fill="currentColor"/><circle cx="17" cy="19.5" r="1.4" fill="currentColor"/></svg>
+          <span class="cart-btn__count" data-cart-count>0</span>
+        </button>
+        <a class="btn btn--accent magnetic" href="#cuotas">Hazte socio</a>
+      </div>
       <button class="nav-toggle" type="button" aria-label="Abrir menú" aria-expanded="false" data-nav-toggle>☰</button>
     </div>
   </header>
@@ -118,8 +125,28 @@
       </div>
     </section>
 
+    <!-- Tienda online -->
+    <section class="section" id="tienda">
+      <div class="container">
+        <header class="block-head reveal">
+          <div>
+            <p class="eyebrow">Tienda online</p>
+            <h2 class="display section-title">Equípate para entrenar</h2>
+          </div>
+          <div class="filters" role="group" aria-label="Filtrar productos" data-shop-filters>
+            <button type="button" aria-pressed="true" data-shop-filter="todo">Todo</button>
+            <button type="button" aria-pressed="false" data-shop-filter="suplementos">Suplementos</button>
+            <button type="button" aria-pressed="false" data-shop-filter="ropa">Ropa</button>
+            <button type="button" aria-pressed="false" data-shop-filter="accesorios">Accesorios</button>
+          </div>
+        </header>
+        <div class="shop" data-shop></div>
+        <p class="shop__note reveal">Recogida gratis en el gimnasio · Envío a domicilio 3,90 € (gratis desde 50 €)</p>
+      </div>
+    </section>
+
     <!-- Eventos -->
-    <section class="section" id="eventos">
+    <section class="section section--alt" id="eventos">
       <div class="container">
         <header class="block-head reveal">
           <div>
@@ -244,6 +271,27 @@
       <a href="../creditos.html">Créditos de imágenes</a>
     </div>
   </footer>
+
+  <!-- Carrito de la tienda -->
+  <dialog class="cart" data-cart aria-labelledby="cart-title">
+    <div class="cart__inner">
+      <header class="cart__head">
+        <h3 id="cart-title">Tu carrito</h3>
+        <button type="button" class="cart__close" aria-label="Cerrar carrito" data-cart-close>✕</button>
+      </header>
+      <p class="cart__empty" data-cart-empty>Tu carrito está vacío. Añade algo de la tienda.</p>
+      <ul class="cart__items" data-cart-items></ul>
+      <div class="cart__foot" data-cart-foot>
+        <fieldset class="cart__delivery">
+          <legend>Entrega</legend>
+          <label><input type="radio" name="entrega" value="recogida" checked> Recoger en el gimnasio <span>Gratis</span></label>
+          <label><input type="radio" name="entrega" value="envio"> Envío a domicilio <span data-ship-price>3,90 €</span></label>
+        </fieldset>
+        <ul class="cart__totals" data-cart-totals></ul>
+        <button type="button" class="btn btn--accent cart__pay" data-cart-pay>Pagar</button>
+      </div>
+    </div>
+  </dialog>
 
   <!-- Pago online (simulado) -->
   <dialog class="checkout" data-checkout aria-labelledby="co-title">

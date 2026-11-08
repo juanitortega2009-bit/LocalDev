@@ -15,13 +15,34 @@
     { id: "bono", name: "Bono 10 clases", price: 60, unit: "", desc: "Para venir cuando puedas. Válido 3 meses." }
   ];
 
-  // Las ofertas se programan una vez y la web las activa y retira sola
+  // Productos de la tienda online
+  var PRODUCTS = [
+    { id: "proteina", cat: "suplementos", name: "Proteína whey 1 kg", detail: "Sabor chocolate · 33 tomas", price: 34.9, art: "tub", tone: "#3a2418" },
+    { id: "creatina", cat: "suplementos", name: "Creatina monohidrato 300 g", detail: "Sin sabor · 100 tomas", price: 24.9, art: "jar", tone: "#1d2a33" },
+    { id: "camiseta", cat: "ropa", name: "Camiseta técnica Olimpo", detail: "Tejido transpirable · Tallas S–XXL", price: 19.9, art: "shirt", tone: "#33221c" },
+    { id: "sudadera", cat: "ropa", name: "Sudadera Olimpo Club", detail: "Algodón orgánico · Unisex", price: 39.9, art: "hoodie", tone: "#24242a" },
+    { id: "guantes", cat: "accesorios", name: "Guantes de boxeo 12 oz", detail: "Piel sintética · Cierre de velcro", price: 39.9, art: "glove", tone: "#3a1c1a" },
+    { id: "botella", cat: "accesorios", name: "Botella térmica 750 ml", detail: "Acero inoxidable · 24 h frío", price: 14.9, art: "bottle", tone: "#1c2b26" }
+  ];
+
+  // Las ofertas se programan una vez y la web las activa y retira sola.
+  // Cada descuento dice a qué cuotas (plans) y a qué categorías de la tienda (shop) se aplica.
   var OFFERS = [
     { name: "Semana de puertas abiertas", from: "2026-11-02", to: "2026-11-15", text: "Entrena gratis, sin compromiso", discount: null },
-    { name: "Black Friday", from: "2026-11-20", to: "2026-11-30", text: "-30% en todas las cuotas y bonos", discount: { plans: "todas", pct: 30 } },
-    { name: "Reto de Navidad", from: "2026-12-01", to: "2026-12-24", text: "Bono 10 clases con un 25% de descuento", discount: { plans: ["bono"], pct: 25 } },
-    { name: "Propósitos 2027", from: "2027-01-01", to: "2027-01-31", text: "-20% en las cuotas trimestral y anual", discount: { plans: ["trimestral", "anual"], pct: 20 } }
+    { name: "Black Friday", from: "2026-11-20", to: "2026-11-30", text: "-30% en todas las cuotas y en toda la tienda", discount: { plans: "todas", shop: "todas", pct: 30 } },
+    { name: "Reto de Navidad", from: "2026-12-01", to: "2026-12-24", text: "-25% en el bono 10 clases y en ropa y accesorios para regalar", discount: { plans: ["bono"], shop: ["ropa", "accesorios"], pct: 25 } },
+    { name: "Propósitos 2027", from: "2027-01-01", to: "2027-01-31", text: "-20% en las cuotas trimestral y anual y en suplementos", discount: { plans: ["trimestral", "anual"], shop: ["suplementos"], pct: 20 } }
   ];
+
+  // Dibujos sencillos de los productos (sin fotos)
+  var ART = {
+    tub: '<rect x="30" y="34" width="60" height="62" rx="10" fill="#f3efe8"/><rect x="27" y="24" width="66" height="16" rx="6" fill="#ff5a1f"/><rect x="38" y="54" width="44" height="22" rx="4" fill="#0e0e0f"/><text x="60" y="69" text-anchor="middle" font-size="10" font-weight="800" fill="#f3efe8" font-family="Archivo, sans-serif">WHEY</text>',
+    jar: '<rect x="36" y="40" width="48" height="54" rx="12" fill="#f3efe8"/><rect x="40" y="28" width="40" height="16" rx="5" fill="#0e0e0f"/><rect x="42" y="58" width="36" height="16" rx="3" fill="#ff5a1f"/>',
+    shirt: '<path d="M40 26 L28 34 L18 52 L32 58 L36 50 L36 98 L84 98 L84 50 L88 58 L102 52 L92 34 L80 26 Q70 36 60 36 Q50 36 40 26Z" fill="#f3efe8"/><text x="60" y="72" text-anchor="middle" font-size="10" font-weight="800" fill="#ff5a1f" font-family="Archivo, sans-serif">OLIMPO</text>',
+    hoodie: '<path d="M42 24 Q60 14 78 24 L94 34 L104 82 L90 86 L86 58 L86 100 L34 100 L34 58 L30 86 L16 82 L26 34Z" fill="#3a3a42"/><path d="M46 26 Q60 44 74 26" fill="none" stroke="#f3efe8" stroke-width="3"/><rect x="44" y="78" width="32" height="12" rx="4" fill="#2c2c33"/><text x="60" y="68" text-anchor="middle" font-size="9" font-weight="800" fill="#ff5a1f" font-family="Archivo, sans-serif">OLIMPO</text>',
+    glove: '<path d="M38 50 Q38 26 62 26 Q86 26 86 50 L86 74 Q86 86 74 86 L50 86 Q38 86 38 74Z" fill="#ff5a1f"/><path d="M38 60 Q24 58 26 46 Q28 38 38 42" fill="#e04a12"/><rect x="44" y="84" width="38" height="16" rx="4" fill="#f3efe8"/>',
+    bottle: '<rect x="44" y="34" width="32" height="64" rx="12" fill="#f3efe8"/><rect x="48" y="20" width="24" height="16" rx="5" fill="#ff5a1f"/><rect x="44" y="58" width="32" height="10" fill="#0e0e0f"/>'
+  };
 
   // Clases por día de la semana (0 = domingo)
   var SCHEDULE = {
@@ -86,6 +107,14 @@
     }
     return { price: plan.price, old: null, offer: null };
   }
+  function productPrice(product, date) {
+    var offer = activeOffer(date);
+    var shop = offer && offer.discount && offer.discount.shop;
+    if (shop && (shop === "todas" || shop.indexOf(product.cat) !== -1)) {
+      return { price: Math.round(product.price * (100 - offer.discount.pct)) / 100, old: product.price, offer: offer };
+    }
+    return { price: product.price, old: null, offer: null };
+  }
 
   function renderOfferBar() {
     var bar = document.querySelector("[data-offer-bar]");
@@ -145,6 +174,170 @@
     renderOfferBar();
     renderOfferList();
     renderPrices();
+    renderShop();
+    renderCart();
+  }
+
+  /* ---------- Tienda online y carrito ---------- */
+
+  var cart = {}; // id del producto -> cantidad
+  var shopFilter = "todo";
+
+  function findProduct(id) {
+    for (var i = 0; i < PRODUCTS.length; i++) if (PRODUCTS[i].id === id) return PRODUCTS[i];
+    return null;
+  }
+  function euros(value) { return money.format(value); }
+
+  function renderShop() {
+    var wrap = document.querySelector("[data-shop]");
+    if (!wrap) return;
+    wrap.innerHTML = "";
+    PRODUCTS.forEach(function (product) {
+      if (shopFilter !== "todo" && product.cat !== shopFilter) return;
+      var p = productPrice(product, viewDate);
+      var card = el("article", "product");
+      var media = el("div", "product__media", '<svg viewBox="0 0 120 120" aria-hidden="true">' + ART[product.art] + "</svg>");
+      media.style.background = "radial-gradient(circle at 50% 40%, " + product.tone + " 0%, #121213 75%)";
+      if (p.offer) media.appendChild(el("span", "product__tag", "-" + p.offer.discount.pct + "%"));
+      card.appendChild(media);
+      var body = el("div", "product__body");
+      body.appendChild(el("p", "product__cat", product.cat));
+      body.appendChild(el("h3", "product__name", product.name));
+      body.appendChild(el("p", "product__detail", product.detail));
+      body.appendChild(el("p", "product__price", euros(p.price) + (p.old ? " <s>" + euros(p.old) + "</s>" : "")));
+      var add = el("button", "btn btn--ghost product__add", "Añadir al carrito");
+      add.type = "button";
+      add.addEventListener("click", function () {
+        cart[product.id] = (cart[product.id] || 0) + 1;
+        renderCart();
+        add.textContent = "Añadido ✓";
+        add.classList.add("is-added");
+        setTimeout(function () { add.textContent = "Añadir al carrito"; add.classList.remove("is-added"); }, 1400);
+        var button = document.querySelector("[data-cart-open]");
+        button.classList.remove("is-bump");
+        void button.offsetWidth;
+        button.classList.add("is-bump");
+      });
+      body.appendChild(add);
+      card.appendChild(body);
+      wrap.appendChild(card);
+    });
+  }
+
+  // Calcula el pedido completo: líneas, descuento, envío y total
+  function cartSummary() {
+    var items = [];
+    var subtotal = 0;
+    var total = 0;
+    var offer = null;
+    Object.keys(cart).forEach(function (id) {
+      var product = findProduct(id);
+      var qty = cart[id];
+      var p = productPrice(product, viewDate);
+      if (p.offer) offer = p.offer;
+      items.push({ product: product, qty: qty, unit: p.price, old: p.old });
+      subtotal += product.price * qty;
+      total += p.price * qty;
+    });
+    var shipping = document.querySelector('[name="entrega"]:checked');
+    var delivery = shipping && shipping.value === "envio";
+    var shipCost = delivery && total < 50 ? 3.9 : 0;
+    return {
+      items: items,
+      count: items.reduce(function (n, item) { return n + item.qty; }, 0),
+      subtotal: subtotal,
+      discount: subtotal - total,
+      offer: offer,
+      delivery: delivery,
+      shipCost: shipCost,
+      total: total + shipCost
+    };
+  }
+
+  function renderCart() {
+    var list = document.querySelector("[data-cart-items]");
+    if (!list) return;
+    var s = cartSummary();
+    var count = document.querySelector("[data-cart-count]");
+    count.textContent = s.count;
+    count.parentElement.setAttribute("aria-label", "Abrir carrito (" + s.count + (s.count === 1 ? " producto)" : " productos)"));
+    count.parentElement.classList.toggle("has-items", s.count > 0);
+
+    document.querySelector("[data-cart-empty]").hidden = s.count > 0;
+    document.querySelector("[data-cart-foot]").hidden = s.count === 0;
+    document.querySelector("[data-ship-price]").textContent = s.total - s.shipCost >= 50 ? "Gratis" : "3,90 €";
+
+    list.innerHTML = "";
+    s.items.forEach(function (item) {
+      var row = el("li", "cart-item");
+      row.innerHTML =
+        '<div class="cart-item__img" style="background:' + item.product.tone + '"><svg viewBox="0 0 120 120" aria-hidden="true">' + ART[item.product.art] + "</svg></div>" +
+        '<div class="cart-item__info"><p class="cart-item__name">' + item.product.name + "</p>" +
+        '<p class="cart-item__price">' + euros(item.unit) + (item.old ? " <s>" + euros(item.old) + "</s>" : "") + "</p></div>" +
+        '<div class="cart-item__qty"><button type="button" aria-label="Quitar uno" data-qty="-1">−</button><span>' + item.qty +
+        '</span><button type="button" aria-label="Añadir uno" data-qty="1">+</button></div>';
+      row.querySelectorAll("[data-qty]").forEach(function (button) {
+        button.addEventListener("click", function () {
+          cart[item.product.id] += Number(button.dataset.qty);
+          if (cart[item.product.id] <= 0) delete cart[item.product.id];
+          renderCart();
+        });
+      });
+      list.appendChild(row);
+    });
+
+    var totals = document.querySelector("[data-cart-totals]");
+    totals.innerHTML = "";
+    totals.appendChild(el("li", null, "<span>Subtotal</span><span>" + euros(s.subtotal) + "</span>"));
+    if (s.discount > 0.001) totals.appendChild(el("li", "is-discount", "<span>" + s.offer.name + " (-" + s.offer.discount.pct + "%)</span><span>-" + euros(s.discount) + "</span>"));
+    totals.appendChild(el("li", null, "<span>Entrega</span><span>" + (s.shipCost ? euros(s.shipCost) : "Gratis") + "</span>"));
+    totals.appendChild(el("li", "is-total", "<span>Total</span><span>" + euros(s.total) + "</span>"));
+    document.querySelector("[data-cart-pay]").textContent = "Pagar " + euros(s.total);
+  }
+
+  function initShop() {
+    var drawer = document.querySelector("[data-cart]");
+    var filters = document.querySelectorAll("[data-shop-filter]");
+    filters.forEach(function (button) {
+      button.addEventListener("click", function () {
+        shopFilter = button.dataset.shopFilter;
+        filters.forEach(function (other) { other.setAttribute("aria-pressed", String(other === button)); });
+        renderShop();
+      });
+    });
+
+    document.querySelector("[data-cart-open]").addEventListener("click", function () {
+      renderCart();
+      if (typeof drawer.showModal === "function") drawer.showModal();
+    });
+    document.querySelector("[data-cart-close]").addEventListener("click", function () { drawer.close(); });
+    drawer.addEventListener("click", function (event) { if (event.target === drawer) drawer.close(); });
+    drawer.querySelectorAll('[name="entrega"]').forEach(function (radio) {
+      radio.addEventListener("change", renderCart);
+    });
+
+    document.querySelector("[data-cart-pay]").addEventListener("click", function () {
+      var s = cartSummary();
+      if (!s.count) return;
+      var lines = s.items.map(function (item) {
+        return [item.qty + " × " + item.product.name, euros(item.product.price * item.qty)];
+      });
+      if (s.discount > 0.001) lines.push([s.offer.name + " (-" + s.offer.discount.pct + "%)", "-" + euros(s.discount)]);
+      lines.push([s.delivery ? "Envío a domicilio" : "Recogida en el gimnasio", s.shipCost ? euros(s.shipCost) : "0,00 €"]);
+      drawer.close();
+      openPayment({
+        title: "Pedido de la tienda",
+        total: s.total,
+        lines: lines,
+        receipt: function (ref) {
+          return "Pedido " + ref + " confirmado. " +
+            (s.delivery ? "Te lo enviamos a casa en 24–48 h." : "Recógelo en recepción a partir de mañana.") +
+            " En la web real te llegaría un email con el resumen. (Demostración: no se ha cobrado nada.)";
+        },
+        onPaid: function () { cart = {}; renderCart(); }
+      });
+    });
   }
 
   function simulate(date, showPrices) {
@@ -173,26 +366,42 @@
   /* ---------- Pago online (simulado) ---------- */
 
   var dialog = document.querySelector("[data-checkout]");
-  var currentPlan = null;
+  var currentPayment = null;
 
-  function openCheckout(plan) {
-    currentPlan = plan;
-    var p = priceFor(plan, viewDate);
-    dialog.querySelector("[data-co-name]").textContent = "Cuota " + plan.name.toLowerCase();
-    dialog.querySelector("[data-co-amount]").textContent = money.format(p.price);
+  // order: { title, total, lines: [[texto, importe]], receipt(ref), onPaid() }
+  function openPayment(order) {
+    currentPayment = order;
+    dialog.querySelector("[data-co-name]").textContent = order.title;
+    dialog.querySelector("[data-co-amount]").textContent = money.format(order.total);
     var lines = dialog.querySelector("[data-co-lines]");
     lines.innerHTML = "";
-    lines.appendChild(el("li", null, "<span>" + plan.name + "</span><span>" + money.format(plan.price) + "</span>"));
-    if (p.old) lines.appendChild(el("li", null, "<span>" + p.offer.name + " (-" + p.offer.discount.pct + "%)</span><span>-" + money.format(p.old - p.price) + "</span>"));
-    lines.appendChild(el("li", null, "<span>Matrícula</span><span>0,00 €</span>"));
-    lines.appendChild(el("li", "is-total", "<span>Total</span><span>" + money.format(p.price) + "</span>"));
+    order.lines.forEach(function (line) {
+      lines.appendChild(el("li", null, "<span>" + line[0] + "</span><span>" + line[1] + "</span>"));
+    });
+    lines.appendChild(el("li", "is-total", "<span>Total</span><span>" + money.format(order.total) + "</span>"));
     var confirm = dialog.querySelector("[data-co-confirm]");
     confirm.disabled = false;
-    confirm.textContent = "Pagar " + money.format(p.price);
+    confirm.textContent = "Pagar " + money.format(order.total);
     dialog.querySelector("[data-co-pay]").hidden = false;
     dialog.querySelector("[data-co-done]").hidden = true;
     if (typeof dialog.showModal === "function") dialog.showModal();
     else toast("Este navegador no puede mostrar el pago de demostración.");
+  }
+
+  function openCheckout(plan) {
+    var p = priceFor(plan, viewDate);
+    var lines = [[plan.name, money.format(plan.price)]];
+    if (p.old) lines.push([p.offer.name + " (-" + p.offer.discount.pct + "%)", "-" + money.format(p.old - p.price)]);
+    lines.push(["Matrícula", "0,00 €"]);
+    openPayment({
+      title: "Cuota " + plan.name.toLowerCase(),
+      total: p.price,
+      lines: lines,
+      receipt: function (ref) {
+        return "Ya eres socio con la cuota " + plan.name.toLowerCase() + ". Recibo " + ref +
+          ". En la web real te llegaría por email. (Demostración: no se ha cobrado nada.)";
+      }
+    });
   }
 
   function initCheckout() {
@@ -203,9 +412,8 @@
       setTimeout(function () {
         dialog.querySelector("[data-co-pay]").hidden = true;
         dialog.querySelector("[data-co-done]").hidden = false;
-        dialog.querySelector("[data-co-receipt]").textContent =
-          "Ya eres socio con la cuota " + currentPlan.name.toLowerCase() + ". Recibo " + code() +
-          ". En la web real te llegaría por email. (Demostración: no se ha cobrado nada.)";
+        dialog.querySelector("[data-co-receipt]").textContent = currentPayment.receipt(code());
+        if (currentPayment.onPaid) currentPayment.onPaid();
       }, 1400);
     });
     dialog.addEventListener("click", function (event) { if (event.target === dialog) dialog.close(); });
@@ -539,7 +747,7 @@
   }
 
   [initSplit, initProgress, initCounters, initParallax, initMagnetic, initStrip, initOpenBadge,
-    initOffers, initCheckout, initBooking, initCalendar, initQuiz].forEach(function (init) {
+    initShop, initOffers, initCheckout, initBooking, initCalendar, initQuiz].forEach(function (init) {
     try { init(); } catch (error) { console.error(init.name, error); }
   });
 })();
