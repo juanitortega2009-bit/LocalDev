@@ -18,9 +18,9 @@
   // Las ofertas se programan una vez y la web las activa y retira sola
   var OFFERS = [
     { name: "Semana de puertas abiertas", from: "2026-11-02", to: "2026-11-15", text: "Entrena gratis, sin compromiso", discount: null },
-    { name: "Black Friday", from: "2026-11-20", to: "2026-11-30", text: "-30% en la cuota trimestral", discount: { plan: "trimestral", pct: 30 } },
-    { name: "Reto de Navidad", from: "2026-12-01", to: "2026-12-24", text: "Bono 10 clases con un 25% de descuento", discount: { plan: "bono", pct: 25 } },
-    { name: "Propósitos 2027", from: "2027-01-01", to: "2027-01-31", text: "-20% en la cuota anual", discount: { plan: "anual", pct: 20 } }
+    { name: "Black Friday", from: "2026-11-20", to: "2026-11-30", text: "-30% en todas las cuotas y bonos", discount: { plans: "todas", pct: 30 } },
+    { name: "Reto de Navidad", from: "2026-12-01", to: "2026-12-24", text: "Bono 10 clases con un 25% de descuento", discount: { plans: ["bono"], pct: 25 } },
+    { name: "Propósitos 2027", from: "2027-01-01", to: "2027-01-31", text: "-20% en las cuotas trimestral y anual", discount: { plans: ["trimestral", "anual"], pct: 20 } }
   ];
 
   // Clases por día de la semana (0 = domingo)
@@ -80,7 +80,8 @@
   }
   function priceFor(plan, date) {
     var offer = activeOffer(date);
-    if (offer && offer.discount && offer.discount.plan === plan.id) {
+    var plans = offer && offer.discount && offer.discount.plans;
+    if (plans && (plans === "todas" || plans.indexOf(plan.id) !== -1)) {
       return { price: plan.price * (1 - offer.discount.pct / 100), old: plan.price, offer: offer };
     }
     return { price: plan.price, old: null, offer: null };
@@ -110,6 +111,11 @@
       item.appendChild(el("h3", null, offer.name));
       item.appendChild(el("p", null, offer.text));
       item.appendChild(el("p", "offer__dates", "Del " + shortDate(parseISO(offer.from)) + " al " + shortDate(parseISO(offer.to))));
+      // Atajo para la demostración: saltar a esa fecha y ver los precios ya rebajados
+      var jump = el("button", "offer__jump", offer.discount ? "Ver los precios ese día" : "Ver la web ese día");
+      jump.type = "button";
+      jump.addEventListener("click", function () { simulate(parseISO(offer.from), Boolean(offer.discount)); });
+      item.appendChild(jump);
       list.appendChild(item);
     });
   }
@@ -141,14 +147,20 @@
     renderPrices();
   }
 
+  function simulate(date, showPrices) {
+    viewDate = date;
+    document.querySelector("[data-sim-date]").value = toISO(date);
+    renderOffers();
+    toast("Viendo la web como si fuera el " + longDate(viewDate) + ".");
+    if (showPrices) window.Olimpo.scrollToTarget(document.getElementById("cuotas"));
+  }
+
   function initOffers() {
     var input = document.querySelector("[data-sim-date]");
     input.value = toISO(realToday);
     input.addEventListener("change", function () {
       if (!input.value) return;
-      viewDate = parseISO(input.value);
-      renderOffers();
-      toast("Viendo la web como si fuera el " + longDate(viewDate) + ".");
+      simulate(parseISO(input.value), false);
     });
     document.querySelector("[data-sim-today]").addEventListener("click", function () {
       viewDate = realToday;
@@ -284,7 +296,7 @@
         name.setAttribute("aria-invalid", "true");
         status.textContent = "Escribe tu nombre para reservar.";
         status.classList.add("is-error");
-        name.focus();
+        window.Olimpo.focusField(name);
         return;
       }
       name.setAttribute("aria-invalid", "false");

@@ -230,7 +230,20 @@
 .offer.is-past { opacity: .5; }
 .offer h3 { color: var(--text); font-size: 1.125rem; font-weight: 700; }
 .offer__dates { font-size: .8125rem; }
-
+.offer__jump {
+  justify-self: start;
+  margin-top: 6px;
+  padding: 6px 12px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: none;
+  color: var(--text);
+  font: inherit;
+  font-size: .8125rem;
+  cursor: pointer;
+  transition: border-color .2s ease, background-color .2s ease, color .2s ease;
+}
+.offer__jump:hover { border-color: var(--accent); background: var(--accent); color: var(--accent-ink); }
 /* Test */
 .quiz-wrap { display: grid; grid-template-columns: .9fr 1.1fr; gap: clamp(32px, 6vw, 80px); align-items: start; }
 .quiz-wrap__lead { margin-top: 16px; }
