@@ -76,6 +76,104 @@
     phones.forEach(function (phone) { observer.observe(phone); });
   }
 
+  // Escaparate: la web de ejemplo de cada plan dentro de una ventana de navegador.
+  // En pantallas anchas se ve la versión de ordenador; en móvil, la de móvil.
+  function initShowcase() {
+    var root = document.querySelector("[data-showcase]");
+    if (!root) return;
+    var screen = root.querySelector("[data-showcase-screen]");
+    var startButton = root.querySelector("[data-showcase-start]");
+    var urlLabel = root.querySelector("[data-showcase-url]");
+    var openLink = root.querySelector("[data-showcase-open]");
+    var waLink = root.querySelector("[data-showcase-wa]");
+    var panel = root.querySelector('[role="tabpanel"]');
+    var tabs = root.querySelectorAll("[data-model]");
+    var names = { esencial: "Esencial", profesional: "Profesional", avanzado: "Avanzado" };
+    var current = "profesional";
+    var frame = null;
+
+    function pageUrl(model) { return "demos/modelos/" + model + "/index.html"; }
+
+    function fit() {
+      if (!frame) return;
+      var width = screen.clientWidth;
+      var height = screen.clientHeight;
+      var virtualWidth = width < 600 ? 390 : 1280;
+      var scale = width / virtualWidth;
+      frame.style.width = virtualWidth + "px";
+      frame.style.height = Math.ceil(height / scale) + "px";
+      frame.style.transform = "scale(" + scale + ")";
+    }
+
+    function load() {
+      if (!frame) {
+        frame = document.createElement("iframe");
+        frame.addEventListener("load", function () {
+          try { frame.contentDocument.documentElement.style.scrollbarWidth = "none"; } catch (error) {}
+          screen.classList.add("is-live");
+        });
+        screen.appendChild(frame);
+        fit();
+      }
+      screen.classList.remove("is-live");
+      frame.title = "Web de ejemplo del plan " + names[current];
+      frame.src = pageUrl(current);
+    }
+
+    function select(model) {
+      if (!names[model]) return;
+      current = model;
+      tabs.forEach(function (tab) {
+        var active = tab.dataset.model === model;
+        tab.setAttribute("aria-selected", String(active));
+        tab.tabIndex = active ? 0 : -1;
+        if (active) panel.setAttribute("aria-labelledby", tab.id);
+      });
+      root.querySelectorAll("[data-model-info]").forEach(function (list) {
+        list.hidden = list.dataset.modelInfo !== model;
+      });
+      urlLabel.textContent = "olimpo-" + model + ".es";
+      openLink.href = pageUrl(model);
+      var message = "Hola, he visto la web de ejemplo del plan " + names[model] + " y me interesa.";
+      waLink.dataset.wa = message;
+      if (number) waLink.href = whatsappUrl(message);
+      if (frame) load();
+    }
+
+    tabs.forEach(function (tab, index) {
+      tab.tabIndex = tab.getAttribute("aria-selected") === "true" ? 0 : -1;
+      tab.addEventListener("click", function () { select(tab.dataset.model); });
+      tab.addEventListener("keydown", function (event) {
+        var step = event.key === "ArrowRight" ? 1 : event.key === "ArrowLeft" ? -1 : 0;
+        if (!step) return;
+        var next = tabs[(index + step + tabs.length) % tabs.length];
+        next.focus();
+        select(next.dataset.model);
+      });
+    });
+
+    // Los enlaces de cada tarjeta de precio abren su web en el escaparate
+    document.querySelectorAll("[data-model-link]").forEach(function (link) {
+      link.addEventListener("click", function () { select(link.dataset.modelLink); });
+    });
+
+    startButton.addEventListener("click", function () {
+      startButton.textContent = "Cargando…";
+      load();
+    });
+
+    if ("ResizeObserver" in window) new ResizeObserver(fit).observe(screen);
+    else window.addEventListener("resize", fit);
+
+    if (!window.matchMedia("(hover: hover)").matches || !("IntersectionObserver" in window)) return;
+    var observer = new IntersectionObserver(function (entries) {
+      if (!entries[0].isIntersecting) return;
+      load();
+      observer.disconnect();
+    }, { rootMargin: "300px 0px" });
+    observer.observe(screen);
+  }
+
   function initReveal() {
     var items = document.querySelectorAll(".reveal");
     function show(item) { item.classList.add("is-visible"); }
@@ -190,6 +288,7 @@
     initWhatsappLinks,
     initNav,
     initDemos,
+    initShowcase,
     initReveal,
     initSpeed,
     initForm

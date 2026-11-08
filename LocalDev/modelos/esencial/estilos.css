@@ -1,0 +1,72 @@
+/* Plan Esencial: claro, limpio y directo */
+:root {
+  --bg: #f4f1ec;
+  --bg-2: #ffffff;
+  --surface: #ffffff;
+  --text: #141414;
+  --muted: #5c5852;
+  --line: rgba(20, 20, 20, .12);
+  --accent: #e8491b;
+  --accent-ink: #ffffff;
+}
+.btn--accent:hover { background: #cf3d12; }
+
+.hero { padding-block: clamp(40px, 7vw, 88px) clamp(56px, 8vw, 104px); }
+.hero__grid {
+  display: grid;
+  grid-template-columns: 1.1fr .9fr;
+  gap: clamp(32px, 6vw, 80px);
+  align-items: center;
+}
+.hero__copy { display: grid; gap: 22px; justify-items: start; }
+.hero__title { font-size: clamp(3rem, 2rem + 5vw, 6.25rem); }
+.hero__actions { display: flex; flex-wrap: wrap; gap: 12px; }
+.hero__media img {
+  width: 100%;
+  height: min(68vh, 600px);
+  object-fit: cover;
+  object-position: 50% 20%;
+  border-radius: 24px;
+}
+
+.block-head { margin-bottom: clamp(36px, 5vw, 56px); }
+
+.services {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+.service {
+  display: grid;
+  gap: 12px;
+  align-content: start;
+  padding: 28px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--surface);
+}
+.service__num { color: var(--accent); font-weight: 700; font-size: .875rem; }
+.service h3 { color: var(--text); font-size: 1.25rem; font-weight: 700; }
+
+.about { background: #ebe6de; }
+.about__grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(32px, 6vw, 80px); }
+.about__text { display: grid; gap: 18px; }
+.facts { display: grid; gap: 10px; margin-top: 8px; padding-top: 20px; border-top: 1px solid var(--line); }
+.facts strong { color: var(--text); }
+
+.contact { display: grid; grid-template-columns: 1fr 1.1fr; gap: clamp(32px, 6vw, 80px); align-items: start; }
+.contact__lead { margin-top: 16px; }
+.contact__info { display: grid; gap: 12px; margin-top: 28px; }
+.contact__info strong { display: block; color: var(--text); font-size: .875rem; }
+.contact__info a { color: var(--accent); font-weight: 600; }
+.contact__form { padding: clamp(24px, 3vw, 36px); border-radius: 20px; background: var(--surface); border: 1px solid var(--line); }
+
+@media (max-width: 960px) {
+  .services { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 760px) {
+  .hero__grid, .about__grid, .contact { grid-template-columns: 1fr; }
+  .hero__media { order: -1; }
+  .hero__media img { height: auto; aspect-ratio: 16 / 11; }
+  .services { grid-template-columns: 1fr; }
+}

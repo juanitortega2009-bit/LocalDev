@@ -1,0 +1,254 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Olimpo — Centro deportivo en Cádiz</title>
+  <meta name="description" content="Modelo del plan Profesional de LocalDev: web de un gimnasio de ejemplo.">
+  <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#0e0e0f">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..900&display=swap">
+  <link rel="stylesheet" href="../comun.css">
+  <link rel="stylesheet" href="estilos.css">
+  <script>document.documentElement.classList.add('js');</script>
+  <script defer src="../comun.js"></script>
+  <script defer src="profesional.js"></script>
+</head>
+<body>
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <symbol id="i-wa" viewBox="0 0 24 24"><path fill="currentColor" d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></symbol>
+  </svg>
+
+  <div class="demo-strip">
+    <span>Modelo del <strong>plan Profesional</strong> · 500–600 €</span>
+    <nav aria-label="Modelos de los planes">
+      <a href="../esencial/index.html">Esencial</a>
+      <a href="../profesional/index.html" aria-current="page">Profesional</a>
+      <a href="../avanzado/index.html">Avanzado</a>
+    </nav>
+    <a class="demo-strip__back" href="../../../index.html#precios">Volver a LocalDev</a>
+  </div>
+
+  <header class="header">
+    <div class="container header__bar">
+      <a class="logo" href="#inicio">OLIMPO<span>.</span></a>
+      <nav class="nav" data-nav aria-label="Principal">
+        <a href="#actividades">Actividades</a>
+        <a href="#galeria">Galería</a>
+        <a href="#club">El club</a>
+        <a href="#ubicacion">Dónde estamos</a>
+        <a href="#contacto">Contacto</a>
+      </nav>
+      <a class="btn btn--accent" href="#contacto">Prueba un día gratis</a>
+      <button class="nav-toggle" type="button" aria-label="Abrir menú" aria-expanded="false" data-nav-toggle>☰</button>
+    </div>
+  </header>
+
+  <main>
+    <!-- Inicio -->
+    <section class="hero" id="inicio">
+      <img class="hero__bg" src="../img/lucha.webp" alt="" fetchpriority="high">
+      <div class="container hero__content">
+        <p class="eyebrow hero__in" style="--d:.1s">Centro deportivo · Cádiz</p>
+        <h1 class="display hero__title">
+          <span class="hero__line"><span style="--d:.2s">La fuerza</span></span>
+          <span class="hero__line"><span style="--d:.32s">también se</span></span>
+          <span class="hero__line"><span style="--d:.44s" class="is-accent">entrena</span></span>
+        </h1>
+        <p class="lead hero__in" style="--d:.7s">Fuerza, combate, cardio y movilidad con entrenadores que te corrigen de verdad. Primer día gratis y sin permanencia.</p>
+        <div class="hero__actions hero__in" style="--d:.85s">
+          <a class="btn btn--accent" href="#contacto">Reservar día de prueba</a>
+          <a class="btn btn--ghost" href="#actividades">Ver actividades</a>
+        </div>
+      </div>
+    </section>
+
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee__track">
+        <span>Fuerza</span><span>Boxeo</span><span>Grappling</span><span>Running club</span><span>Remo indoor</span><span>Barre &amp; movilidad</span>
+        <span>Fuerza</span><span>Boxeo</span><span>Grappling</span><span>Running club</span><span>Remo indoor</span><span>Barre &amp; movilidad</span>
+      </div>
+    </div>
+
+    <!-- Catálogo -->
+    <section class="section" id="actividades">
+      <div class="container">
+        <header class="block-head reveal">
+          <div>
+            <p class="eyebrow">Actividades</p>
+            <h2 class="display section-title">Elige cómo quieres entrenar</h2>
+          </div>
+          <div class="filters" role="group" aria-label="Filtrar actividades" data-filters>
+            <button type="button" aria-pressed="true" data-filter="todas">Todas</button>
+            <button type="button" aria-pressed="false" data-filter="fuerza">Fuerza</button>
+            <button type="button" aria-pressed="false" data-filter="combate">Combate</button>
+            <button type="button" aria-pressed="false" data-filter="cardio">Cardio</button>
+            <button type="button" aria-pressed="false" data-filter="movilidad">Movilidad</button>
+          </div>
+        </header>
+
+        <div class="catalog" data-catalog>
+          <article class="activity reveal" data-cat="fuerza">
+            <div class="activity__img"><img src="../img/atleta.jpg" alt="Escultura de un atleta" loading="lazy"></div>
+            <div class="activity__body">
+              <p class="activity__cat">Fuerza</p>
+              <h3>Sala de fuerza</h3>
+              <p>Racks, plataformas y mancuernas hasta 50 kg, con programación mensual.</p>
+              <p class="activity__meta">Incluida en la cuota · Todo el día</p>
+            </div>
+          </article>
+          <article class="activity reveal" data-cat="combate">
+            <div class="activity__img"><img src="../img/boxeo.webp" alt="Pintura de un combate de boxeo" loading="lazy"></div>
+            <div class="activity__body">
+              <p class="activity__cat">Combate</p>
+              <h3>Boxeo</h3>
+              <p>Técnica, saco y sparring controlado, desde el primer día.</p>
+              <p class="activity__meta">L · X · V · 19:00</p>
+            </div>
+          </article>
+          <article class="activity reveal" data-cat="combate">
+            <div class="activity__img"><img src="../img/lucha.webp" alt="Pintura de dos luchadores" loading="lazy"></div>
+            <div class="activity__body">
+              <p class="activity__cat">Combate</p>
+              <h3>Grappling</h3>
+              <p>Lucha en suelo para ganar fuerza, control y confianza.</p>
+              <p class="activity__meta">M · J · 20:00</p>
+            </div>
+          </article>
+          <article class="activity reveal" data-cat="cardio">
+            <div class="activity__img"><img src="../img/carrera.webp" alt="Fotografía antigua de atletas corriendo" loading="lazy"></div>
+            <div class="activity__body">
+              <p class="activity__cat">Cardio</p>
+              <h3>Running club</h3>
+              <p>Salidas en grupo por el paseo marítimo, por niveles.</p>
+              <p class="activity__meta">S · 9:00</p>
+            </div>
+          </article>
+          <article class="activity reveal" data-cat="cardio">
+            <div class="activity__img"><img src="../img/remo.jpg" alt="Pintura de un remero en su bote" loading="lazy"></div>
+            <div class="activity__body">
+              <p class="activity__cat">Cardio</p>
+              <h3>Remo indoor</h3>
+              <p>Sesiones cortas e intensas en remoergómetro.</p>
+              <p class="activity__meta">L · X · 7:30</p>
+            </div>
+          </article>
+          <article class="activity reveal" data-cat="movilidad">
+            <div class="activity__img"><img src="../img/barra.jpg" alt="Pintura de bailarinas practicando en la barra" loading="lazy"></div>
+            <div class="activity__body">
+              <p class="activity__cat">Movilidad</p>
+              <h3>Barre &amp; movilidad</h3>
+              <p>Postura, flexibilidad y control del cuerpo, sin impacto.</p>
+              <p class="activity__meta">M · J · 10:00</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Galería -->
+    <section class="section gallery-section" id="galeria">
+      <div class="container">
+        <header class="block-head reveal">
+          <div>
+            <p class="eyebrow">Galería</p>
+            <h2 class="display section-title">Así se entrena aquí</h2>
+          </div>
+          <p class="block-head__note">Toca una imagen para verla en grande.</p>
+        </header>
+        <div class="gallery" data-gallery>
+          <button type="button" class="gallery__item gallery__item--tall reveal"><img src="../img/discobolo.webp" alt="Escultura del Discóbolo" loading="lazy"></button>
+          <button type="button" class="gallery__item reveal"><img src="../img/boxeo.webp" alt="Pintura de un combate de boxeo" loading="lazy"></button>
+          <button type="button" class="gallery__item reveal"><img src="../img/cabeza.jpg" alt="Cabeza de mármol de un atleta" loading="lazy"></button>
+          <button type="button" class="gallery__item gallery__item--wide reveal"><img src="../img/remo.jpg" alt="Pintura de un remero" loading="lazy"></button>
+          <button type="button" class="gallery__item reveal"><img src="../img/diadumeno.jpg" alt="Escultura del Diadúmeno" loading="lazy"></button>
+          <button type="button" class="gallery__item gallery__item--wide reveal"><img src="../img/barra.jpg" alt="Bailarinas practicando en la barra" loading="lazy"></button>
+          <button type="button" class="gallery__item reveal"><img src="../img/atleta.jpg" alt="Escultura de un atleta" loading="lazy"></button>
+          <button type="button" class="gallery__item reveal"><img src="../img/carrera.webp" alt="Fotografía antigua de atletas corriendo" loading="lazy"></button>
+        </div>
+      </div>
+    </section>
+
+    <!-- El club -->
+    <section class="section" id="club">
+      <div class="container club">
+        <figure class="club__media reveal"><img src="../img/diadumeno.jpg" alt="Escultura del Diadúmeno" loading="lazy"></figure>
+        <div class="club__text reveal">
+          <p class="eyebrow">El club</p>
+          <h2 class="display section-title">Un gimnasio con criterio</h2>
+          <p class="lead">Desde 2015 entrenamos a gente normal que quiere ponerse fuerte sin lesionarse. Seis entrenadores titulados, grupos pequeños y un plan para cada socio.</p>
+          <ul class="stats">
+            <li><strong>800 m²</strong><span>de instalaciones</span></li>
+            <li><strong>6</strong><span>entrenadores</span></li>
+            <li><strong>12</strong><span>personas por clase</span></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Dónde estamos -->
+    <section class="section location" id="ubicacion">
+      <div class="container location__grid">
+        <div class="reveal">
+          <p class="eyebrow">Dónde estamos</p>
+          <h2 class="display section-title">En el centro de Cádiz</h2>
+          <ul class="location__info">
+            <li><strong>Dirección</strong>Calle del Ejemplo, 12 · Cádiz</li>
+            <li><strong>Horario</strong>L–V 7:00–22:00 · S 9:00–14:00</li>
+            <li><strong>Aparcamiento</strong>Parking público a 200 m</li>
+          </ul>
+        </div>
+        <div class="map reveal">
+          <iframe title="Mapa de Google con la ubicación del gimnasio" src="https://www.google.com/maps?q=Plaza%20de%20San%20Juan%20de%20Dios%2C%20C%C3%A1diz&amp;output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contacto -->
+    <section class="section" id="contacto">
+      <div class="container contact">
+        <div class="reveal">
+          <p class="eyebrow">Contacto</p>
+          <h2 class="display section-title">Tu primer día, gratis</h2>
+          <p class="lead">Déjanos tus datos y te proponemos un horario para venir a probar.</p>
+          <a class="btn btn--ghost contact__wa" href="#" data-demo-wa>O escríbenos por WhatsApp</a>
+        </div>
+        <form class="form contact__form reveal" data-demo-form="¡Gracias! Te escribimos hoy para cerrar tu día de prueba." novalidate>
+          <div class="form__row">
+            <div class="field"><label for="p-name">Nombre</label><input id="p-name" name="nombre" autocomplete="name" required></div>
+            <div class="field"><label for="p-phone">Teléfono</label><input id="p-phone" name="telefono" type="tel" autocomplete="tel" required></div>
+          </div>
+          <div class="field">
+            <label for="p-act">Actividad que te interesa</label>
+            <select id="p-act" name="actividad">
+              <option>Sala de fuerza</option><option>Boxeo</option><option>Grappling</option><option>Running club</option><option>Remo indoor</option><option>Barre &amp; movilidad</option>
+            </select>
+          </div>
+          <div class="field"><label for="p-msg">Mensaje</label><textarea id="p-msg" name="mensaje" rows="3"></textarea></div>
+          <label class="check"><input type="checkbox" name="privacidad" required><span>Acepto la política de privacidad.</span></label>
+          <button class="btn btn--accent" type="submit">Reservar mi día de prueba</button>
+          <p class="form__status" role="status"></p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <span>© 2026 Olimpo · Gimnasio de ejemplo</span>
+      <a href="../creditos.html">Créditos de imágenes</a>
+    </div>
+  </footer>
+
+  <div class="lightbox" data-lightbox hidden>
+    <button type="button" class="lightbox__close" aria-label="Cerrar" data-lb-close>✕</button>
+    <button type="button" class="lightbox__nav lightbox__nav--prev" aria-label="Anterior" data-lb-prev>‹</button>
+    <img alt="" data-lb-img>
+    <button type="button" class="lightbox__nav lightbox__nav--next" aria-label="Siguiente" data-lb-next>›</button>
+  </div>
+
+  <a class="wa-float" href="#" data-demo-wa aria-label="Escríbenos por WhatsApp"><svg aria-hidden="true"><use href="#i-wa"/></svg></a>
+</body>
+</html>

@@ -271,7 +271,7 @@
             <a class="btn btn--ghost plan__cta" href="#contacto" data-wa="Hola, me gustaría saber qué incluye el Sitio web esencial (300–400 €).">
               Preguntar por WhatsApp <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg>
             </a>
-            <a class="plan__example" href="demos/modelos/esencial/index.html" target="_blank" rel="noopener">Ver un ejemplo de este plan</a>
+            <a class="plan__example" href="#modelos" data-model-link="esencial">Ver su web de ejemplo ↓</a>
           </article>
 
           <article class="plan plan--featured reveal">
@@ -282,7 +282,7 @@
             <a class="btn btn--dark plan__cta" href="#contacto" data-wa="Hola, me gustaría saber qué incluye el Sitio web profesional (500–600 €).">
               Preguntar por WhatsApp <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg>
             </a>
-            <a class="plan__example" href="demos/modelos/profesional/index.html" target="_blank" rel="noopener">Ver un ejemplo de este plan</a>
+            <a class="plan__example" href="#modelos" data-model-link="profesional">Ver su web de ejemplo ↓</a>
           </article>
 
           <article class="plan reveal">
@@ -293,8 +293,71 @@
             <a class="btn btn--ghost plan__cta" href="#contacto" data-wa="Hola, me gustaría saber qué incluye el Sitio web avanzado (700–900 €).">
               Preguntar por WhatsApp <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg>
             </a>
-            <a class="plan__example" href="demos/modelos/avanzado/index.html" target="_blank" rel="noopener">Ver un ejemplo de este plan</a>
+            <a class="plan__example" href="#modelos" data-model-link="avanzado">Ver su web de ejemplo ↓</a>
           </article>
+        </div>
+
+        <!-- Escaparate: la web real de cada plan, navegable -->
+        <div class="showcase reveal" id="modelos" data-showcase>
+          <header class="showcase__head">
+            <p class="label">Pruébalas aquí mismo</p>
+            <h3 class="showcase__title">Así queda una web de <em>cada plan</em></h3>
+            <p class="showcase__lead">Un mismo gimnasio, Olimpo, hecho con cada plan. Elige uno y navega por su web como lo haría un cliente.</p>
+          </header>
+
+          <div class="showcase__tabs" role="tablist" aria-label="Webs de ejemplo por plan">
+            <button class="showcase__tab" role="tab" type="button" id="tab-esencial" aria-controls="showcase-panel" aria-selected="false" data-model="esencial">
+              <span class="showcase__tab-name">Esencial</span><span class="showcase__tab-price">300–400 €</span>
+            </button>
+            <button class="showcase__tab" role="tab" type="button" id="tab-profesional" aria-controls="showcase-panel" aria-selected="true" data-model="profesional">
+              <span class="showcase__tab-name">Profesional</span><span class="showcase__tab-price">500–600 €</span>
+            </button>
+            <button class="showcase__tab" role="tab" type="button" id="tab-avanzado" aria-controls="showcase-panel" aria-selected="false" data-model="avanzado">
+              <span class="showcase__tab-name">Avanzado</span><span class="showcase__tab-price">700–900 €</span>
+            </button>
+          </div>
+
+          <div class="showcase__body" id="showcase-panel" role="tabpanel" aria-labelledby="tab-profesional">
+            <div class="browser">
+              <div class="browser__bar" aria-hidden="true">
+                <span class="browser__dots"><i></i><i></i><i></i></span>
+                <span class="browser__url" data-showcase-url>olimpo-profesional.es</span>
+              </div>
+              <div class="browser__screen" data-showcase-screen>
+                <button class="browser__start" type="button" data-showcase-start>Tocar para probar la web</button>
+              </div>
+            </div>
+
+            <aside class="showcase__info">
+              <ul class="showcase__features" data-model-info="esencial" hidden>
+                <li>Web de 4 secciones: inicio, servicios, nosotros y contacto</li>
+                <li>Diseño limpio adaptado a móvil</li>
+                <li>Botón de WhatsApp y formulario de contacto</li>
+                <li>Animaciones suaves</li>
+              </ul>
+              <ul class="showcase__features" data-model-info="profesional">
+                <li>Todo lo del plan Esencial</li>
+                <li>Catálogo de actividades con filtros</li>
+                <li>Galería de fotos ampliable</li>
+                <li>Mapa de Google integrado</li>
+                <li>Animaciones más cuidadas</li>
+              </ul>
+              <ul class="showcase__features" data-model-info="avanzado" hidden>
+                <li>Todo lo del plan Profesional</li>
+                <li>Reservas de clases online</li>
+                <li>Pago online de cuotas</li>
+                <li>Calendario de eventos</li>
+                <li>Ofertas que cambian solas por fecha</li>
+                <li>Función a medida y animaciones al máximo</li>
+              </ul>
+              <a class="btn btn--primary showcase__open" href="demos/modelos/profesional/index.html" target="_blank" rel="noopener" data-showcase-open>
+                Abrir a pantalla completa <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg>
+              </a>
+              <a class="btn btn--ghost showcase__open" href="#contacto" data-wa="Hola, he visto la web de ejemplo del plan Profesional y me interesa." data-showcase-wa>
+                Quiero una web así
+              </a>
+            </aside>
+          </div>
         </div>
       </div>
     </section>
