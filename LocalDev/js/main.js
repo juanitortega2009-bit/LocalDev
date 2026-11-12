@@ -97,8 +97,7 @@
       gimnasio: { dir: "demos/modelos/", domain: "olimpo", noun: "gimnasio",
         lead: "Un mismo gimnasio, Olimpo, hecho con cada plan. Elige uno y navega por su web como lo haría un cliente." },
       peluqueria: { dir: "demos/modelos-peluqueria/", domain: "nacar", noun: "peluquería",
-        urls: { avanzado: "corteza.es" },
-        lead: "Peluquerías de ejemplo hechas con cada plan. Elige uno y navega por su web como lo haría una clienta." }
+        lead: "Una misma peluquería, Nácar, hecha con cada plan. Elige uno y navega por su web como lo haría una clienta." }
     };
     var sector = "gimnasio";
     var leadEl = root.querySelector("[data-showcase-lead]");

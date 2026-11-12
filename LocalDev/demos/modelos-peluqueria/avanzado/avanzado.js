@@ -1,5 +1,5 @@
 /* ==========================================================================
-   CORTEZA — avanzado.js
+   NÁCAR STUDIO — avanzado.js
    Funciones del plan Avanzado: bonos y tarjetas regalo con pago online,
    tienda con carrito, agenda de eventos, ofertas programadas por fecha
    y diagnóstico capilar. Se apoya en la reserva de main.js.
@@ -18,14 +18,14 @@
   ];
 
   var PRODUCTS = [
-    { id: "champu", cat: "cuidado", name: "Champú nutritivo", size: "300 ml", price: 18.9, shape: "bottle", c: "#ffedd7" },
-    { id: "mascarilla", cat: "cuidado", name: "Mascarilla reparadora", size: "250 ml", price: 24.5, shape: "jar", c: "#cdb79e", tag: "Más vendido" },
-    { id: "serum", cat: "cuidado", name: "Sérum anti-encrespado", size: "50 ml", price: 21, shape: "dropper", c: "#8a7764" },
-    { id: "rizos", cat: "cuidado", name: "Crema de rizos", size: "200 ml", price: 19.5, shape: "tube", c: "#ffedd7" },
-    { id: "gloss", cat: "cuidado", name: "Champú protector del color", size: "300 ml", price: 19.9, shape: "bottle", c: "#a65a33" },
-    { id: "texturizante", cat: "styling", name: "Spray texturizante", size: "150 ml", price: 16.5, shape: "spray", c: "#6c5f51" },
-    { id: "cera", cat: "barberia", name: "Cera mate", size: "100 ml", price: 13.9, shape: "jar", c: "#40372e" },
-    { id: "aceite", cat: "barberia", name: "Aceite de barba", size: "30 ml", price: 16, shape: "dropper", c: "#dc5000" }
+    { id: "champu", cat: "cuidado", name: "Champú nutritivo", size: "300 ml", price: 18.9, shape: "bottle", c: "#F7E6DA" },
+    { id: "mascarilla", cat: "cuidado", name: "Mascarilla reparadora", size: "250 ml", price: 24.5, shape: "jar", c: "#E2C3AE", tag: "Más vendido" },
+    { id: "serum", cat: "cuidado", name: "Sérum anti-encrespado", size: "50 ml", price: 21, shape: "dropper", c: "#A88C7D" },
+    { id: "rizos", cat: "cuidado", name: "Crema de rizos", size: "200 ml", price: 19.5, shape: "tube", c: "#F7E6DA" },
+    { id: "gloss", cat: "cuidado", name: "Champú protector del color", size: "300 ml", price: 19.9, shape: "bottle", c: "#B97E5A" },
+    { id: "texturizante", cat: "styling", name: "Spray texturizante", size: "150 ml", price: 16.5, shape: "spray", c: "#8C776C" },
+    { id: "cera", cat: "barberia", name: "Cera mate", size: "100 ml", price: 13.9, shape: "jar", c: "#4B3A33" },
+    { id: "aceite", cat: "barberia", name: "Aceite de barba", size: "30 ml", price: 16, shape: "dropper", c: "#D9A07C" }
   ];
   var SHOP_CATS = { todo: "Todo", cuidado: "Cuidado", styling: "Peinado", barberia: "Barbería" };
 
@@ -112,7 +112,7 @@
       var btn = this; btn.disabled = true; btn.textContent = "Procesando…";
       setTimeout(function () {
         var metodo = $('[data-checkout] input[name="metodo"]:checked').value;
-        $("[data-co-receipt]").textContent = "Pagado con " + metodo + ". Te hemos enviado el recibo por email y WhatsApp. Ref. CZ-" + Math.random().toString(36).slice(2, 8).toUpperCase() + ".";
+        $("[data-co-receipt]").textContent = "Pagado con " + metodo + ". Te hemos enviado el recibo por email y WhatsApp. Ref. NC-" + Math.random().toString(36).slice(2, 8).toUpperCase() + ".";
         $("[data-co-pay]").hidden = true; $("[data-co-done]").hidden = false;
         if (payDone) payDone();
       }, 1200);
@@ -149,17 +149,17 @@
 
   /* ---------- Tienda y carrito ---------- */
   function productSVG(p) {
-    var c = p.c, cap = "#100904", label = "rgba(16,9,4,.16)";
+    var c = p.c, cap = "#140E0C", label = "rgba(20,14,12,.16)";
     var shapes = {
       bottle: '<rect x="36" y="8" width="28" height="18" rx="3" fill="' + cap + '"/><rect x="20" y="24" width="60" height="104" rx="14" fill="' + c + '"/><rect x="30" y="64" width="40" height="32" rx="2" fill="' + label + '"/>',
       jar: '<rect x="16" y="52" width="68" height="14" rx="4" fill="' + cap + '"/><rect x="14" y="64" width="72" height="64" rx="12" fill="' + c + '"/><rect x="26" y="84" width="48" height="24" rx="2" fill="' + label + '"/>',
-      dropper: '<rect x="44" y="4" width="12" height="22" rx="6" fill="' + cap + '"/><rect x="38" y="24" width="24" height="12" rx="2" fill="#8a7764"/><rect x="26" y="36" width="48" height="92" rx="12" fill="' + c + '"/><rect x="34" y="70" width="32" height="30" rx="2" fill="' + label + '"/>',
+      dropper: '<rect x="44" y="4" width="12" height="22" rx="6" fill="' + cap + '"/><rect x="38" y="24" width="24" height="12" rx="2" fill="#A88C7D"/><rect x="26" y="36" width="48" height="92" rx="12" fill="' + c + '"/><rect x="34" y="70" width="32" height="30" rx="2" fill="' + label + '"/>',
       tube: '<rect x="30" y="112" width="40" height="16" rx="3" fill="' + cap + '"/><path d="M24 14h52l-6 98H30z" fill="' + c + '"/><rect x="34" y="46" width="32" height="34" rx="2" fill="' + label + '"/>',
-      spray: '<rect x="40" y="4" width="22" height="14" rx="3" fill="' + cap + '"/><rect x="58" y="8" width="16" height="5" rx="2" fill="' + cap + '"/><rect x="30" y="18" width="40" height="12" rx="2" fill="#8a7764"/><rect x="26" y="30" width="48" height="98" rx="10" fill="' + c + '"/><rect x="34" y="66" width="32" height="36" rx="2" fill="' + label + '"/>'
+      spray: '<rect x="40" y="4" width="22" height="14" rx="3" fill="' + cap + '"/><rect x="58" y="8" width="16" height="5" rx="2" fill="' + cap + '"/><rect x="30" y="18" width="40" height="12" rx="2" fill="#A88C7D"/><rect x="26" y="30" width="48" height="98" rx="10" fill="' + c + '"/><rect x="34" y="66" width="32" height="36" rx="2" fill="' + label + '"/>'
     };
-    var textFill = p.c === "#40372e" || p.c === "#6c5f51" || p.c === "#a65a33" || p.c === "#dc5000" ? "rgba(255,237,215,.75)" : "rgba(16,9,4,.6)";
+    var textFill = p.c === "#4B3A33" || p.c === "#8C776C" || p.c === "#B97E5A" || p.c === "#D9A07C" ? "rgba(247,230,218,.75)" : "rgba(20,14,12,.6)";
     return '<svg viewBox="0 0 100 132" aria-hidden="true">' + shapes[p.shape] +
-      '<text x="50" y="' + (p.shape === "jar" ? 100 : p.shape === "tube" ? 67 : 86) + '" text-anchor="middle" font-family="Inter, Arial" font-size="8" font-weight="500" letter-spacing="1" fill="' + textFill + '">CORTEZA</text></svg>';
+      '<text x="50" y="' + (p.shape === "jar" ? 100 : p.shape === "tube" ? 67 : 86) + '" text-anchor="middle" font-family="Inter, Arial" font-size="8" font-weight="500" letter-spacing="1" fill="' + textFill + '">NÁCAR</text></svg>';
   }
   var shopFilter = "todo";
   function renderShop() {
@@ -298,7 +298,7 @@
         "</div>";
       out.hidden = false;
     });
-    // "Reservar" usa el sistema de citas de Corteza (main.js): pulsa el botón de ese servicio en la carta
+    // "Reservar" usa el sistema de citas del estudio (main.js): pulsa el botón de ese servicio en la carta
     out.addEventListener("click", function (e) {
       var b = e.target.closest("[data-quiz-book]"); if (!b) return;
       var btn = $('.svc [data-book="' + b.dataset.quizBook + '"]');

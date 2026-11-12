@@ -1,5 +1,5 @@
 /* ==========================================================================
-   CORTEZA — Funciones del plan Avanzado
+   OORTEZA — Funciones del plan Avanzado
    Bonos (pago online), tienda con carrito, agenda de eventos,
    ofertas programadas y diagnóstico capilar. Misma estética darkroom.
    ========================================================================== */
@@ -14,7 +14,7 @@
 body.has-offer .hero { padding-top: calc(var(--nav-h) + 56px); }
 .offer-bar b { font-weight: 500; color: var(--ember); }
 
-/* ---------- Carrito en la barra ---------- */
+/* ---------- Oarrito en la barra ---------- */
 .cart-btn { display: inline-flex; align-items: center; gap: 8px; font-size: var(--t-label); }
 .cart-btn b {
   font-weight: 500; min-width: 22px; height: 22px; padding: 0 6px; border-radius: 9999px;
@@ -33,7 +33,7 @@ body.has-offer .hero { padding-top: calc(var(--nav-h) + 56px); }
 .bono__k { color: var(--cream-60); }
 .bono__price { font-size: clamp(56px, 6vw, 88px); line-height: .82; margin: auto 0 0; }
 .bono__price small { font-size: var(--t-label); color: var(--cream-60); margin-left: 6px; }
-.bono__was { color: var(--cream-60); text-decoration: line-through dashed; margin: 0; }
+.bono__was { color: var(--cream-60); text-decoration: line-through solid; margin: 0; }
 .bono__name { font-size: var(--t-hsm); margin: 0; }
 .bono ul { list-style: none; margin: 0; padding: 0; text-transform: none; font-weight: 400; font-size: 15px; color: var(--cream-60); display: grid; gap: 6px; }
 .bono li::before { content: "— "; }
@@ -45,7 +45,7 @@ body.has-offer .hero { padding-top: calc(var(--nav-h) + 56px); }
 .product:hover { border-color: var(--cream-35); }
 .product__art {
   position: relative; aspect-ratio: 1; border-radius: 8px; display: grid; place-items: end center; overflow: hidden;
-  background: radial-gradient(70% 60% at 50% 30%, rgba(255, 237, 215, .1), transparent 70%), var(--bark);
+  background: radial-gradient(70% 60% at 50% 30%, rgba(247, 230, 218, .1), transparent 70%), var(--bark);
 }
 .product__art svg { width: 54%; height: 76%; filter: drop-shadow(0 20px 18px rgba(0, 0, 0, .45)); transition: transform .6s var(--ease); }
 .product:hover .product__art svg { transform: translateY(-6px) rotate(-3deg); }
@@ -71,12 +71,12 @@ body.has-offer .hero { padding-top: calc(var(--nav-h) + 56px); }
   position: relative; font-variant-numeric: tabular-nums; cursor: default;
 }
 .cal__day.is-other { color: var(--cork); }
-.cal__day.is-today { outline: 1px dashed var(--cream-60); }
+.cal__day.is-today { outline: 1px solid var(--cream-60); }
 .cal__day.has-event { color: var(--cream); background: var(--bark); cursor: pointer; }
 .cal__day.has-event::after { content: ""; position: absolute; bottom: 6px; width: 4px; height: 4px; border-radius: 9999px; background: var(--ember); }
 .cal__day.is-selected { background: var(--cream); color: var(--walnut); }
-.events { display: grid; border-top: 1px dashed var(--cork); }
-.event { display: grid; grid-template-columns: 74px 1fr; gap: 18px; padding: 22px 0; border-bottom: 1px dashed var(--cork); }
+.events { display: grid; border-top: 1px solid var(--cork); }
+.event { display: grid; grid-template-columns: 74px 1fr; gap: 18px; padding: 22px 0; border-bottom: 1px solid var(--cork); }
 .event__date { border: 1px solid var(--cork); border-radius: var(--r-card); display: grid; justify-items: center; align-content: center; gap: 4px; padding: 10px 0; height: max-content; }
 .event__date b { font-size: 30px; font-weight: 500; line-height: .9; }
 .event__date small { font-size: 10px; color: var(--cream-60); }
@@ -102,37 +102,37 @@ body.has-offer .hero { padding-top: calc(var(--nav-h) + 56px); }
 
 /* ---------- Diagnóstico ---------- */
 .quiz { display: grid; gap: 31px; max-width: 980px; }
-.quiz__q { border: 0; margin: 0; padding: 0 0 31px; border-bottom: 1px dashed var(--cork); }
+.quiz__q { border: 0; margin: 0; padding: 0 0 31px; border-bottom: 1px solid var(--cork); }
 .quiz__q legend { font-size: var(--t-hsm); line-height: 1.05; margin-bottom: 18px; padding: 0; }
 .quiz__opts { display: flex; flex-wrap: wrap; gap: 8px; }
 .quiz__opts .pill { position: relative; cursor: pointer; display: inline-flex; align-items: center; }
 .quiz__opts .pill input { position: absolute; opacity: 0; pointer-events: none; }
 .quiz__opts .pill:has(input:checked) { border-color: var(--cream); background: var(--cream); color: var(--walnut); }
-.quiz__opts .pill:has(input:focus-visible) { outline: 1px dashed var(--cream); outline-offset: 3px; }
+.quiz__opts .pill:has(input:focus-visible) { outline: 1px solid var(--cream); outline-offset: 3px; }
 .quiz__foot { display: flex; align-items: center; gap: 18px; flex-wrap: wrap; }
-.quiz__err { margin: 0; color: var(--cream); text-decoration: underline dashed var(--ember); }
+.quiz__err { margin: 0; color: var(--cream); text-decoration: underline solid var(--ember); }
 .quiz__result[hidden] { display: none; }
 .quiz__result { border-radius: var(--r-card); padding: clamp(18px, 3vw, 41px); background: var(--bark); animation: stepIn .6s var(--ease); }
 .quiz__text { text-transform: none; font-weight: 400; font-size: clamp(19px, 1.7vw, 24px); line-height: 1.26; margin: 0 0 31px; max-width: 46ch; }
 .quiz__picks { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
-.quiz__pick { border: 1px solid rgba(255, 237, 215, .18); border-radius: var(--r-card); padding: 18px; display: grid; gap: 8px; justify-items: start; }
+.quiz__pick { border: 1px solid rgba(247, 230, 218, .18); border-radius: var(--r-card); padding: 18px; display: grid; gap: 8px; justify-items: start; }
 .quiz__pick p { margin: 0; }
 .quiz__pick .k { color: var(--cream-60); font-size: 10px; }
 .quiz__pick .t { font-size: var(--t-sub); }
 
-/* ---------- Carrito (cajón lateral) ---------- */
+/* ---------- Oarrito (cajón lateral) ---------- */
 .drawer {
   margin: 0 0 0 auto; height: 100dvh; max-height: 100dvh; width: min(460px, 100vw);
-  border: 0; border-left: 1px dashed var(--cork); padding: 0; background: var(--walnut); color: var(--cream);
+  border: 0; border-left: 1px solid var(--cork); padding: 0; background: var(--walnut); color: var(--cream);
 }
-.drawer::backdrop { background: rgba(16, 9, 4, .7); backdrop-filter: blur(4px); }
+.drawer::backdrop { background: rgba(20, 14, 12, .7); backdrop-filter: blur(4px); }
 .drawer[open] { animation: drawerIn .5s var(--ease); }
 @keyframes drawerIn { from { transform: translateX(100%); } }
 .drawer__in { padding: 24px var(--pad-x) 32px; height: 100%; overflow-y: auto; display: flex; flex-direction: column; }
 .drawer__head { display: flex; justify-content: space-between; align-items: center; }
 .drawer__empty { color: var(--cream-60); text-transform: none; font-weight: 400; font-size: 17px; }
 .cart-items { list-style: none; margin: 0 0 18px; padding: 0; }
-.cart-item { display: grid; grid-template-columns: 56px 1fr auto; gap: 14px; align-items: center; padding: 14px 0; border-bottom: 1px dashed var(--cork); }
+.cart-item { display: grid; grid-template-columns: 56px 1fr auto; gap: 14px; align-items: center; padding: 14px 0; border-bottom: 1px solid var(--cork); }
 .cart-item .product__art { border-radius: 6px; }
 .cart-item p { margin: 0; }
 .cart-item small { color: var(--cream-60); display: block; margin-top: 4px; }
@@ -143,22 +143,22 @@ body.has-offer .hero { padding-top: calc(var(--nav-h) + 56px); }
 .delivery legend { padding: 0; }
 .drawer .summary { margin-bottom: 24px; }
 .drawer__pay { background: var(--cream); color: var(--walnut); width: 100%; }
-.drawer__pay:hover { background: #fff6ea; }
+.drawer__pay:hover { background: #FFF3EA; }
 
 /* ---------- Pago ---------- */
 .pay { border: 0; padding: 0; background: transparent; color: var(--cream); width: min(860px, 94vw); max-height: 92dvh; }
-.pay::backdrop { background: rgba(16, 9, 4, .78); backdrop-filter: blur(6px); }
+.pay::backdrop { background: rgba(20, 14, 12, .78); backdrop-filter: blur(6px); }
 .pay__in { position: relative; display: grid; grid-template-columns: 1fr 1fr; border: 1px solid var(--cork); border-radius: var(--r-card); overflow: hidden; background: var(--walnut); }
 .pay__sum { padding: 31px; background: var(--bark); }
 .pay__name { font-size: var(--t-sub); margin: 31px 0 10px; }
 .pay__amount { font-size: clamp(56px, 7vw, 96px); line-height: .82; margin: 0 0 24px; font-variant-numeric: tabular-nums; }
 .pay__lines { list-style: none; margin: 0; padding: 0; color: var(--cream-60); display: grid; gap: 8px; }
-.pay__lines li { border-top: 1px dashed rgba(255, 237, 215, .14); padding-top: 8px; }
+.pay__lines li { border-top: 1px solid rgba(247, 230, 218, .14); padding-top: 8px; }
 .pay__body, .pay__done { padding: 31px; display: grid; gap: 24px; align-content: start; }
 .pay__done[hidden] { display: none; }
 .pay__demo { margin: 0; text-transform: none; font-weight: 400; font-size: 14px; line-height: 1.4; color: var(--cream-60); }
 .pay__btn { background: var(--cream); color: var(--walnut); width: 100%; }
-.pay__btn:hover { background: #fff6ea; }
+.pay__btn:hover { background: #FFF3EA; }
 .pay__close { position: absolute; top: 10px; right: 14px; font-size: 26px; line-height: 1; z-index: 1; }
 .pay .confirm__title { margin: 0; font-size: clamp(56px, 7vw, 96px); }
 
@@ -174,7 +174,7 @@ body.has-offer .hero { padding-top: calc(var(--nav-h) + 56px); }
 .plan-strip {
   position: fixed; z-index: 48; left: 14px; bottom: 14px;
   display: flex; align-items: center; gap: 4px; padding: 5px; border-radius: var(--r-pill);
-  background: rgba(16, 9, 4, .82); border: 1px solid var(--cork); font-size: 10px;
+  background: rgba(20, 14, 12, .82); border: 1px solid var(--cork); font-size: 10px;
 }
 @supports (backdrop-filter: blur(10px)) { .plan-strip { backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); } }
 .plan-strip span { padding: 0 8px; color: var(--cream-60); }
@@ -208,3 +208,59 @@ body.has-offer .hero { padding-top: calc(var(--nav-h) + 56px); }
   .event { grid-template-columns: 60px 1fr; gap: 14px; }
   .offer-bar { font-size: 10px; padding: 8px 12px; }
 }
+
+/* ==========================================================================
+   IDENTIDAD NÁCAR STUDIO
+   Serif editorial para titulares, acento oro rosa, esquinas rectas
+   y líneas finas continuas.
+   ========================================================================== */
+:root {
+  --r-card: 4px;
+  --r-ghost: 3px;
+  --r-pill: 3px;
+  --serif: "Cormorant Garamond", Georgia, "Times New Roman", serif;
+}
+.h-display, .h-heading, .hero__word, .live__state, .live__clock, .confirm__title, .footer__word,
+.member__mono, .member__name, .step__q, .svc__name, .bono__price, .bono__name, .pay__amount, .pay__name,
+.cal__title, .quiz__q legend, .event__t, .event__date b, .day b, .hero__book-t, .facts span, .choice__mono,
+.quote p, .faq summary, .quiz__text {
+  font-family: var(--serif); text-transform: none; font-weight: 500; letter-spacing: -.005em;
+}
+.h-display { font-size: clamp(50px, 6.6vw, 96px); line-height: .9; }
+.h-heading { font-size: clamp(40px, 4.4vw, 56px); }
+.step__q { font-size: clamp(36px, 4vw, 52px); }
+.svc__name { font-size: 28px; }
+.member__name { font-size: 30px; }
+.quote p { font-size: clamp(24px, 2.2vw, 32px); line-height: 1.15; font-style: italic; }
+.faq summary { font-size: 24px; }
+.quiz__q legend { font-size: 30px; }
+
+.hero__word { font-style: italic; font-size: clamp(120px, 25vw, 400px); line-height: .76; }
+.hero__line:nth-child(2) { color: var(--ember); padding-left: .4em; }
+.live__state, .footer__word, .confirm__title { font-style: italic; }
+.member__mono { font-style: italic; color: var(--ember); }
+.member:hover .member__mono { color: var(--cream); }
+.footer__word { color: var(--bark); }
+
+.nav__logo { font-family: var(--serif); font-size: 26px; text-transform: none; letter-spacing: 0; }
+.nav__logo i { color: var(--ember); }
+.label, .hero__tag { color: var(--ember); letter-spacing: .16em; }
+.section__head .label { letter-spacing: .16em; }
+
+.btn--filled { background: var(--ember); color: var(--walnut); }
+.btn--filled:hover { background: #E8B596; }
+.booking__nav .btn--filled, .drawer__pay, .pay__btn { background: var(--ember); color: var(--walnut); }
+.booking__nav .btn--filled:hover, .drawer__pay:hover, .pay__btn:hover { background: #E8B596; }
+.hero__book { background: var(--ember); }
+.fab { background: var(--ember); }
+.pill.is-active, .quiz__opts .pill:has(input:checked), .choice.is-selected, .day.is-selected, .slot.is-selected { background: var(--ember); border-color: var(--ember); color: var(--walnut); }
+.cart-btn b { background: var(--ember); }
+
+.hero__media img { filter: saturate(.85) contrast(1.06) brightness(.62) sepia(.12); }
+.g img { filter: saturate(.9) contrast(1.04) brightness(.85) sepia(.1); }
+.g:hover img { filter: none; }
+.dayline__track i.is-now { background: rgba(217, 160, 124, .55); }
+.offer-bar { background: var(--ember); }
+.offer-bar b { color: var(--walnut); }
+.offer.is-on { background: var(--ember); border-color: var(--ember); }
+.offer.is-on .offer__when { color: var(--walnut); }

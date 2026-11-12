@@ -1,5 +1,5 @@
 /* ==========================================================================
-   CORTEZA — main.js
+   NÁCAR STUDIO — main.js
    Patrón IIFE (sin módulos) para que funcione en file://, FTP y cualquier host.
    ========================================================================== */
 (function () {
@@ -10,7 +10,7 @@
   var SCHEDULE = B.schedule || {};
   var HOLIDAYS = B.holidays || [];
   var BK = B.booking || { slotStep: 30, daysAhead: 21, minNotice: 60, demoBusyRate: 0.3 };
-  var STORE_KEY = "corteza.bookings";
+  var STORE_KEY = "nacar.studio.bookings";
 
   var DAYS_ES = ["Domingo", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado"];
   var DAYS_SHORT = ["Dom", "Lun", "Mar", "Mié", "Jue", "Vie", "Sáb"];

@@ -7,13 +7,13 @@
 (function () {
   "use strict";
   window.__BRAND__ = {
-    name: "Corteza",
-    city: "Madrid",
+    name: "Nácar Studio",
+    city: "Cádiz",
     timeZone: "Europe/Madrid",          // zona horaria del salón
-    phone: "+34 910 000 000",
+    phone: "+34 956 000 000",
     whatsapp: "34644144961",            // sin + ni espacios
-    email: "hola@corteza.es",
-    address: "Calle del Pez 21, 28004 Madrid",
+    email: "hola@nacarstudio.es",
+    address: "Calle del Ejemplo 8, 11005 Cádiz",
 
     // Web3Forms: crea tu clave gratis en https://web3forms.com con el email
     // donde quieres recibir las citas y pégala aquí (es pública, no pasa nada).
