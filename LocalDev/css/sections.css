@@ -401,6 +401,27 @@
 .showcase__title em { font-style: italic; }
 .showcase__lead { margin-top: 14px; font-size: var(--text-lead); font-weight: 300; }
 
+/* Selector de tipo de negocio (gimnasio / peluquería) */
+.showcase__sectors {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin: 0 auto 14px;
+}
+.showcase__sector {
+  padding: 8px 18px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-pill);
+  background: transparent;
+  color: var(--text-body);
+  font: inherit;
+  font-size: .9rem;
+  cursor: pointer;
+  transition: background var(--fast), color var(--fast), border-color var(--fast);
+}
+.showcase__sector:hover { color: var(--text-heading); border-color: var(--text-body); }
+.showcase__sector[aria-pressed="true"] { background: var(--surface); color: var(--text-heading); border-color: var(--text-heading); font-weight: 600; }
+
 .showcase__tabs {
   display: grid;
   grid-template-columns: repeat(3, 1fr);

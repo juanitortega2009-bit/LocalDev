@@ -338,8 +338,13 @@
           <header class="showcase__head">
             <p class="label">Pruébalas aquí mismo</p>
             <h3 class="showcase__title">Así queda una web de <em>cada plan</em></h3>
-            <p class="showcase__lead">Un mismo gimnasio, Olimpo, hecho con cada plan. Elige uno y navega por su web como lo haría un cliente.</p>
+            <p class="showcase__lead" data-showcase-lead>Un mismo gimnasio, Olimpo, hecho con cada plan. Elige uno y navega por su web como lo haría un cliente.</p>
           </header>
+
+          <div class="showcase__sectors" role="group" aria-label="Tipo de negocio">
+            <button class="showcase__sector" type="button" aria-pressed="true" data-sector="gimnasio">Gimnasio</button>
+            <button class="showcase__sector" type="button" aria-pressed="false" data-sector="peluqueria">Peluquería</button>
+          </div>
 
           <div class="showcase__tabs" role="tablist" aria-label="Webs de ejemplo por plan">
             <button class="showcase__tab" role="tab" type="button" id="tab-esencial" aria-controls="showcase-panel" aria-selected="false" data-model="esencial">
@@ -387,6 +392,30 @@
                 <li>Calendario de eventos</li>
                 <li>Descuentos que se aplican solos en su fecha (Black Friday, Navidad…)</li>
                 <li>Función a medida y animaciones al máximo</li>
+              </ul>
+              <!-- Peluquería -->
+              <ul class="showcase__features" data-model-info="esencial" data-sector="peluqueria" hidden>
+                <li>Web de 4 secciones: inicio, servicios, nosotras y contacto</li>
+                <li>Diseño limpio adaptado a móvil</li>
+                <li>Botón de WhatsApp y formulario de contacto</li>
+                <li>Animaciones suaves</li>
+              </ul>
+              <ul class="showcase__features" data-model-info="profesional" data-sector="peluqueria" hidden>
+                <li>Todo lo del plan Esencial</li>
+                <li>Carta de servicios con filtros y precios</li>
+                <li>Bonos que se contratan por WhatsApp</li>
+                <li>Galería ampliable y antes/después</li>
+                <li>Equipo, reseñas y mapa de Google</li>
+                <li>Animaciones más cuidadas</li>
+              </ul>
+              <ul class="showcase__features" data-model-info="avanzado" data-sector="peluqueria" hidden>
+                <li>Todo lo del plan Profesional</li>
+                <li>Salón en 3D: cada zona abre su página</li>
+                <li>Reservas online por profesional, día y hora</li>
+                <li>Pago online de señal y bonos</li>
+                <li>Tienda online con carrito</li>
+                <li>Calendario de eventos y ofertas que se activan solas</li>
+                <li>Diagnóstico capilar a medida</li>
               </ul>
               <a class="btn btn--primary showcase__open" href="demos/modelos/profesional/index.html" target="_blank" rel="noopener" data-showcase-open>
                 Abrir a pantalla completa <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg>

@@ -92,7 +92,18 @@
     var current = "profesional";
     var frame = null;
 
-    function pageUrl(model) { return "demos/modelos/" + model + "/index.html"; }
+    // Tipos de negocio de ejemplo: cada uno con su carpeta de demos
+    var SECTORS = {
+      gimnasio: { dir: "demos/modelos/", domain: "olimpo", noun: "gimnasio",
+        lead: "Un mismo gimnasio, Olimpo, hecho con cada plan. Elige uno y navega por su web como lo haría un cliente." },
+      peluqueria: { dir: "demos/modelos-peluqueria/", domain: "nacar", noun: "peluquería",
+        lead: "Una misma peluquería, Nácar, hecha con cada plan. Elige uno y navega por su web como lo haría una clienta." }
+    };
+    var sector = "gimnasio";
+    var leadEl = root.querySelector("[data-showcase-lead]");
+    var sectorButtons = root.querySelectorAll("[data-sector]:not(ul)");
+
+    function pageUrl(model) { return SECTORS[sector].dir + model + "/index.html"; }
 
     function fit() {
       if (!frame) return;
@@ -130,11 +141,11 @@
         if (active) panel.setAttribute("aria-labelledby", tab.id);
       });
       root.querySelectorAll("[data-model-info]").forEach(function (list) {
-        list.hidden = list.dataset.modelInfo !== model;
+        list.hidden = list.dataset.modelInfo !== model || (list.dataset.sector || "gimnasio") !== sector;
       });
-      urlLabel.textContent = "olimpo-" + model + ".es";
+      urlLabel.textContent = SECTORS[sector].domain + "-" + model + ".es";
       openLink.href = pageUrl(model);
-      var message = "Hola, he visto la web de ejemplo del plan " + names[model] + " y me interesa.";
+      var message = "Hola, he visto la web de ejemplo de " + SECTORS[sector].noun + " del plan " + names[model] + " y me interesa.";
       waLink.dataset.wa = message;
       if (number) waLink.href = whatsappUrl(message);
       if (frame) load();
@@ -149,6 +160,17 @@
         var next = tabs[(index + step + tabs.length) % tabs.length];
         next.focus();
         select(next.dataset.model);
+      });
+    });
+
+    // Selector de tipo de negocio (gimnasio / peluquería)
+    sectorButtons.forEach(function (button) {
+      button.addEventListener("click", function () {
+        if (!SECTORS[button.dataset.sector] || button.dataset.sector === sector) return;
+        sector = button.dataset.sector;
+        sectorButtons.forEach(function (b) { b.setAttribute("aria-pressed", String(b === button)); });
+        if (leadEl) leadEl.textContent = SECTORS[sector].lead;
+        select(current);
       });
     });
 
