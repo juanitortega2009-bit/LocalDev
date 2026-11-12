@@ -97,7 +97,8 @@
       gimnasio: { dir: "demos/modelos/", domain: "olimpo", noun: "gimnasio",
         lead: "Un mismo gimnasio, Olimpo, hecho con cada plan. Elige uno y navega por su web como lo haría un cliente." },
       peluqueria: { dir: "demos/modelos-peluqueria/", domain: "nacar", noun: "peluquería",
-        lead: "Una misma peluquería, Nácar, hecha con cada plan. Elige uno y navega por su web como lo haría una clienta." }
+        urls: { avanzado: "corteza.es" },
+        lead: "Peluquerías de ejemplo hechas con cada plan. Elige uno y navega por su web como lo haría una clienta." }
     };
     var sector = "gimnasio";
     var leadEl = root.querySelector("[data-showcase-lead]");
@@ -143,7 +144,8 @@
       root.querySelectorAll("[data-model-info]").forEach(function (list) {
         list.hidden = list.dataset.modelInfo !== model || (list.dataset.sector || "gimnasio") !== sector;
       });
-      urlLabel.textContent = SECTORS[sector].domain + "-" + model + ".es";
+      var s = SECTORS[sector];
+      urlLabel.textContent = (s.urls && s.urls[model]) || s.domain + "-" + model + ".es";
       openLink.href = pageUrl(model);
       var message = "Hola, he visto la web de ejemplo de " + SECTORS[sector].noun + " del plan " + names[model] + " y me interesa.";
       waLink.dataset.wa = message;

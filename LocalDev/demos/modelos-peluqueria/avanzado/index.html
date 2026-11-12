@@ -1,393 +1,680 @@
 <!doctype html>
-<html lang="es">
+<html lang="es" class="no-js">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <title>Nácar Studio · Peluquería &amp; Estética en Cádiz</title>
-  <meta name="description" content="Recorre nuestro salón en 3D, reserva tu cita online, compra tus productos y descubre nuestros eventos. Peluquería, barbería, color, novias y uñas en Cádiz." />
-  <meta name="robots" content="noindex" />
-  <meta name="theme-color" content="#14100E" />
-
-  <!-- Tailwind (prototipo). En producción: compilar con Tailwind CLI -->
-  <script src="https://cdn.tailwindcss.com/3.4.16"></script>
-  <script>
-    tailwind.config = {
-      theme: { extend: {
-        colors: {
-          ink: '#14100E', coal: '#1D1714', bark: '#2A211C', cream: '#F3E7DC', muted: '#B8A595',
-          rose: { DEFAULT: '#D9A07C', dark: '#B97E5A', light: '#F0C3A5' },
-        },
-        fontFamily: { display: ['"Cormorant Garamond"', 'Georgia', 'serif'], sans: ['"Inter"', 'system-ui', 'sans-serif'] },
-      } },
-    };
-  </script>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Corteza — Estudio de peluquería en Madrid</title>
+  <meta name="description" content="Corteza, estudio de peluquería en Malasaña. Corte, color y cuidado del cabello. Reserva tu cita online y consulta el horario en tiempo real." />
+  <meta name="theme-color" content="#100904" />
+  <meta property="og:title" content="Corteza — Estudio de peluquería" />
+  <meta property="og:description" content="Corte, color y cuidado. Reserva tu cita online." />
+  <meta property="og:image" content="assets/img/hero.jpg" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23100904'/%3E%3Ctext x='32' y='44' font-family='Arial' font-weight='700' font-size='34' text-anchor='middle' fill='%23ffedd7'%3EC%3C/text%3E%3C/svg%3E" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css" />
-
-  <!-- Three.js (salón 3D) -->
-  <script type="importmap">
-    { "imports": {
-        "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
-        "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
-    } }
-  </script>
-  <script defer src="main.js"></script>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap" />
+  <link rel="stylesheet" href="styles.css?v=20261112" />
+  <link rel="stylesheet" href="avanzado.css?v=20261112" />
+  <script defer src="lib/manifest.js?v=20261112"></script>
+  <script defer src="main.js?v=20261112"></script>
+  <script defer src="avanzado.js?v=20261112"></script>
 </head>
+<body>
 
-<body class="bg-ink text-cream font-sans antialiased">
-
-  <div class="demo-strip">
-    <span>Modelo del <strong>plan Avanzado</strong> · 700–900 €</span>
-    <nav aria-label="Modelos de los planes">
-      <a href="../esencial/index.html">Esencial</a>
-      <a href="../profesional/index.html">Profesional</a>
-      <a href="../avanzado/index.html" aria-current="page">Avanzado</a>
+  <!-- ============ NAV ============ -->
+  <header class="nav" data-nav>
+    <a href="#inicio" class="nav__logo">Corteza</a>
+    <nav class="nav__links" aria-label="Principal">
+      <a href="#estudio" data-navlink>Estudio</a>
+      <a href="#servicios" data-navlink>Servicios</a>
+      <a href="#equipo" data-navlink>Equipo</a>
+      <a href="#horario" data-navlink>Horario</a>
+      <a href="#tienda" data-navlink>Tienda</a>
+      <a href="#contacto" data-navlink>Contacto</a>
     </nav>
-    <a class="demo-strip__back" href="../../../index.html#precios">Volver a LocalDev</a>
-  </div>
-
-  <!-- Oferta programada (cambia sola según la fecha) -->
-  <a class="offer-bar" href="#tienda" data-offer-bar hidden></a>
-
-  <!-- ===================== HEADER ===================== -->
-  <header class="sticky top-0 z-40 bg-ink/85 backdrop-blur border-b border-white/10">
-    <div class="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between gap-3">
-      <a href="#salon" class="font-display text-2xl font-bold tracking-wide whitespace-nowrap">Nácar<span class="text-rose">.</span> <span class="text-sm font-sans font-medium text-muted tracking-[.25em] align-middle">STUDIO</span></a>
-      <nav class="hidden lg:flex items-center gap-1 text-sm" aria-label="Principal">
-        <a href="#salon" class="px-3 py-2 rounded-full hover:bg-white/10">Salón 3D</a>
-        <a href="#reservas" class="px-3 py-2 rounded-full hover:bg-white/10">Reservar</a>
-        <a href="#bonos" class="px-3 py-2 rounded-full hover:bg-white/10">Bonos</a>
-        <a href="#tienda" class="px-3 py-2 rounded-full hover:bg-white/10">Tienda</a>
-        <a href="#eventos" class="px-3 py-2 rounded-full hover:bg-white/10">Eventos</a>
-        <a href="#diagnostico" class="px-3 py-2 rounded-full hover:bg-white/10">Diagnóstico</a>
-      </nav>
-      <div class="flex items-center gap-2">
-        <button type="button" class="relative grid place-items-center w-11 h-11 rounded-full border border-white/15 hover:border-rose transition" aria-label="Abrir carrito" data-cart-open>
-          <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 4h2l2.4 11.2a1 1 0 0 0 1 .8h9.2a1 1 0 0 0 1-.8L20 8H6.2"/><circle cx="9.5" cy="19.5" r="1.2"/><circle cx="17" cy="19.5" r="1.2"/></svg>
-          <span class="absolute -top-1 -right-1 min-w-5 h-5 px-1 grid place-items-center rounded-full bg-rose text-ink text-[11px] font-bold" data-cart-count>0</span>
-        </button>
-        <a href="#reservas" class="rounded-full bg-rose hover:bg-rose-light text-ink text-sm font-semibold px-4 py-2.5 transition whitespace-nowrap">Reservar cita</a>
-      </div>
+    <div class="nav__right">
+      <span class="nav__status" data-status-mini><i class="dot"></i><span>Horario</span></span>
+      <button type="button" class="cart-btn" aria-label="Abrir carrito" data-cart-open>Carrito <b data-cart-count>0</b></button>
+      <a href="#cita" class="btn btn--ghost btn--sm">Pedir cita</a>
+      <button class="nav__burger" type="button" aria-label="Abrir menú" aria-expanded="false" data-burger><span></span><span></span></button>
     </div>
   </header>
 
+  <div class="menu" data-menu hidden>
+    <nav aria-label="Menú móvil">
+      <a href="#estudio">Estudio</a>
+      <a href="#servicios">Servicios</a>
+      <a href="#equipo">Equipo</a>
+      <a href="#galeria">Trabajos</a>
+      <a href="#horario">Horario</a>
+      <a href="#cita">Pedir cita</a>
+      <a href="#bonos">Bonos y regalos</a>
+      <a href="#tienda">Tienda</a>
+      <a href="#agenda">Agenda</a>
+      <a href="#diagnostico">Diagnóstico</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+  </div>
+
+  <!-- Oferta programada: aparece sola en su fecha -->
+  <a href="#tienda" class="offer-bar" data-offer-bar hidden></a>
+
+  <aside class="side-label" aria-hidden="true">Corteza — Estudio Nº 01 — Malasaña, Madrid</aside>
+
   <main>
-    <!-- ===================== SALÓN 3D ===================== -->
-    <section id="salon" class="relative overflow-hidden bg-ink scroll-mt-16">
-      <div id="scene" class="absolute inset-0" aria-label="Salón en 3D: arrastra para girar, usa + y − para acercar y toca una zona"></div>
-      <div id="labels"></div>
-      <div class="pointer-events-none absolute inset-x-0 top-0 h-44 bg-gradient-to-b from-ink/90 to-transparent"></div>
-      <div class="pointer-events-none absolute inset-x-0 bottom-0 h-56 bg-gradient-to-t from-ink/95 to-transparent"></div>
 
-      <div class="pointer-events-none absolute top-6 md:top-10 inset-x-0 px-4">
-        <div class="max-w-7xl mx-auto">
-          <p class="text-xs font-semibold uppercase tracking-[.22em] text-rose-light">Salón 3D · Cádiz centro</p>
-          <h1 class="mt-2 font-display text-4xl sm:text-5xl md:text-7xl font-bold leading-[.98] max-w-2xl">Entra en el salón.<br /><span class="italic text-rose">Elige tu cambio.</span></h1>
-          <p class="hidden md:block mt-4 text-muted max-w-md">Gira el salón, entra y toca una zona para ver servicios, precios y trabajos reales. Reserva en un minuto.</p>
-        </div>
+    <!-- ============ HERO ============ -->
+    <section class="hero" id="inicio">
+      <div class="hero__media" data-parallax>
+        <img src="assets/img/hero.jpg" alt="Tijeras, peine y herramientas de peluquería sobre la mesa de trabajo" fetchpriority="high" />
+      </div>
+      <div class="hero__shade"></div>
+
+      <div class="hero__lockup">
+        <p class="hero__tag reveal">Corte, color y cuidado — desde 2014</p>
+        <h1 class="hero__word" aria-label="Corteza">
+          <span class="hero__line">Cor</span><span class="hero__line">teza</span>
+        </h1>
       </div>
 
-      <div id="hint" class="pointer-events-none absolute left-1/2 top-[58%] -translate-x-1/2 transition-opacity duration-700">
-        <div class="rounded-full bg-ink/75 backdrop-blur border border-white/10 px-4 py-2 text-xs sm:text-sm whitespace-nowrap">
-          Arrastra para girar · <span class="md:hidden">Pellizca para acercar</span><span class="hidden md:inline">Acerca con + / −</span> · Toca una zona
-        </div>
-      </div>
-
-      <div class="absolute inset-x-0 bottom-0 px-4 pb-24 md:pb-8">
-        <div class="max-w-7xl mx-auto flex flex-col md:flex-row md:items-end md:justify-between gap-3">
-          <div class="flex flex-col gap-3 min-w-0">
-            <div class="self-start flex items-center gap-2">
-              <div id="mode-switch" class="inline-flex rounded-full bg-ink/75 backdrop-blur border border-white/10 p-1 text-sm font-semibold">
-                <button data-mode="exterior" class="px-4 py-2 rounded-full transition">Fachada</button>
-                <button data-mode="interior" class="px-4 py-2 rounded-full transition">Dentro del salón</button>
-              </div>
-              <div id="zoom-btns" class="hidden md:inline-flex rounded-full bg-ink/75 backdrop-blur border border-white/10 p-1 text-lg font-semibold">
-                <button data-zoom="in" aria-label="Acercar" class="w-9 h-9 rounded-full hover:bg-white/10">+</button>
-                <button data-zoom="out" aria-label="Alejar" class="w-9 h-9 rounded-full hover:bg-white/10">−</button>
-              </div>
-            </div>
-            <div id="zone-chips" class="-mx-4 px-4 flex gap-2 overflow-x-auto no-scrollbar"></div>
-          </div>
-          <a href="#reservas" class="hidden md:inline-flex items-center gap-2 text-sm text-muted hover:text-cream">Reservar cita ↓</a>
-        </div>
-      </div>
-
-      <div id="loader" class="absolute inset-0 z-10 grid place-items-center bg-ink">
-        <div class="text-center px-6">
-          <p class="font-display text-3xl">Preparando el salón…</p>
-          <div class="mt-4 mx-auto w-48 h-1 rounded-full bg-white/10 overflow-hidden"><div class="bar h-full w-1/3 bg-rose rounded-full"></div></div>
-          <p id="loader-pct" class="mt-2 text-xs text-muted tabular-nums"></p>
-          <p id="loader-error" class="hidden mt-4 text-sm text-muted max-w-xs">Tu navegador no puede mostrar el salón 3D. Elige una zona abajo para ver los servicios.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- ===================== RESERVAS ===================== -->
-    <section id="reservas" class="bg-coal py-16 md:py-24 scroll-mt-16">
-      <div class="max-w-6xl mx-auto px-4">
-        <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-4">
+      <div class="hero__card reveal">
+        <p class="hero__card-title">Un estudio pequeño en Malasaña. Pocas sillas, mucho tiempo para cada cabeza.</p>
+        <hr class="dash" />
+        <div class="hero__live" data-status-card>
+          <span class="dot"></span>
           <div>
-            <p class="eyebrow">Reservas online</p>
-            <h2 class="h2">Reserva tu cita en un minuto</h2>
+            <strong data-status-label>Consultando horario…</strong>
+            <span data-status-sub>Calle del Pez 21</span>
           </div>
-          <p class="text-muted max-w-sm">Elige servicio, profesional, día y hora. Los huecos se actualizan al momento y te llega la confirmación por WhatsApp.</p>
-        </div>
-        <div class="mt-10 grid lg:grid-cols-[1fr_340px] gap-6 items-start">
-          <div class="min-w-0 rounded-3xl bg-bark border border-white/5 p-5 sm:p-7 space-y-7" data-booking>
-            <div>
-              <p class="step-label"><span>1</span> Servicio</p>
-              <select class="input mt-3" data-bk-service></select>
-            </div>
-            <div>
-              <p class="step-label"><span>2</span> Profesional</p>
-              <div class="mt-3 flex flex-wrap gap-2" data-bk-staff></div>
-            </div>
-            <div>
-              <p class="step-label"><span>3</span> Día</p>
-              <div class="mt-3 -mx-1 px-1 flex gap-2 overflow-x-auto no-scrollbar pb-1" data-bk-days></div>
-            </div>
-            <div>
-              <p class="step-label"><span>4</span> Hora</p>
-              <div class="mt-3 grid grid-cols-4 sm:grid-cols-6 gap-2" data-bk-slots></div>
-            </div>
-          </div>
-          <aside class="rounded-3xl bg-ink border border-rose/30 p-6 lg:sticky lg:top-24" data-bk-summary>
-            <p class="text-xs uppercase tracking-[.2em] text-rose-light font-semibold">Tu cita</p>
-            <dl class="mt-4 space-y-3 text-sm" data-bk-lines></dl>
-            <form class="mt-6 space-y-3" data-bk-form novalidate>
-              <input class="input" name="nombre" placeholder="Tu nombre" autocomplete="name" />
-              <input class="input" name="telefono" type="tel" inputmode="tel" placeholder="Teléfono" autocomplete="tel" />
-              <p class="text-xs text-red-300 hidden" data-bk-error></p>
-              <button type="submit" class="btn-primary w-full" data-bk-pay>Pagar señal de 5 € y confirmar</button>
-              <button type="submit" class="btn-ghost w-full" data-bk-later>Confirmar y pagar en el salón</button>
-            </form>
-          </aside>
         </div>
       </div>
+
+      <a href="#cita" class="hero__book reveal">
+        <span class="hero__book-k">Reserva online</span>
+        <span class="hero__book-t">Pedir cita</span>
+        <span class="hero__book-n" data-next-slot>Elige día y hora en 1 minuto</span>
+        <span class="hero__book-arrow" aria-hidden="true">→</span>
+      </a>
+
+      <a href="#estudio" class="hero__scroll" aria-label="Bajar">Desliza</a>
     </section>
 
-    <!-- ===================== BONOS (pago online) ===================== -->
-    <section id="bonos" class="py-16 md:py-24 scroll-mt-16">
-      <div class="max-w-6xl mx-auto px-4">
-        <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-4">
-          <div>
-            <p class="eyebrow">Bonos · Pago online</p>
-            <h2 class="h2">Tu pelo perfecto, todo el año</h2>
-          </div>
-          <p class="text-muted max-w-sm">Pago seguro con tarjeta, Apple Pay o Google Pay. Úsalos cuando quieras y regálalos a quien quieras.</p>
-        </div>
-        <div class="mt-10 grid md:grid-cols-3 gap-5" data-bonos></div>
-      </div>
-    </section>
-
-    <!-- ===================== TIENDA ===================== -->
-    <section id="tienda" class="bg-coal py-16 md:py-24 scroll-mt-16">
-      <div class="max-w-6xl mx-auto px-4">
-        <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-4">
-          <div>
-            <p class="eyebrow">Tienda online</p>
-            <h2 class="h2">Lo que usamos en el salón, en tu casa</h2>
-          </div>
-          <div class="flex flex-wrap gap-2" role="group" aria-label="Filtrar productos" data-shop-filters></div>
-        </div>
-        <div class="mt-10 grid grid-cols-2 lg:grid-cols-4 gap-4" data-shop></div>
-        <p class="mt-6 text-sm text-muted">Recogida gratis en el salón · Envío a domicilio 3,90 € (gratis desde 45 €)</p>
-      </div>
-    </section>
-
-    <!-- ===================== EVENTOS ===================== -->
-    <section id="eventos" class="py-16 md:py-24 scroll-mt-16">
-      <div class="max-w-6xl mx-auto px-4">
-        <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-4">
-          <div>
-            <p class="eyebrow">Calendario</p>
-            <h2 class="h2">Talleres y eventos del salón</h2>
-          </div>
-          <p class="text-muted max-w-sm">Toca un día marcado para ver el evento y apuntarte.</p>
-        </div>
-        <div class="mt-10 grid md:grid-cols-[1fr_1fr] gap-6 items-start">
-          <div class="rounded-3xl bg-bark border border-white/5 p-5 sm:p-6">
-            <div class="flex items-center justify-between">
-              <button type="button" class="cal-nav" aria-label="Mes anterior" data-cal-prev>‹</button>
-              <h3 class="font-display text-2xl font-semibold capitalize" data-cal-title></h3>
-              <button type="button" class="cal-nav" aria-label="Mes siguiente" data-cal-next>›</button>
-            </div>
-            <div class="mt-4 grid grid-cols-7 text-center text-xs text-muted" aria-hidden="true"><span>L</span><span>M</span><span>X</span><span>J</span><span>V</span><span>S</span><span>D</span></div>
-            <div class="mt-2 grid grid-cols-7 gap-1" data-cal-grid></div>
-          </div>
-          <div class="space-y-3" data-event-list aria-live="polite"></div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ===================== OFERTAS PROGRAMADAS ===================== -->
-    <section id="ofertas" class="bg-coal py-16 md:py-24 scroll-mt-16">
-      <div class="max-w-6xl mx-auto px-4">
-        <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-4">
-          <div>
-            <p class="eyebrow">Ofertas programadas</p>
-            <h2 class="h2">Cada oferta, en su fecha</h2>
-          </div>
-          <p class="text-muted max-w-md">El salón deja sus ofertas programadas y la web las activa y retira sola: la barra superior y los precios de tienda y bonos cambian el día que toca.</p>
-        </div>
-        <div class="mt-10 grid md:grid-cols-[300px_1fr] gap-6 items-start">
-          <div class="rounded-3xl bg-bark border border-white/5 p-6">
-            <label for="sim-date" class="text-sm font-semibold">Ver la web como si fuera el día</label>
-            <input id="sim-date" type="date" class="input mt-3" data-sim-date />
-            <button type="button" class="btn-ghost w-full mt-3" data-sim-today>Volver a hoy</button>
-          </div>
-          <ol class="grid sm:grid-cols-2 gap-3" data-offer-list></ol>
-        </div>
-      </div>
-    </section>
-
-    <!-- ===================== DIAGNÓSTICO (función a medida) ===================== -->
-    <section id="diagnostico" class="py-16 md:py-24 scroll-mt-16">
-      <div class="max-w-6xl mx-auto px-4 grid lg:grid-cols-2 gap-10 items-start">
-        <div>
-          <p class="eyebrow">Función a medida</p>
-          <h2 class="h2">Diagnóstico capilar en 3 preguntas</h2>
-          <p class="mt-4 text-muted max-w-md">Te recomendamos el tratamiento y el producto que mejor van con tu pelo. Y lo reservas o lo compras desde aquí.</p>
-          <img src="https://images.unsplash.com/photo-1519699047748-de8e457a634e?auto=format&fit=crop&w=900&q=70" alt="Melena rizada y definida" class="mt-8 w-full aspect-[4/3] object-cover rounded-3xl" loading="lazy" />
-        </div>
-        <form class="rounded-3xl bg-bark border border-white/5 p-6 sm:p-8 space-y-6" data-quiz>
-          <fieldset>
-            <legend class="font-semibold">¿Cómo es tu pelo?</legend>
-            <div class="mt-3 grid grid-cols-2 gap-2">
-              <label class="quiz-opt"><input type="radio" name="tipo" value="liso" /> Liso</label>
-              <label class="quiz-opt"><input type="radio" name="tipo" value="ondulado" /> Ondulado</label>
-              <label class="quiz-opt"><input type="radio" name="tipo" value="rizado" /> Rizado</label>
-              <label class="quiz-opt"><input type="radio" name="tipo" value="fino" /> Fino o con poco volumen</label>
-            </div>
-          </fieldset>
-          <fieldset>
-            <legend class="font-semibold">¿Qué es lo que más te preocupa?</legend>
-            <div class="mt-3 grid grid-cols-2 gap-2">
-              <label class="quiz-opt"><input type="radio" name="problema" value="encrespado" /> Encrespamiento</label>
-              <label class="quiz-opt"><input type="radio" name="problema" value="seco" /> Sequedad o puntas abiertas</label>
-              <label class="quiz-opt"><input type="radio" name="problema" value="color" /> El color se apaga</label>
-              <label class="quiz-opt"><input type="radio" name="problema" value="caida" /> Caída o poca densidad</label>
-            </div>
-          </fieldset>
-          <fieldset>
-            <legend class="font-semibold">¿Cuánto tiempo le dedicas cada mañana?</legend>
-            <div class="mt-3 grid grid-cols-3 gap-2">
-              <label class="quiz-opt"><input type="radio" name="tiempo" value="5" /> 5 min</label>
-              <label class="quiz-opt"><input type="radio" name="tiempo" value="15" /> 15 min</label>
-              <label class="quiz-opt"><input type="radio" name="tiempo" value="30" /> 30 min o más</label>
-            </div>
-          </fieldset>
-          <button type="submit" class="btn-primary w-full">Ver mi recomendación</button>
-          <p class="text-sm text-red-300 hidden" data-quiz-error>Responde las tres preguntas.</p>
-          <div class="hidden" data-quiz-result></div>
-        </form>
-      </div>
-    </section>
-
-    <!-- ===================== OPINIONES + CONTACTO ===================== -->
-    <section class="bg-coal py-16 md:py-24">
-      <div class="max-w-6xl mx-auto px-4">
-        <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-4">
-          <div>
-            <p class="eyebrow">Opiniones verificadas</p>
-            <h2 class="h2">4,9 en Google · 312 reseñas</h2>
-          </div>
-        </div>
-        <div class="mt-10 grid md:grid-cols-3 gap-4" data-reviews></div>
-      </div>
-    </section>
-
-    <section id="contacto" class="py-16 md:py-24 scroll-mt-16">
-      <div class="max-w-6xl mx-auto px-4 grid md:grid-cols-2 gap-10 items-start">
-        <div>
-          <p class="eyebrow">Contacto</p>
-          <h2 class="h2">Te esperamos en el centro</h2>
-          <ul class="mt-6 space-y-3 text-sm">
-            <li><strong class="inline-block w-24">Dirección</strong> Calle del Ejemplo, 8 · Cádiz</li>
-            <li><strong class="inline-block w-24">Horario</strong> L–V 9:30–20:00 · S 9:30–14:00</li>
-            <li><strong class="inline-block w-24">WhatsApp</strong> <a href="#" class="text-rose-light underline" data-wa="Hola, tengo una consulta.">Escríbenos</a></li>
+    <!-- ============ REVEAL / ESTUDIO ============ -->
+    <section class="void" id="estudio" data-scissors-section>
+      <div class="void__grid">
+        <div class="void__left">
+          <p class="label reveal">01 — El estudio</p>
+          <h2 class="h-heading reveal">No es solo<br />un corte.</h2>
+          <hr class="dash reveal" />
+          <ul class="facts reveal">
+            <li><span>12</span> años en el barrio</li>
+            <li><span>4</span> sillas, sin prisas</li>
+            <li><span>4,9</span> valoración media</li>
           </ul>
         </div>
-        <div class="rounded-3xl overflow-hidden aspect-[16/10] bg-bark"><iframe class="w-full h-full border-0 map-dark" title="Mapa con la ubicación del salón" src="https://www.google.com/maps?q=Plaza%20de%20San%20Juan%20de%20Dios%2C%20C%C3%A1diz&amp;output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div>
+        <div class="void__object" aria-hidden="true">
+          <svg class="scissors" viewBox="0 0 400 400" data-scissors>
+            <defs>
+              <linearGradient id="blade" x1="0" y1="0" x2="1" y2="0">
+                <stop offset="0" stop-color="#6c5f51" />
+                <stop offset=".45" stop-color="#ffedd7" />
+                <stop offset=".6" stop-color="#cdb79e" />
+                <stop offset="1" stop-color="#40372e" />
+              </linearGradient>
+              <linearGradient id="ring" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="#ffedd7" />
+                <stop offset=".5" stop-color="#8a7764" />
+                <stop offset="1" stop-color="#382416" />
+              </linearGradient>
+              <radialGradient id="glow" cx=".5" cy=".5" r=".5">
+                <stop offset="0" stop-color="#382416" stop-opacity=".9" />
+                <stop offset="1" stop-color="#100904" stop-opacity="0" />
+              </radialGradient>
+            </defs>
+            <circle cx="200" cy="200" r="190" fill="url(#glow)" />
+            <g transform="rotate(32 200 200)">
+              <g class="scissors__half" data-half="a">
+                <path d="M193 206 L190 52 Q196 14 204 40 L210 196 Z" fill="url(#blade)" />
+                <path d="M192 204 Q186 245 176 272" stroke="url(#ring)" stroke-width="13" stroke-linecap="round" fill="none" />
+                <ellipse cx="166" cy="312" rx="28" ry="38" stroke="url(#ring)" stroke-width="12" fill="none" />
+              </g>
+              <g transform="translate(400 0) scale(-1 1)">
+                <g class="scissors__half" data-half="b">
+                  <path d="M193 206 L190 52 Q196 14 204 40 L210 196 Z" fill="url(#blade)" opacity=".92" />
+                  <path d="M192 204 Q186 245 176 272" stroke="url(#ring)" stroke-width="13" stroke-linecap="round" fill="none" />
+                  <ellipse cx="166" cy="312" rx="28" ry="38" stroke="url(#ring)" stroke-width="12" fill="none" />
+                </g>
+              </g>
+              <circle cx="200" cy="200" r="9" fill="#382416" stroke="#ffedd7" stroke-width="2" />
+            </g>
+          </svg>
+        </div>
+        <div class="void__right">
+          <p class="body reveal">Escuchamos antes de cortar. Estudiamos tu tipo de pelo, tu rutina y cuánto tiempo quieres dedicarle por la mañana. Luego cortamos para que el peinado funcione la tercera semana, no solo al salir.</p>
+          <a href="#servicios" class="link reveal">Ver servicios y precios</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ SERVICIOS ============ -->
+    <section class="section" id="servicios">
+      <div class="section__head">
+        <p class="label reveal">02 — Servicios</p>
+        <h2 class="h-display reveal">Carta de<br />servicios.</h2>
+        <p class="body body--sm reveal">Precios finales con IVA. El precio de color puede variar según largo y cantidad de pelo; te lo confirmamos en el diagnóstico.</p>
+      </div>
+
+      <div class="tabs reveal" role="tablist" data-tabs>
+        <button class="pill is-active" role="tab" aria-selected="true" data-tab="all">Todo</button>
+        <button class="pill" role="tab" aria-selected="false" data-tab="corte">Corte</button>
+        <button class="pill" role="tab" aria-selected="false" data-tab="color">Color</button>
+        <button class="pill" role="tab" aria-selected="false" data-tab="cuidado">Cuidado</button>
+        <button class="pill" role="tab" aria-selected="false" data-tab="barberia">Barbería</button>
+        <button class="pill" role="tab" aria-selected="false" data-tab="eventos">Eventos</button>
+      </div>
+
+      <ul class="services" data-services>
+        <li class="svc" data-cat="corte" data-service="corte-mujer" data-name="Corte y peinado" data-duration="60" data-price="38">
+          <span class="svc__name">Corte y peinado</span>
+          <span class="svc__desc">Diagnóstico, lavado con masaje, corte y secado.</span>
+          <span class="svc__time">60 min</span><span class="svc__price">38 €</span>
+          <button class="svc__book" type="button" data-book="corte-mujer">Reservar</button>
+        </li>
+        <li class="svc" data-cat="corte" data-service="corte-hombre" data-name="Corte caballero" data-duration="30" data-price="22">
+          <span class="svc__name">Corte caballero</span>
+          <span class="svc__desc">Tijera o máquina, lavado y acabado con producto.</span>
+          <span class="svc__time">30 min</span><span class="svc__price">22 €</span>
+          <button class="svc__book" type="button" data-book="corte-hombre">Reservar</button>
+        </li>
+        <li class="svc" data-cat="corte" data-service="corte-infantil" data-name="Corte infantil" data-duration="30" data-price="16">
+          <span class="svc__name">Corte infantil</span>
+          <span class="svc__desc">Hasta 12 años. Con paciencia y sin prisa.</span>
+          <span class="svc__time">30 min</span><span class="svc__price">16 €</span>
+          <button class="svc__book" type="button" data-book="corte-infantil">Reservar</button>
+        </li>
+        <li class="svc" data-cat="corte" data-service="peinado" data-name="Lavado y peinado" data-duration="30" data-price="20">
+          <span class="svc__name">Lavado y peinado</span>
+          <span class="svc__desc">Secado liso, ondas o recogido sencillo.</span>
+          <span class="svc__time">30 min</span><span class="svc__price">20 €</span>
+          <button class="svc__book" type="button" data-book="peinado">Reservar</button>
+        </li>
+        <li class="svc" data-cat="color" data-service="color-raiz" data-name="Color de raíz" data-duration="90" data-price="45">
+          <span class="svc__name">Color de raíz</span>
+          <span class="svc__desc">Retoque de raíz con tinte sin amoniaco y peinado.</span>
+          <span class="svc__time">90 min</span><span class="svc__price">45 €</span>
+          <button class="svc__book" type="button" data-book="color-raiz">Reservar</button>
+        </li>
+        <li class="svc" data-cat="color" data-service="mechas" data-name="Mechas balayage" data-duration="180" data-price="95">
+          <span class="svc__name">Mechas balayage</span>
+          <span class="svc__desc">Aclarado a mano alzada, matiz y tratamiento protector.</span>
+          <span class="svc__time">180 min</span><span class="svc__price">desde 95 €</span>
+          <button class="svc__book" type="button" data-book="mechas">Reservar</button>
+        </li>
+        <li class="svc" data-cat="color" data-service="matiz" data-name="Baño de color" data-duration="60" data-price="35">
+          <span class="svc__name">Baño de color</span>
+          <span class="svc__desc">Brillo y matiz sin compromiso. Dura de 4 a 6 semanas.</span>
+          <span class="svc__time">60 min</span><span class="svc__price">35 €</span>
+          <button class="svc__book" type="button" data-book="matiz">Reservar</button>
+        </li>
+        <li class="svc" data-cat="cuidado" data-service="keratina" data-name="Alisado de keratina" data-duration="150" data-price="120">
+          <span class="svc__name">Alisado de keratina</span>
+          <span class="svc__desc">Sin formol. Reduce el encrespado hasta 4 meses.</span>
+          <span class="svc__time">150 min</span><span class="svc__price">desde 120 €</span>
+          <button class="svc__book" type="button" data-book="keratina">Reservar</button>
+        </li>
+        <li class="svc" data-cat="cuidado" data-service="ritual" data-name="Ritual de hidratación" data-duration="45" data-price="30">
+          <span class="svc__name">Ritual de hidratación</span>
+          <span class="svc__desc">Mascarilla con vapor, masaje craneal y secado.</span>
+          <span class="svc__time">45 min</span><span class="svc__price">30 €</span>
+          <button class="svc__book" type="button" data-book="ritual">Reservar</button>
+        </li>
+        <li class="svc" data-cat="barberia" data-service="barba" data-name="Arreglo de barba" data-duration="30" data-price="15">
+          <span class="svc__name">Arreglo de barba</span>
+          <span class="svc__desc">Perfilado a navaja, toalla caliente y aceite.</span>
+          <span class="svc__time">30 min</span><span class="svc__price">15 €</span>
+          <button class="svc__book" type="button" data-book="barba">Reservar</button>
+        </li>
+        <li class="svc" data-cat="barberia" data-service="corte-barba" data-name="Corte + barba" data-duration="60" data-price="32">
+          <span class="svc__name">Corte + barba</span>
+          <span class="svc__desc">El servicio completo de barbería.</span>
+          <span class="svc__time">60 min</span><span class="svc__price">32 €</span>
+          <button class="svc__book" type="button" data-book="corte-barba">Reservar</button>
+        </li>
+        <li class="svc" data-cat="eventos" data-service="recogido" data-name="Recogido de evento" data-duration="60" data-price="45">
+          <span class="svc__name">Recogido de evento</span>
+          <span class="svc__desc">Bodas, graduaciones e invitadas. Prueba previa opcional.</span>
+          <span class="svc__time">60 min</span><span class="svc__price">45 €</span>
+          <button class="svc__book" type="button" data-book="recogido">Reservar</button>
+        </li>
+        <li class="svc" data-cat="eventos" data-service="novia" data-name="Novia — prueba y día" data-duration="120" data-price="180">
+          <span class="svc__name">Novia — prueba y día</span>
+          <span class="svc__desc">Prueba en el estudio y peinado el día de la boda.</span>
+          <span class="svc__time">120 min</span><span class="svc__price">desde 180 €</span>
+          <button class="svc__book" type="button" data-book="novia">Reservar</button>
+        </li>
+      </ul>
+    </section>
+
+    <!-- ============ EQUIPO ============ -->
+    <section class="section" id="equipo">
+      <div class="section__head">
+        <p class="label reveal">03 — Equipo</p>
+        <h2 class="h-display reveal">Cuatro manos,<br />ocho tijeras.</h2>
+      </div>
+      <div class="team">
+        <article class="member reveal" data-stylist="lucia" data-name="Lucía">
+          <div class="member__mono">L</div>
+          <h3 class="member__name">Lucía Ortega</h3>
+          <p class="member__role">Fundadora — Color y balayage</p>
+          <hr class="dash" />
+          <p class="member__bio">Formada en Londres. Si quieres rubio sin que se note el esfuerzo, es ella.</p>
+        </article>
+        <article class="member reveal" data-stylist="marco" data-name="Marco">
+          <div class="member__mono">M</div>
+          <h3 class="member__name">Marco Rey</h3>
+          <p class="member__role">Corte y barbería</p>
+          <hr class="dash" />
+          <p class="member__bio">Fade, tijera clásica y navaja. Doce minutos de conversación incluidos.</p>
+        </article>
+        <article class="member reveal" data-stylist="ines" data-name="Inés">
+          <div class="member__mono">I</div>
+          <h3 class="member__name">Inés Valdés</h3>
+          <p class="member__role">Corte de autor — Pelo rizado</p>
+          <hr class="dash" />
+          <p class="member__bio">Corta en seco, rizo a rizo. Especialista en método curly.</p>
+        </article>
+        <article class="member reveal" data-stylist="sara" data-name="Sara">
+          <div class="member__mono">S</div>
+          <h3 class="member__name">Sara Gil</h3>
+          <p class="member__role">Recogidos y novias</p>
+          <hr class="dash" />
+          <p class="member__bio">Más de 300 bodas. Trae una foto y la mejoramos juntas.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- ============ GALERÍA ============ -->
+    <section class="section section--flush" id="galeria">
+      <div class="section__head">
+        <p class="label reveal">04 — Trabajos</p>
+        <h2 class="h-display reveal">Hecho en<br />esta silla.</h2>
+      </div>
+      <div class="gallery">
+        <figure class="g g--tall reveal"><img src="assets/img/gal-1.jpg" alt="Trabajo de peluquería" loading="lazy" /><figcaption>Corte y forma</figcaption></figure>
+        <figure class="g reveal"><img src="assets/img/gal-2.jpg" alt="Trabajo de peluquería" loading="lazy" /><figcaption>Barbería</figcaption></figure>
+        <figure class="g reveal"><img src="assets/img/gal-3.jpg" alt="Trabajo de peluquería" loading="lazy" /><figcaption>Color</figcaption></figure>
+        <figure class="g g--wide reveal"><img src="assets/img/gal-4.jpg" alt="Interior del estudio" loading="lazy" /><figcaption>El estudio</figcaption></figure>
+        <figure class="g reveal"><img src="assets/img/gal-5.jpg" alt="Trabajo de peluquería" loading="lazy" /><figcaption>Detalle</figcaption></figure>
+        <figure class="g reveal"><img src="assets/img/gal-6.jpg" alt="Herramientas de peluquería" loading="lazy" /><figcaption>Herramientas</figcaption></figure>
+      </div>
+      <div class="gallery__foot">
+        <a href="#" class="link">Más trabajos en Instagram — @corteza.estudio</a>
+      </div>
+    </section>
+
+    <!-- ============ HORARIO EN TIEMPO REAL ============ -->
+    <section class="section" id="horario">
+      <div class="live">
+        <div class="live__now">
+          <p class="label reveal">05 — Horario en tiempo real</p>
+          <p class="live__state" data-live-state>Abierto</p>
+          <p class="live__clock"><span data-live-clock>--:--</span> <span class="live__tz">Hora en Madrid</span></p>
+          <p class="body body--sm" data-live-sub>Cargando horario…</p>
+          <div class="dayline" aria-hidden="true">
+            <div class="dayline__track" data-dayline></div>
+            <div class="dayline__now" data-dayline-now></div>
+            <div class="dayline__ticks"><span>08</span><span>12</span><span>16</span><span>20</span><span>22</span></div>
+          </div>
+        </div>
+        <div class="live__week">
+          <table class="week">
+            <caption class="label">Semana</caption>
+            <tbody data-week>
+              <tr data-day="1"><th>Lunes</th><td>Cerrado</td></tr>
+              <tr data-day="2"><th>Martes</th><td>10:00–14:00 · 16:00–20:30</td></tr>
+              <tr data-day="3"><th>Miércoles</th><td>10:00–14:00 · 16:00–20:30</td></tr>
+              <tr data-day="4"><th>Jueves</th><td>10:00–20:30</td></tr>
+              <tr data-day="5"><th>Viernes</th><td>10:00–20:30</td></tr>
+              <tr data-day="6"><th>Sábado</th><td>09:30–15:00</td></tr>
+              <tr data-day="0"><th>Domingo</th><td>Cerrado</td></tr>
+            </tbody>
+          </table>
+          <p class="micro">* Festivos nacionales cerrado. Agosto: consultar.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CITA ============ -->
+    <section class="section" id="cita">
+      <div class="section__head">
+        <p class="label reveal">06 — Pedir cita</p>
+        <h2 class="h-display reveal">Tu hueco,<br />en cuatro pasos.</h2>
+        <p class="body body--sm reveal">Sin llamadas ni esperas. Eliges, confirmas y te llega el recordatorio.</p>
+      </div>
+
+      <div class="booking" data-booking>
+        <ol class="steps" data-steps>
+          <li class="is-active" data-step-ind="1"><span>01</span> Servicio</li>
+          <li data-step-ind="2"><span>02</span> Profesional</li>
+          <li data-step-ind="3"><span>03</span> Día y hora</li>
+          <li data-step-ind="4"><span>04</span> Tus datos</li>
+        </ol>
+
+        <div class="booking__body">
+          <!-- Paso 1 -->
+          <div class="step is-active" data-step="1">
+            <p class="step__q">¿Qué te hacemos?</p>
+            <div class="choices" data-choices-services>
+              <noscript><p class="body body--sm">Activa JavaScript para reservar online o llámanos al +34 910 000 000.</p></noscript>
+            </div>
+          </div>
+
+          <!-- Paso 2 -->
+          <div class="step" data-step="2">
+            <p class="step__q">¿Con quién?</p>
+            <div class="choices choices--team" data-choices-team></div>
+          </div>
+
+          <!-- Paso 3 -->
+          <div class="step" data-step="3">
+            <p class="step__q">¿Cuándo te viene bien?</p>
+            <div class="days" data-days></div>
+            <div class="slots-wrap">
+              <p class="slots__legend"><span class="lg lg--free"></span> Libre <span class="lg lg--busy"></span> Ocupado</p>
+              <div class="slots" data-slots></div>
+            </div>
+          </div>
+
+          <!-- Paso 4 -->
+          <div class="step" data-step="4">
+            <p class="step__q">Últimos datos.</p>
+            <!-- Web3Forms: la clave (access key) se pone en lib/manifest.js -->
+            <form class="form" data-form novalidate>
+              <input type="checkbox" name="botcheck" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true" />
+              <label class="field"><span>Nombre</span><input name="name" type="text" autocomplete="name" required /></label>
+              <label class="field"><span>Teléfono</span><input name="phone" type="tel" autocomplete="tel" inputmode="tel" pattern="[0-9 +]{9,15}" required /></label>
+              <label class="field"><span>Email (opcional)</span><input name="email" type="email" autocomplete="email" /></label>
+              <label class="field field--full"><span>Algo que debamos saber</span><input name="notes" type="text" placeholder="Alergias, referencia, largo actual…" /></label>
+              <label class="check field--full"><input type="checkbox" name="privacy" value="Aceptada" required /> <span>Acepto la política de privacidad y que me contactéis para recordar la cita.</span></label>
+            </form>
+          </div>
+
+          <!-- Confirmación -->
+          <div class="step" data-step="5">
+            <p class="label">Cita reservada</p>
+            <p class="confirm__title">Te esperamos.</p>
+            <dl class="summary" data-confirm></dl>
+            <p class="send-status" data-send-status></p>
+            <div class="confirm__actions">
+              <a class="btn btn--filled" data-wa target="_blank" rel="noopener">Confirmar por WhatsApp</a>
+              <a class="btn btn--ghost" data-gcal target="_blank" rel="noopener">Añadir a Google Calendar</a>
+              <button class="btn btn--ghost" type="button" data-restart>Otra cita</button>
+            </div>
+          </div>
+        </div>
+
+        <aside class="booking__side">
+          <p class="label">Resumen</p>
+          <dl class="summary" data-summary>
+            <div><dt>Servicio</dt><dd data-sum="service">—</dd></div>
+            <div><dt>Profesional</dt><dd data-sum="stylist">—</dd></div>
+            <div><dt>Día</dt><dd data-sum="date">—</dd></div>
+            <div><dt>Hora</dt><dd data-sum="time">—</dd></div>
+            <div><dt>Duración</dt><dd data-sum="duration">—</dd></div>
+            <div><dt>Precio</dt><dd data-sum="price">—</dd></div>
+          </dl>
+          <hr class="dash" />
+          <div class="booking__nav">
+            <button class="btn btn--ghost" type="button" data-prev disabled>Atrás</button>
+            <button class="btn btn--filled" type="button" data-next disabled>Continuar</button>
+          </div>
+          <p class="micro">* Puedes cancelar gratis hasta 24 h antes.</p>
+        </aside>
+      </div>
+
+      <div class="mine" data-mine hidden>
+        <p class="label">Tus próximas citas</p>
+        <ul data-mine-list></ul>
+      </div>
+    </section>
+
+    <!-- ============ BONOS Y REGALOS (pago online) ============ -->
+    <section class="section" id="bonos">
+      <div class="section__head">
+        <p class="label reveal">07 — Bonos y regalos</p>
+        <h2 class="h-display reveal">Págalo hoy,<br />úsalo cuando quieras.</h2>
+        <p class="body body--sm reveal">Pago seguro con tarjeta, Apple Pay o Google Pay. Te llega al momento por email y WhatsApp, listo para regalar.</p>
+      </div>
+      <div class="bonos" data-bonos></div>
+    </section>
+
+    <!-- ============ TIENDA ============ -->
+    <section class="section" id="tienda">
+      <div class="section__head">
+        <p class="label reveal">08 — Tienda</p>
+        <h2 class="h-display reveal">Lo que usamos,<br />para tu casa.</h2>
+        <p class="body body--sm reveal">Recogida gratis en el estudio. Envío a domicilio 3,90 € — gratis a partir de 45 €.</p>
+      </div>
+      <div class="tabs reveal" role="group" aria-label="Filtrar productos" data-shop-filters></div>
+      <div class="shop" data-shop></div>
+    </section>
+
+    <!-- ============ AGENDA (eventos) ============ -->
+    <section class="section" id="agenda">
+      <div class="section__head">
+        <p class="label reveal">09 — Agenda</p>
+        <h2 class="h-display reveal">Pasan cosas<br />en el estudio.</h2>
+        <p class="body body--sm reveal">Talleres, noches de color y masterclass. Toca un día marcado para apuntarte.</p>
+      </div>
+      <div class="agenda">
+        <div class="cal reveal">
+          <div class="cal__head">
+            <button type="button" class="cal__nav" aria-label="Mes anterior" data-cal-prev>←</button>
+            <p class="cal__title" data-cal-title></p>
+            <button type="button" class="cal__nav" aria-label="Mes siguiente" data-cal-next>→</button>
+          </div>
+          <div class="cal__week" aria-hidden="true"><span>L</span><span>M</span><span>X</span><span>J</span><span>V</span><span>S</span><span>D</span></div>
+          <div class="cal__grid" data-cal-grid></div>
+        </div>
+        <div class="events" data-event-list aria-live="polite"></div>
+      </div>
+    </section>
+
+    <!-- ============ OFERTAS PROGRAMADAS ============ -->
+    <section class="section" id="ofertas">
+      <div class="section__head">
+        <p class="label reveal">10 — Ofertas programadas</p>
+        <h2 class="h-display reveal">Cada oferta,<br />en su fecha.</h2>
+        <p class="body body--sm reveal">El estudio las deja programadas y la web las activa y retira sola: la barra de arriba y los precios de tienda y bonos cambian el día que toca.</p>
+      </div>
+      <div class="offers">
+        <div class="offers__sim reveal">
+          <label class="field"><span>Ver la web como si fuera el día</span><input type="date" data-sim-date /></label>
+          <button type="button" class="btn btn--ghost" data-sim-today>Volver a hoy</button>
+        </div>
+        <ol class="offers__list" data-offer-list></ol>
+      </div>
+    </section>
+
+    <!-- ============ DIAGNÓSTICO (función a medida) ============ -->
+    <section class="section" id="diagnostico">
+      <div class="section__head">
+        <p class="label reveal">11 — Diagnóstico capilar</p>
+        <h2 class="h-display reveal">Tres preguntas,<br />tu tratamiento.</h2>
+        <p class="body body--sm reveal">Te decimos qué servicio y qué producto van con tu pelo. Y lo reservas o lo compras desde aquí.</p>
+      </div>
+      <form class="quiz" data-quiz novalidate>
+        <fieldset class="quiz__q reveal">
+          <legend>01 — ¿Cómo es tu pelo?</legend>
+          <div class="quiz__opts">
+            <label class="pill"><input type="radio" name="tipo" value="liso" /> Liso</label>
+            <label class="pill"><input type="radio" name="tipo" value="ondulado" /> Ondulado</label>
+            <label class="pill"><input type="radio" name="tipo" value="rizado" /> Rizado</label>
+            <label class="pill"><input type="radio" name="tipo" value="fino" /> Fino</label>
+          </div>
+        </fieldset>
+        <fieldset class="quiz__q reveal">
+          <legend>02 — ¿Qué te preocupa más?</legend>
+          <div class="quiz__opts">
+            <label class="pill"><input type="radio" name="problema" value="encrespado" /> Encrespado</label>
+            <label class="pill"><input type="radio" name="problema" value="seco" /> Sequedad</label>
+            <label class="pill"><input type="radio" name="problema" value="color" /> Color apagado</label>
+            <label class="pill"><input type="radio" name="problema" value="forma" /> No tiene forma</label>
+          </div>
+        </fieldset>
+        <fieldset class="quiz__q reveal">
+          <legend>03 — ¿Cuánto tiempo le dedicas por la mañana?</legend>
+          <div class="quiz__opts">
+            <label class="pill"><input type="radio" name="tiempo" value="5" /> 5 min</label>
+            <label class="pill"><input type="radio" name="tiempo" value="15" /> 15 min</label>
+            <label class="pill"><input type="radio" name="tiempo" value="30" /> 30 min o más</label>
+          </div>
+        </fieldset>
+        <div class="quiz__foot reveal">
+          <button type="submit" class="btn btn--filled">Ver mi recomendación</button>
+          <p class="quiz__err" data-quiz-error hidden>Responde las tres preguntas.</p>
+        </div>
+        <div class="quiz__result" data-quiz-result hidden></div>
+      </form>
+    </section>
+
+    <!-- ============ OPINIONES ============ -->
+    <section class="section" id="opiniones">
+      <div class="section__head">
+        <p class="label reveal">12 — Opiniones</p>
+        <h2 class="h-display reveal">4,9 sobre 5.</h2>
+        <p class="body body--sm reveal">Más de 380 reseñas en Google.</p>
+      </div>
+      <div class="quotes">
+        <blockquote class="quote reveal">
+          <p>“Llevaba años buscando a alguien que entendiera mi rizo. Inés lo entendió en diez minutos.”</p>
+          <footer>— Carmen R. · Corte curly</footer>
+        </blockquote>
+        <blockquote class="quote reveal">
+          <p>“El balayage más natural que me han hecho. Y crece sin que se note la raíz.”</p>
+          <footer>— Paula M. · Mechas</footer>
+        </blockquote>
+        <blockquote class="quote reveal">
+          <p>“Reservé desde el móvil a las once de la noche. A las diez de la mañana estaba sentado.”</p>
+          <footer>— Javier T. · Corte + barba</footer>
+        </blockquote>
+      </div>
+    </section>
+
+    <!-- ============ FAQ ============ -->
+    <section class="section" id="faq">
+      <div class="faq">
+        <div>
+          <p class="label reveal">13 — Preguntas</p>
+          <h2 class="h-heading reveal">Antes de<br />venir.</h2>
+        </div>
+        <div class="faq__list">
+          <details class="reveal"><summary>¿Puedo cambiar o cancelar mi cita?</summary><p>Sí, gratis hasta 24 horas antes. Escríbenos por WhatsApp o llámanos.</p></details>
+          <details class="reveal"><summary>¿Cómo se paga?</summary><p>Efectivo, tarjeta y Bizum. No pedimos señal salvo en servicios de novia.</p></details>
+          <details class="reveal"><summary>¿Hacéis prueba de color?</summary><p>Sí. Para cambios grandes hacemos una prueba de mechón y un diagnóstico sin coste.</p></details>
+          <details class="reveal"><summary>¿Hay aparcamiento cerca?</summary><p>Parking público en Plaza de las Comendadoras, a tres minutos. Metro Noviciado.</p></details>
+          <details class="reveal"><summary>¿Vendéis tarjetas regalo?</summary><p>Sí, de cualquier importe o servicio. Pídela en el estudio o por WhatsApp.</p></details>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CONTACTO ============ -->
+    <section class="section" id="contacto">
+      <div class="contact">
+        <div class="contact__info">
+          <p class="label reveal">14 — Contacto</p>
+          <h2 class="h-display reveal">Ven a<br />vernos.</h2>
+          <dl class="contact__list reveal">
+            <div><dt>Dirección</dt><dd data-addr>Calle del Pez 21, 28004 Madrid</dd></div>
+            <div><dt>Teléfono</dt><dd><a href="tel:+34910000000" class="link" data-phone>+34 910 000 000</a></dd></div>
+            <div><dt>WhatsApp</dt><dd><a href="https://wa.me/34644144961" class="link" target="_blank" rel="noopener" data-wa-link>Escríbenos</a></dd></div>
+            <div><dt>Email</dt><dd><a href="mailto:hola@corteza.es" class="link" data-mail>hola@corteza.es</a></dd></div>
+            <div><dt>Metro</dt><dd>Noviciado (L2) · Tribunal (L1, L10)</dd></div>
+          </dl>
+          <a href="https://www.google.com/maps/search/?api=1&query=Calle+del+Pez+21+Madrid" class="btn btn--ghost reveal" target="_blank" rel="noopener">Cómo llegar</a>
+        </div>
+        <div class="contact__map reveal">
+          <iframe title="Mapa de ubicación" loading="lazy" src="https://www.openstreetmap.org/export/embed.html?bbox=-3.7095%2C40.4225%2C-3.6995%2C40.4285&amp;layer=mapnik&amp;marker=40.42555%2C-3.70500"></iframe>
+        </div>
       </div>
     </section>
   </main>
 
-  <footer class="border-t border-white/10 text-sm text-muted">
-    <div class="max-w-6xl mx-auto px-4 py-8 pb-24 md:pb-8 flex flex-col md:flex-row gap-2 justify-between">
-      <span>© <span data-year></span> Nácar Studio · Web de ejemplo</span>
-      <a href="../creditos.html" class="hover:text-cream">Créditos de imágenes y modelos 3D</a>
+  <!-- ============ FOOTER ============ -->
+  <footer class="footer">
+    <p class="footer__word">Corteza</p>
+    <div class="footer__row">
+      <span>© 2026 Corteza Estudio</span>
+      <a href="#">Aviso legal</a>
+      <a href="#">Privacidad</a>
+      <a href="#">Cookies</a>
+      <span class="footer__credit">Web diseñada por <a href="#" class="ember">Tu estudio</a></span>
     </div>
+    <p class="legal">* Web modelo. Nombres, precios, opiniones y datos de contacto son de ejemplo. Fotografías de dominio público (CC0) — créditos en assets/credits.json.</p>
   </footer>
 
-  <!-- Página oculta de cada zona del salón -->
-  <div id="zone-page" class="fixed inset-0 z-50 overflow-y-auto overscroll-contain bg-ink" role="dialog" aria-modal="true" aria-labelledby="zone-title"></div>
+  <a href="#cita" class="fab" data-fab>Pedir cita</a>
 
-  <!-- Carrito -->
-  <dialog class="sheet" data-cart aria-labelledby="cart-title">
-    <div class="sheet__inner">
-      <header class="flex items-center justify-between">
-        <h3 id="cart-title" class="font-display text-3xl font-semibold">Tu carrito</h3>
-        <button type="button" class="cal-nav" aria-label="Cerrar carrito" data-cart-close>✕</button>
-      </header>
-      <p class="mt-6 text-muted" data-cart-empty>Tu carrito está vacío. Añade algo de la tienda.</p>
-      <ul class="mt-6 space-y-3" data-cart-items></ul>
-      <div class="mt-6 space-y-4" data-cart-foot>
-        <fieldset class="space-y-2 text-sm">
-          <legend class="font-semibold mb-2">Entrega</legend>
-          <label class="quiz-opt justify-between"><span><input type="radio" name="entrega" value="recogida" checked /> Recoger en el salón</span><span>Gratis</span></label>
-          <label class="quiz-opt justify-between"><span><input type="radio" name="entrega" value="envio" /> Envío a domicilio</span><span data-ship-price>3,90 €</span></label>
+  <!-- ============ CARRITO ============ -->
+  <dialog class="drawer" data-cart aria-labelledby="cart-title">
+    <div class="drawer__in">
+      <div class="drawer__head">
+        <p class="h-heading" id="cart-title">Carrito</p>
+        <button type="button" class="btn btn--ghost btn--sm" data-cart-close>Cerrar</button>
+      </div>
+      <hr class="dash" />
+      <p class="drawer__empty" data-cart-empty>Tu carrito está vacío.</p>
+      <ul class="cart-items" data-cart-items></ul>
+      <div data-cart-foot>
+        <fieldset class="delivery">
+          <legend class="label">Entrega</legend>
+          <label class="check"><input type="radio" name="entrega" value="recogida" checked /> <span>Recoger en el estudio — gratis</span></label>
+          <label class="check"><input type="radio" name="entrega" value="envio" /> <span>Envío a domicilio — <b data-ship-price>3,90 €</b></span></label>
         </fieldset>
-        <dl class="space-y-1 text-sm" data-cart-totals></dl>
-        <button type="button" class="btn-primary w-full" data-cart-pay>Pagar</button>
+        <dl class="summary" data-cart-totals></dl>
+        <button type="button" class="btn btn--filled drawer__pay" data-cart-pay>Pagar</button>
       </div>
     </div>
   </dialog>
 
-  <!-- Pago online (simulado) -->
-  <dialog class="checkout" data-checkout aria-labelledby="co-title">
-    <form method="dialog" class="checkout__inner">
-      <button class="checkout__close" value="cerrar" aria-label="Cerrar">✕</button>
-      <div class="checkout__summary">
-        <p class="font-display text-xl font-bold">Nácar<span class="text-rose">.</span> Studio</p>
-        <h3 id="co-title" class="mt-6 text-sm text-muted" data-co-name></h3>
-        <p class="font-display text-5xl font-semibold" data-co-amount></p>
-        <ul class="mt-4 space-y-1 text-sm text-muted" data-co-lines></ul>
+  <!-- ============ PAGO ONLINE (simulado, como Stripe) ============ -->
+  <dialog class="pay" data-checkout aria-labelledby="pay-title">
+    <form method="dialog" class="pay__in">
+      <button class="pay__close" value="cerrar" aria-label="Cerrar">×</button>
+      <div class="pay__sum">
+        <p class="label">Corteza — Pago seguro</p>
+        <p class="pay__name" id="pay-title" data-co-name></p>
+        <p class="pay__amount" data-co-amount></p>
+        <ul class="pay__lines" data-co-lines></ul>
       </div>
-      <div class="checkout__pay" data-co-pay>
-        <p class="font-semibold">Elige cómo pagar</p>
-        <div class="mt-3 grid grid-cols-3 gap-2" role="radiogroup" aria-label="Método de pago">
-          <label class="quiz-opt justify-center"><input type="radio" name="metodo" value="Tarjeta" checked /> Tarjeta</label>
-          <label class="quiz-opt justify-center"><input type="radio" name="metodo" value="Apple Pay" /> Apple Pay</label>
-          <label class="quiz-opt justify-center"><input type="radio" name="metodo" value="Google Pay" /> Google Pay</label>
+      <div class="pay__body" data-co-pay>
+        <p class="label">Método de pago</p>
+        <div class="quiz__opts">
+          <label class="pill"><input type="radio" name="metodo" value="Tarjeta" checked /> Tarjeta</label>
+          <label class="pill"><input type="radio" name="metodo" value="Apple Pay" /> Apple Pay</label>
+          <label class="pill"><input type="radio" name="metodo" value="Google Pay" /> Google Pay</label>
         </div>
-        <p class="mt-4 text-xs text-muted">Modo demostración: no se piden datos de tarjeta ni se realiza ningún cobro. En la web real, el pago lo procesa Stripe.</p>
-        <button type="button" class="btn-primary w-full mt-4" data-co-confirm></button>
-        <p class="mt-3 text-center text-xs text-muted">🔒 Pago seguro con Stripe</p>
+        <p class="pay__demo">Modo demostración: no se piden datos de tarjeta ni se cobra nada. En la web real, el pago lo procesa Stripe.</p>
+        <button type="button" class="btn btn--filled pay__btn" data-co-confirm></button>
       </div>
-      <div class="checkout__done hidden" data-co-done>
-        <p class="mx-auto w-14 h-14 grid place-items-center rounded-full bg-green-500/15 text-green-400 text-2xl">✓</p>
-        <h3 class="mt-4 font-display text-3xl font-semibold">Pago completado</h3>
-        <p class="mt-2 text-muted text-sm" data-co-receipt></p>
-        <div class="mt-5 flex flex-col gap-2" data-co-extra></div>
-        <button class="btn-ghost w-full mt-2" value="cerrar">Volver a la web</button>
+      <div class="pay__done" data-co-done hidden>
+        <p class="confirm__title">Pagado.</p>
+        <p class="pay__demo" data-co-receipt></p>
+        <div class="confirm__actions" data-co-extra></div>
+        <button class="btn btn--ghost" value="cerrar">Volver</button>
       </div>
     </form>
   </dialog>
 
-  <!-- Toast -->
   <div class="toast" role="status" aria-live="polite" data-toast></div>
 
-  <!-- WhatsApp -->
-  <a data-wa="Hola, me gustaría información." href="#" aria-label="Escríbenos por WhatsApp"
-     class="hidden md:grid fixed bottom-6 right-6 z-[55] w-14 h-14 place-items-center rounded-full bg-green-600 text-white shadow-xl shadow-black/40 hover:scale-105 transition">
-    <svg class="w-7 h-7" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm5.3 14.2c-.2.6-1.3 1.2-1.8 1.3-.5 0-1 .3-3.3-.7-2.8-1.1-4.5-4-4.7-4.2-.1-.2-1.1-1.5-1.1-2.9s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.9 2.1c.1.2.1.4 0 .5l-.4.6-.4.4c-.1.2-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.3 2.4 1.5.3.1.5.1.6-.1l.9-1.1c.2-.3.4-.2.7-.1l2 1c.3.1.5.2.5.3.1.2.1.7-.1 1.3Z"/></svg>
-  </a>
-  <div class="md:hidden fixed bottom-0 inset-x-0 z-[55] bg-coal/95 backdrop-blur border-t border-white/10 p-3 flex gap-2" style="padding-bottom:max(12px,env(safe-area-inset-bottom))">
-    <a href="#" data-wa="Hola, me gustaría información." class="flex-1 text-center rounded-full border border-white/15 font-semibold py-3">WhatsApp</a>
-    <a href="#reservas" class="flex-[2] text-center rounded-full bg-rose text-ink font-semibold py-3">Reservar cita</a>
-  </div>
+  <!-- Barra de la demo: planes de LocalDev -->
+  <nav class="plan-strip" aria-label="Modelos de los planes">
+    <span>Plan <b>Avanzado</b> · 700–900 €</span>
+    <a href="../esencial/index.html">Esencial</a>
+    <a href="../profesional/index.html">Profesional</a>
+    <a href="../avanzado/index.html" aria-current="page">Avanzado</a>
+    <a href="../../../index.html#precios">LocalDev ↗</a>
+  </nav>
 </body>
 </html>
