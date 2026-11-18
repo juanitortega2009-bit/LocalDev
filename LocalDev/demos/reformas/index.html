@@ -1,0 +1,690 @@
+<!doctype html>
+<html lang="es" class="scroll-smooth">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>SurHabitat | Reformas y Piscinas en Chiclana y la Costa de la Luz</title>
+  <meta name="description" content="Reformas integrales, piscinas a medida, cocinas, baños y exteriores en Chiclana de la Frontera, Novo Sancti Petri, Conil y la Costa de la Luz. Presupuesto cerrado en 24 h." />
+  <meta name="theme-color" content="#18181B" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%2318181B'/%3E%3Cpath d='M7 20c3-2 6-2 9 0s6 2 9 0' stroke='%230EA5E9' stroke-width='2.5' fill='none' stroke-linecap='round'/%3E%3Cpath d='M9 14l7-6 7 6' stroke='%23fff' stroke-width='2.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <script src="https://cdn.tailwindcss.com/3.4.16"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            display: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+          },
+          colors: {
+            carbon: { 900: '#18181B', 800: '#27272A', 700: '#3F3F46' },
+            stone2: '#F5F5F4',
+            pool: { 600: '#0284C7', 500: '#0EA5E9', 100: '#E0F2FE' },
+            sand: { 600: '#D97706', 100: '#FEF3C7' },
+          },
+          boxShadow: { soft: '0 20px 50px -20px rgba(24,24,27,.25)' },
+        },
+      },
+    };
+  </script>
+  <script src="https://unpkg.com/lucide@0.469.0/dist/umd/lucide.min.js"></script>
+
+  <style>
+    body { font-family: Inter, system-ui, sans-serif; color: #27272A; background: #fff; -webkit-font-smoothing: antialiased; }
+    h1, h2, h3, h4, .font-display { font-family: "Plus Jakarta Sans", system-ui, sans-serif; letter-spacing: -0.02em; }
+    [data-lucide] { width: 1.25em; height: 1.25em; stroke-width: 1.75; }
+
+    /* Aparición al hacer scroll */
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity .8s cubic-bezier(.2,.7,.2,1), transform .8s cubic-bezier(.2,.7,.2,1); }
+    .reveal.is-in { opacity: 1; transform: none; }
+
+    /* Hero */
+    .hero-img { animation: kenburns 22s ease-out both; }
+    @keyframes kenburns { from { transform: scale(1.12); } to { transform: scale(1); } }
+
+    /* Proyectos */
+    .project { transition: opacity .45s ease, transform .45s ease; }
+    .project.is-hidden { opacity: 0; transform: scale(.96); pointer-events: none; position: absolute; visibility: hidden; }
+    .project img { transition: transform 1s cubic-bezier(.2,.7,.2,1); }
+    .project:hover img { transform: scale(1.07); }
+
+    /* Selector de tipo de obra */
+    .tipo input:checked + label { border-color: #0284C7; background: #E0F2FE; box-shadow: 0 0 0 1px #0284C7 inset; }
+    .tipo input:checked + label .tipo-ico { background: #0284C7; color: #fff; }
+    .tipo input:focus-visible + label { outline: 2px solid #0EA5E9; outline-offset: 2px; }
+
+    input[type=range] { accent-color: #0284C7; }
+
+    .wa-pulse::before { content: ""; position: absolute; inset: 0; border-radius: 9999px; background: #22C55E; animation: pulse 2.4s ease-out infinite; z-index: -1; }
+    @keyframes pulse { 0% { transform: scale(1); opacity: .55; } 100% { transform: scale(1.7); opacity: 0; } }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation: none !important; transition: none !important; }
+      .reveal { opacity: 1; transform: none; }
+    }
+  </style>
+</head>
+
+<body class="overflow-x-hidden">
+
+  <!-- ============ NAVEGACIÓN ============ -->
+  <header id="nav" class="fixed inset-x-0 top-0 z-50 transition-all duration-300">
+    <div class="mx-auto flex h-20 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
+      <a href="#inicio" class="flex items-center gap-2.5" aria-label="SurHabitat, inicio">
+        <span class="grid h-10 w-10 place-items-center rounded-xl bg-carbon-900 text-pool-500 ring-1 ring-white/10">
+          <i data-lucide="waves"></i>
+        </span>
+        <span class="leading-tight">
+          <span class="nav-ink block font-display text-lg font-extrabold tracking-tight text-white">SURHABITAT</span>
+          <span class="nav-sub block text-[11px] font-medium uppercase tracking-[.18em] text-white/70">Reformas &amp; Piscinas</span>
+        </span>
+      </a>
+
+      <nav class="hidden items-center gap-8 lg:flex" aria-label="Principal">
+        <a href="#servicios" class="nav-link text-sm font-medium text-white/85 hover:text-white">Servicios</a>
+        <a href="#proyectos" class="nav-link text-sm font-medium text-white/85 hover:text-white">Proyectos Realizados</a>
+        <a href="#proceso" class="nav-link text-sm font-medium text-white/85 hover:text-white">Proceso</a>
+        <a href="#opiniones" class="nav-link text-sm font-medium text-white/85 hover:text-white">Opiniones</a>
+        <a href="#presupuesto" class="nav-link text-sm font-medium text-white/85 hover:text-white">Presupuesto</a>
+      </nav>
+
+      <div class="flex items-center gap-2">
+        <a href="#presupuesto" class="hidden rounded-full bg-pool-600 px-5 py-2.5 text-sm font-semibold text-white shadow-lg shadow-pool-600/30 transition hover:bg-pool-500 sm:inline-flex">Pedir Presupuesto Gratis</a>
+        <button id="menuBtn" class="nav-ink grid h-11 w-11 place-items-center rounded-full text-white lg:hidden" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobileMenu">
+          <i data-lucide="menu"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Menú móvil -->
+    <div id="mobileMenu" class="hidden border-t border-zinc-200 bg-white px-4 pb-6 pt-2 shadow-soft lg:hidden">
+      <nav class="flex flex-col" aria-label="Móvil">
+        <a href="#servicios" class="border-b border-zinc-100 py-3.5 font-medium text-carbon-900">Servicios</a>
+        <a href="#proyectos" class="border-b border-zinc-100 py-3.5 font-medium text-carbon-900">Proyectos Realizados</a>
+        <a href="#proceso" class="border-b border-zinc-100 py-3.5 font-medium text-carbon-900">Proceso</a>
+        <a href="#opiniones" class="border-b border-zinc-100 py-3.5 font-medium text-carbon-900">Opiniones</a>
+        <a href="#presupuesto" class="py-3.5 font-medium text-carbon-900">Presupuesto</a>
+      </nav>
+      <a href="#presupuesto" class="mt-3 flex w-full items-center justify-center rounded-full bg-pool-600 px-5 py-3.5 font-semibold text-white">Pedir Presupuesto Gratis</a>
+    </div>
+  </header>
+
+  <main>
+    <!-- ============ HERO ============ -->
+    <section id="inicio" class="relative isolate flex min-h-[100svh] flex-col overflow-hidden bg-carbon-900">
+      <img class="hero-img absolute inset-0 -z-20 h-full w-full object-cover"
+           src="https://images.unsplash.com/photo-1580587771525-78b9dba3b914?auto=format&fit=crop&w=2400&q=80"
+           alt="Villa moderna con piscina iluminada al atardecer" fetchpriority="high" />
+      <div class="absolute inset-0 -z-10 bg-gradient-to-r from-carbon-900/95 via-carbon-900/70 to-carbon-900/20"></div>
+      <div class="absolute inset-0 -z-10 bg-gradient-to-t from-carbon-900/90 via-transparent to-carbon-900/50"></div>
+
+      <div class="mx-auto flex w-full max-w-7xl flex-1 items-center px-4 pb-16 pt-32 sm:px-6 lg:px-8">
+        <div class="max-w-3xl">
+          <p class="reveal inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-4 py-2 text-[11px] font-semibold uppercase tracking-[.16em] text-white backdrop-blur sm:text-xs">
+            <span class="h-1.5 w-1.5 rounded-full bg-sand-600"></span>
+            Construcción, reformas integrales y piscinas en Cádiz
+          </p>
+          <h1 class="reveal mt-6 font-display text-4xl font-extrabold leading-[1.05] text-white sm:text-5xl lg:text-6xl xl:text-7xl">
+            Transformamos viviendas y diseñamos <span class="text-pool-500">piscinas a medida</span> para disfrutar todo el año.
+          </h1>
+          <p class="reveal mt-6 max-w-2xl text-base leading-relaxed text-zinc-300 sm:text-lg">
+            Para propietarios de chalets, segundas residencias y viviendas en Chiclana, La Barrosa, Roche y Conil que quieren una obra bien hecha, con un único interlocutor, precio cerrado y la casa lista para el verano.
+          </p>
+          <div class="reveal mt-9 flex flex-col gap-3 sm:flex-row">
+            <a href="#presupuesto" class="group inline-flex items-center justify-center gap-2 rounded-full bg-pool-600 px-7 py-4 font-semibold text-white shadow-xl shadow-pool-600/30 transition hover:bg-pool-500">
+              <i data-lucide="calculator"></i> Calcular Presupuesto en 24h
+              <i data-lucide="arrow-right" class="transition group-hover:translate-x-1"></i>
+            </a>
+            <a href="#proyectos" class="inline-flex items-center justify-center gap-2 rounded-full border border-white/25 bg-white/5 px-7 py-4 font-semibold text-white backdrop-blur transition hover:bg-white/15">
+              <i data-lucide="images"></i> Ver Obras Realizadas
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Garantías -->
+      <div class="relative border-t border-white/10 bg-carbon-900/70 backdrop-blur-md">
+        <ul class="mx-auto grid max-w-7xl gap-px px-4 sm:px-6 md:grid-cols-3 lg:px-8">
+          <li class="flex items-center gap-4 py-5 md:py-7">
+            <span class="grid h-12 w-12 shrink-0 place-items-center rounded-xl bg-pool-600/20 text-pool-500"><i data-lucide="file-check-2"></i></span>
+            <span><strong class="block font-display text-white">Presupuesto Cerrado sin Sorpresas</strong><span class="text-sm text-zinc-400">Partida por partida, por escrito</span></span>
+          </li>
+          <li class="flex items-center gap-4 border-t border-white/10 py-5 md:border-l md:border-t-0 md:py-7 md:pl-8">
+            <span class="grid h-12 w-12 shrink-0 place-items-center rounded-xl bg-pool-600/20 text-pool-500"><i data-lucide="calendar-check"></i></span>
+            <span><strong class="block font-display text-white">Plazos Garantizados por Contrato</strong><span class="text-sm text-zinc-400">Fecha de entrega firmada</span></span>
+          </li>
+          <li class="flex items-center gap-4 border-t border-white/10 py-5 md:border-l md:border-t-0 md:py-7 md:pl-8">
+            <span class="grid h-12 w-12 shrink-0 place-items-center rounded-xl bg-sand-600/20 text-sand-600"><i data-lucide="award"></i></span>
+            <span><strong class="block font-display text-white">Más de 180 Obras en la Costa de la Luz</strong><span class="text-sm text-zinc-400">Desde Sancti Petri hasta Conil</span></span>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ============ SERVICIOS ============ -->
+    <section id="servicios" class="scroll-mt-20 bg-white py-20 sm:py-28">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="reveal flex flex-col justify-between gap-6 lg:flex-row lg:items-end">
+          <div class="max-w-2xl">
+            <p class="text-sm font-semibold uppercase tracking-[.16em] text-pool-600">Servicios</p>
+            <h2 class="mt-3 font-display text-3xl font-extrabold text-carbon-900 sm:text-4xl lg:text-5xl">Todo lo que tu casa necesita, con un solo equipo.</h2>
+          </div>
+          <p class="max-w-md text-zinc-600">Diseñamos, construimos y entregamos. Sin coordinar gremios, sin perseguir a nadie y con un jefe de obra que responde por todo.</p>
+        </div>
+
+        <div class="mt-14 grid gap-6 sm:grid-cols-2 xl:grid-cols-4">
+          <!-- 1 -->
+          <article class="reveal group overflow-hidden rounded-3xl bg-stone2 transition duration-500 hover:-translate-y-1 hover:shadow-soft">
+            <div class="relative aspect-[4/3] overflow-hidden">
+              <img loading="lazy" class="h-full w-full object-cover transition duration-700 group-hover:scale-105" src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=900&q=75" alt="Chalet moderno reformado" />
+              <span class="absolute left-4 top-4 grid h-11 w-11 place-items-center rounded-xl bg-white text-carbon-900 shadow"><i data-lucide="home"></i></span>
+            </div>
+            <div class="p-6">
+              <h3 class="font-display text-xl font-bold text-carbon-900">Reformas Integrales de Viviendas y Chalets</h3>
+              <p class="mt-3 text-sm leading-relaxed text-zinc-600">Llave en mano: albañilería, electricidad, fontanería, carpintería y acabados de primera.</p>
+              <a href="#presupuesto" data-tipo="reforma" class="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-pool-600 hover:gap-2.5 transition-all">Pedir presupuesto <i data-lucide="arrow-right"></i></a>
+            </div>
+          </article>
+          <!-- 2 -->
+          <article class="reveal group overflow-hidden rounded-3xl bg-stone2 transition duration-500 hover:-translate-y-1 hover:shadow-soft">
+            <div class="relative aspect-[4/3] overflow-hidden">
+              <img loading="lazy" class="h-full w-full object-cover transition duration-700 group-hover:scale-105" src="https://images.unsplash.com/photo-1576013551627-0cc20b96c2a7?auto=format&fit=crop&w=900&q=75" alt="Piscina de obra con gresite" />
+              <span class="absolute left-4 top-4 grid h-11 w-11 place-items-center rounded-xl bg-pool-600 text-white shadow"><i data-lucide="waves"></i></span>
+            </div>
+            <div class="p-6">
+              <h3 class="font-display text-xl font-bold text-carbon-900">Construcción y Rehabilitación de Piscinas</h3>
+              <p class="mt-3 text-sm leading-relaxed text-zinc-600">Piscinas de obra, gresite, desbordantes, cloración salina y tarimas perimetrales.</p>
+              <a href="#presupuesto" data-tipo="piscina" class="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-pool-600 hover:gap-2.5 transition-all">Pedir presupuesto <i data-lucide="arrow-right"></i></a>
+            </div>
+          </article>
+          <!-- 3 -->
+          <article class="reveal group overflow-hidden rounded-3xl bg-stone2 transition duration-500 hover:-translate-y-1 hover:shadow-soft">
+            <div class="relative aspect-[4/3] overflow-hidden">
+              <img loading="lazy" class="h-full w-full object-cover transition duration-700 group-hover:scale-105" src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=900&q=75" alt="Cocina de diseño con isla" />
+              <span class="absolute left-4 top-4 grid h-11 w-11 place-items-center rounded-xl bg-white text-carbon-900 shadow"><i data-lucide="chef-hat"></i></span>
+            </div>
+            <div class="p-6">
+              <h3 class="font-display text-xl font-bold text-carbon-900">Cocinas y Baños de Diseño</h3>
+              <p class="mt-3 text-sm leading-relaxed text-zinc-600">Mobiliario a medida, encimeras porcelánicas y renovación completa en pocas semanas.</p>
+              <a href="#presupuesto" data-tipo="cocina" class="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-pool-600 hover:gap-2.5 transition-all">Pedir presupuesto <i data-lucide="arrow-right"></i></a>
+            </div>
+          </article>
+          <!-- 4 -->
+          <article class="reveal group overflow-hidden rounded-3xl bg-stone2 transition duration-500 hover:-translate-y-1 hover:shadow-soft">
+            <div class="relative aspect-[4/3] overflow-hidden">
+              <img loading="lazy" class="h-full w-full object-cover transition duration-700 group-hover:scale-105" src="https://images.unsplash.com/photo-1600573472592-401b489a3cdc?auto=format&fit=crop&w=900&q=75" alt="Fachada y exterior con lamas de madera" />
+              <span class="absolute left-4 top-4 grid h-11 w-11 place-items-center rounded-xl bg-sand-600 text-white shadow"><i data-lucide="sun"></i></span>
+            </div>
+            <div class="p-6">
+              <h3 class="font-display text-xl font-bold text-carbon-900">Exteriores, Pérgolas y Cerramientos</h3>
+              <p class="mt-3 text-sm leading-relaxed text-zinc-600">Porches bioclimáticos, muros perimetrales, solería antideslizante y jardines.</p>
+              <a href="#presupuesto" data-tipo="exterior" class="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-pool-600 hover:gap-2.5 transition-all">Pedir presupuesto <i data-lucide="arrow-right"></i></a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ PROYECTOS ============ -->
+    <section id="proyectos" class="scroll-mt-20 bg-stone2 py-20 sm:py-28">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="reveal text-center">
+          <p class="text-sm font-semibold uppercase tracking-[.16em] text-pool-600">Proyectos Realizados</p>
+          <h2 class="mx-auto mt-3 max-w-3xl font-display text-3xl font-extrabold text-carbon-900 sm:text-4xl lg:text-5xl">Obras reales, a pocos minutos de tu casa.</h2>
+        </div>
+
+        <div class="reveal mt-10 flex justify-center">
+          <div id="filtros" role="tablist" aria-label="Filtrar proyectos" class="flex max-w-full gap-1 overflow-x-auto rounded-full bg-white p-1.5 shadow-sm ring-1 ring-zinc-200">
+            <button role="tab" aria-selected="true" data-filter="todos" class="filtro shrink-0 rounded-full px-4 py-2.5 text-sm font-semibold transition sm:px-5">Todos</button>
+            <button role="tab" aria-selected="false" data-filter="piscinas" class="filtro shrink-0 rounded-full px-4 py-2.5 text-sm font-semibold transition sm:px-5">Piscinas</button>
+            <button role="tab" aria-selected="false" data-filter="reformas" class="filtro shrink-0 rounded-full px-4 py-2.5 text-sm font-semibold transition sm:px-5">Reformas Integrales</button>
+            <button role="tab" aria-selected="false" data-filter="exteriores" class="filtro shrink-0 rounded-full px-4 py-2.5 text-sm font-semibold transition sm:px-5">Exteriores</button>
+          </div>
+        </div>
+
+        <div id="grid" class="relative mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3"></div>
+        <p id="countTxt" class="mt-8 text-center text-sm text-zinc-500" aria-live="polite"></p>
+      </div>
+    </section>
+
+    <!-- ============ PROCESO ============ -->
+    <section id="proceso" class="scroll-mt-20 bg-carbon-900 py-20 text-white sm:py-28">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="reveal grid gap-6 lg:grid-cols-2 lg:items-end">
+          <div>
+            <p class="text-sm font-semibold uppercase tracking-[.16em] text-pool-500">Nuestro proceso</p>
+            <h2 class="mt-3 font-display text-3xl font-extrabold sm:text-4xl lg:text-5xl">Una obra sin miedo, en 4 pasos.</h2>
+          </div>
+          <p class="text-zinc-400 lg:justify-self-end lg:max-w-md">Sabemos que lo que más preocupa de una reforma no es el precio: es no saber cuándo acaba. Por eso todo queda por escrito desde el primer día.</p>
+        </div>
+
+        <ol class="mt-14 grid gap-5 md:grid-cols-2 lg:grid-cols-4">
+          <li class="reveal relative rounded-3xl border border-white/10 bg-white/[.03] p-7 transition hover:border-pool-500/50 hover:bg-white/[.06]">
+            <span class="font-display text-6xl font-extrabold text-white/10">01</span>
+            <span class="mt-2 grid h-12 w-12 place-items-center rounded-xl bg-pool-600 text-white"><i data-lucide="ruler"></i></span>
+            <h3 class="mt-5 font-display text-lg font-bold">Visita técnica y medición gratuita en tu vivienda</h3>
+            <p class="mt-2 text-sm leading-relaxed text-zinc-400">Un técnico va a tu casa, escucha lo que quieres y toma medidas. Sin compromiso.</p>
+          </li>
+          <li class="reveal relative rounded-3xl border border-white/10 bg-white/[.03] p-7 transition hover:border-pool-500/50 hover:bg-white/[.06]">
+            <span class="font-display text-6xl font-extrabold text-white/10">02</span>
+            <span class="mt-2 grid h-12 w-12 place-items-center rounded-xl bg-pool-600 text-white"><i data-lucide="box"></i></span>
+            <h3 class="mt-5 font-display text-lg font-bold">Diseño 3D y presupuesto detallado partida por partida</h3>
+            <p class="mt-2 text-sm leading-relaxed text-zinc-400">Ves el resultado antes de empezar y sabes exactamente qué pagas por cada cosa.</p>
+          </li>
+          <li class="reveal relative rounded-3xl border border-white/10 bg-white/[.03] p-7 transition hover:border-pool-500/50 hover:bg-white/[.06]">
+            <span class="font-display text-6xl font-extrabold text-white/10">03</span>
+            <span class="mt-2 grid h-12 w-12 place-items-center rounded-xl bg-pool-600 text-white"><i data-lucide="hard-hat"></i></span>
+            <h3 class="mt-5 font-display text-lg font-bold">Ejecución con jefe de obra dedicado y limpieza diaria</h3>
+            <p class="mt-2 text-sm leading-relaxed text-zinc-400">Una sola persona de contacto, partes de avance semanales y la casa recogida cada tarde.</p>
+          </li>
+          <li class="reveal relative rounded-3xl border border-white/10 bg-white/[.03] p-7 transition hover:border-pool-500/50 hover:bg-white/[.06]">
+            <span class="font-display text-6xl font-extrabold text-white/10">04</span>
+            <span class="mt-2 grid h-12 w-12 place-items-center rounded-xl bg-sand-600 text-white"><i data-lucide="key-round"></i></span>
+            <h3 class="mt-5 font-display text-lg font-bold">Entrega llave en mano con garantía escrita</h3>
+            <p class="mt-2 text-sm leading-relaxed text-zinc-400">Revisamos cada detalle contigo y te entregamos la garantía y la documentación de la obra.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ============ OPINIONES ============ -->
+    <section id="opiniones" class="scroll-mt-20 bg-white py-20 sm:py-28">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="reveal flex flex-col items-start justify-between gap-6 md:flex-row md:items-end">
+          <div>
+            <p class="text-sm font-semibold uppercase tracking-[.16em] text-pool-600">Opiniones</p>
+            <h2 class="mt-3 font-display text-3xl font-extrabold text-carbon-900 sm:text-4xl lg:text-5xl">Lo que dicen nuestros vecinos.</h2>
+          </div>
+          <div class="flex items-center gap-4 rounded-2xl bg-stone2 px-5 py-4">
+            <svg viewBox="0 0 48 48" class="h-9 w-9" aria-hidden="true"><path fill="#FFC107" d="M43.6 20.5H42V20H24v8h11.3C33.7 32.7 29.2 36 24 36c-6.6 0-12-5.4-12-12s5.4-12 12-12c3.1 0 5.8 1.2 7.9 3.1l5.7-5.7C34 6.1 29.3 4 24 4 12.9 4 4 12.9 4 24s8.9 20 20 20 20-8.9 20-20c0-1.3-.1-2.4-.4-3.5z"/><path fill="#FF3D00" d="M6.3 14.7l6.6 4.8C14.7 15.1 19 12 24 12c3.1 0 5.8 1.2 7.9 3.1l5.7-5.7C34 6.1 29.3 4 24 4 16.3 4 9.7 8.3 6.3 14.7z"/><path fill="#4CAF50" d="M24 44c5.2 0 9.9-2 13.4-5.2l-6.2-5.2C29.2 35.1 26.7 36 24 36c-5.2 0-9.6-3.3-11.3-8l-6.5 5C9.5 39.6 16.2 44 24 44z"/><path fill="#1976D2" d="M43.6 20.5H42V20H24v8h11.3c-.8 2.2-2.2 4.2-4.1 5.6l6.2 5.2C37 39.2 44 34 44 24c0-1.3-.1-2.4-.4-3.5z"/></svg>
+            <div>
+              <div class="flex items-center gap-2"><strong class="font-display text-2xl text-carbon-900">4,9</strong><span class="flex text-sand-600" aria-label="5 estrellas"><i data-lucide="star" class="fill-current"></i><i data-lucide="star" class="fill-current"></i><i data-lucide="star" class="fill-current"></i><i data-lucide="star" class="fill-current"></i><i data-lucide="star" class="fill-current"></i></span></div>
+              <p class="text-xs text-zinc-500">Basado en 126 reseñas de Google</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-12 grid gap-6 md:grid-cols-3">
+          <figure class="reveal flex flex-col rounded-3xl border border-zinc-200 p-7 transition hover:shadow-soft">
+            <div class="flex items-center justify-between">
+              <span class="flex text-sand-600" aria-label="5 estrellas"><i data-lucide="star" class="fill-current"></i><i data-lucide="star" class="fill-current"></i><i data-lucide="star" class="fill-current"></i><i data-lucide="star" class="fill-current"></i><i data-lucide="star" class="fill-current"></i></span>
+              <span class="text-xs text-zinc-400">hace 3 semanas</span>
+            </div>
+            <blockquote class="mt-5 flex-1 leading-relaxed text-zinc-700">“Nos hicieron la piscina desbordante en La Barrosa en siete semanas, justo lo que pusieron en el contrato. Cada tarde dejaban la parcela recogida y el jefe de obra nos mandaba fotos por WhatsApp. El gresite y la iluminación han quedado de revista.”</blockquote>
+            <figcaption class="mt-6 flex items-center gap-3 border-t border-zinc-100 pt-5">
+              <span class="grid h-11 w-11 place-items-center rounded-full bg-pool-100 font-display font-bold text-pool-600">CM</span>
+              <span><strong class="block text-sm text-carbon-900">Carmen Márquez</strong><span class="text-xs text-zinc-500">La Barrosa, Chiclana · Piscina</span></span>
+            </figcaption>
+          </figure>
+          <figure class="reveal flex flex-col rounded-3xl border border-zinc-200 p-7 transition hover:shadow-soft">
+            <div class="flex items-center justify-between">
+              <span class="flex text-sand-600" aria-label="5 estrellas"><i data-lucide="star" class="fill-current"></i><i data-lucide="star" class="fill-current"></i><i data-lucide="star" class="fill-current"></i><i data-lucide="star" class="fill-current"></i><i data-lucide="star" class="fill-current"></i></span>
+              <span class="text-xs text-zinc-400">hace 2 meses</span>
+            </div>
+            <blockquote class="mt-5 flex-1 leading-relaxed text-zinc-700">“Vivimos en Madrid y reformamos el chalet de Roche a distancia. El presupuesto fue cerrado de verdad: ni un euro más. Cuando llegamos en junio estaba todo limpio, con las llaves y la garantía firmada encima de la mesa.”</blockquote>
+            <figcaption class="mt-6 flex items-center gap-3 border-t border-zinc-100 pt-5">
+              <span class="grid h-11 w-11 place-items-center rounded-full bg-sand-100 font-display font-bold text-sand-600">JR</span>
+              <span><strong class="block text-sm text-carbon-900">Javier Ruiz Ortega</strong><span class="text-xs text-zinc-500">Roche, Conil · Reforma integral</span></span>
+            </figcaption>
+          </figure>
+          <figure class="reveal flex flex-col rounded-3xl border border-zinc-200 p-7 transition hover:shadow-soft">
+            <div class="flex items-center justify-between">
+              <span class="flex text-sand-600" aria-label="5 estrellas"><i data-lucide="star" class="fill-current"></i><i data-lucide="star" class="fill-current"></i><i data-lucide="star" class="fill-current"></i><i data-lucide="star" class="fill-current"></i><i data-lucide="star" class="fill-current"></i></span>
+              <span class="text-xs text-zinc-400">hace 5 meses</span>
+            </div>
+            <blockquote class="mt-5 flex-1 leading-relaxed text-zinc-700">“Abrimos la cocina al salón y cambiamos los baños. Lo que más valoro es la puntualidad: llegaban a las 8 cada día. Los acabados del porcelánico y la carpintería a medida son impecables. Ya les hemos pedido el porche.”</blockquote>
+            <figcaption class="mt-6 flex items-center gap-3 border-t border-zinc-100 pt-5">
+              <span class="grid h-11 w-11 place-items-center rounded-full bg-zinc-100 font-display font-bold text-carbon-800">AL</span>
+              <span><strong class="block text-sm text-carbon-900">Ana y Luis Benítez</strong><span class="text-xs text-zinc-500">Novo Sancti Petri · Cocina y baños</span></span>
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ PRESUPUESTO ============ -->
+    <section id="presupuesto" class="scroll-mt-20 bg-stone2 py-20 sm:py-28">
+      <div class="mx-auto grid max-w-7xl gap-10 px-4 sm:px-6 lg:grid-cols-5 lg:gap-14 lg:px-8">
+        <!-- Izquierda -->
+        <div class="reveal lg:col-span-2">
+          <p class="text-sm font-semibold uppercase tracking-[.16em] text-pool-600">Presupuesto</p>
+          <h2 class="mt-3 font-display text-3xl font-extrabold text-carbon-900 sm:text-4xl lg:text-5xl">Cuéntanos tu obra. Te respondemos en menos de 24 h.</h2>
+          <p class="mt-5 text-zinc-600">Rellena el formulario y te llamamos para concertar la visita técnica gratuita.</p>
+
+          <ul class="mt-9 space-y-5">
+            <li class="flex gap-4"><span class="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-white text-pool-600 shadow-sm"><i data-lucide="map-pin"></i></span><span><strong class="block text-carbon-900">Oficina y exposición</strong><span class="text-sm text-zinc-600">Av. del Mueble, 14 · 11130 Chiclana de la Frontera (Cádiz)</span></span></li>
+            <li class="flex gap-4"><span class="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-white text-pool-600 shadow-sm"><i data-lucide="phone"></i></span><span><strong class="block text-carbon-900">Teléfono</strong><a href="tel:+34956000000" class="text-sm text-zinc-600 hover:text-pool-600">956 000 000</a></span></li>
+            <li class="flex gap-4"><span class="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-white text-pool-600 shadow-sm"><i data-lucide="clock"></i></span><span><strong class="block text-carbon-900">Horario</strong><span class="text-sm text-zinc-600">Lunes a viernes 8:00–14:00 y 16:30–19:30 · Sábados 10:00–13:30</span></span></li>
+            <li class="flex gap-4"><span class="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-white text-pool-600 shadow-sm"><i data-lucide="map"></i></span><span><strong class="block text-carbon-900">Cobertura</strong><span class="text-sm text-zinc-600">Chiclana, Conil, San Fernando, Vejer y El Puerto</span></span></li>
+          </ul>
+
+          <div class="mt-9 flex items-center gap-4 rounded-2xl border border-pool-600/20 bg-pool-100 p-5">
+            <span class="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-pool-600 text-white"><i data-lucide="timer"></i></span>
+            <p class="text-sm text-carbon-800"><strong>Compromiso SurHabitat:</strong> respuesta en menos de 24 horas laborables, o la visita técnica corre de nuestra cuenta aunque no contrates.</p>
+          </div>
+        </div>
+
+        <!-- Formulario -->
+        <div class="reveal lg:col-span-3">
+          <div class="relative overflow-hidden rounded-3xl bg-white p-6 shadow-soft ring-1 ring-zinc-200 sm:p-9">
+            <form id="form" novalidate>
+              <fieldset>
+                <legend class="font-display text-lg font-bold text-carbon-900">1. ¿Qué obra quieres hacer?</legend>
+                <div class="mt-4 grid grid-cols-2 gap-3 sm:grid-cols-4">
+                  <div class="tipo"><input class="peer sr-only" type="radio" name="tipo" id="t-reforma" value="reforma" checked /><label for="t-reforma" class="flex h-full cursor-pointer flex-col items-center gap-2 rounded-2xl border border-zinc-200 p-4 text-center transition hover:border-pool-500"><span class="tipo-ico grid h-11 w-11 place-items-center rounded-xl bg-stone2 text-carbon-800 transition"><i data-lucide="home"></i></span><span class="text-sm font-semibold text-carbon-900">Reforma Integral</span></label></div>
+                  <div class="tipo"><input class="peer sr-only" type="radio" name="tipo" id="t-piscina" value="piscina" /><label for="t-piscina" class="flex h-full cursor-pointer flex-col items-center gap-2 rounded-2xl border border-zinc-200 p-4 text-center transition hover:border-pool-500"><span class="tipo-ico grid h-11 w-11 place-items-center rounded-xl bg-stone2 text-carbon-800 transition"><i data-lucide="waves"></i></span><span class="text-sm font-semibold text-carbon-900">Piscina Nueva</span></label></div>
+                  <div class="tipo"><input class="peer sr-only" type="radio" name="tipo" id="t-cocina" value="cocina" /><label for="t-cocina" class="flex h-full cursor-pointer flex-col items-center gap-2 rounded-2xl border border-zinc-200 p-4 text-center transition hover:border-pool-500"><span class="tipo-ico grid h-11 w-11 place-items-center rounded-xl bg-stone2 text-carbon-800 transition"><i data-lucide="bath"></i></span><span class="text-sm font-semibold text-carbon-900">Cocina / Baño</span></label></div>
+                  <div class="tipo"><input class="peer sr-only" type="radio" name="tipo" id="t-exterior" value="exterior" /><label for="t-exterior" class="flex h-full cursor-pointer flex-col items-center gap-2 rounded-2xl border border-zinc-200 p-4 text-center transition hover:border-pool-500"><span class="tipo-ico grid h-11 w-11 place-items-center rounded-xl bg-stone2 text-carbon-800 transition"><i data-lucide="sun"></i></span><span class="text-sm font-semibold text-carbon-900">Exterior</span></label></div>
+                </div>
+              </fieldset>
+
+              <div class="mt-8">
+                <div class="flex items-baseline justify-between">
+                  <label for="m2" class="font-display text-lg font-bold text-carbon-900">2. Metros aproximados</label>
+                  <output id="m2Out" for="m2" class="font-display text-2xl font-extrabold text-pool-600">90 m²</output>
+                </div>
+                <input id="m2" name="m2" type="range" min="5" max="400" step="5" value="90" class="mt-4 w-full" />
+                <div class="mt-1 flex justify-between text-xs text-zinc-400"><span>5 m²</span><span>400 m²</span></div>
+                <div class="mt-4 flex items-center justify-between gap-3 rounded-2xl bg-stone2 px-5 py-4">
+                  <span class="text-sm text-zinc-600">Estimación orientativa</span>
+                  <strong id="estimacion" class="font-display text-lg text-carbon-900">—</strong>
+                </div>
+              </div>
+
+              <div class="mt-8 grid gap-5 sm:grid-cols-2">
+                <div>
+                  <label for="nombre" class="mb-1.5 block text-sm font-semibold text-carbon-900">Nombre</label>
+                  <input id="nombre" name="nombre" autocomplete="name" placeholder="Tu nombre" class="w-full rounded-xl border border-zinc-300 bg-white px-4 py-3.5 outline-none transition focus:border-pool-600 focus:ring-4 focus:ring-pool-500/15" />
+                  <p class="err mt-1.5 hidden text-xs text-red-600">Escribe tu nombre.</p>
+                </div>
+                <div>
+                  <label for="localidad" class="mb-1.5 block text-sm font-semibold text-carbon-900">Localidad</label>
+                  <select id="localidad" name="localidad" class="w-full rounded-xl border border-zinc-300 bg-white px-4 py-3.5 outline-none transition focus:border-pool-600 focus:ring-4 focus:ring-pool-500/15">
+                    <option>Chiclana de la Frontera</option>
+                    <option>Novo Sancti Petri</option>
+                    <option>La Barrosa</option>
+                    <option>Conil de la Frontera</option>
+                    <option>Roche</option>
+                    <option>San Fernando</option>
+                    <option>Vejer de la Frontera</option>
+                    <option>El Puerto de Santa María</option>
+                    <option>Otra</option>
+                  </select>
+                </div>
+                <div class="sm:col-span-2">
+                  <label for="tel" class="mb-1.5 block text-sm font-semibold text-carbon-900">Teléfono / WhatsApp</label>
+                  <input id="tel" name="tel" type="tel" inputmode="tel" autocomplete="tel" placeholder="600 000 000" class="w-full rounded-xl border border-zinc-300 bg-white px-4 py-3.5 outline-none transition focus:border-pool-600 focus:ring-4 focus:ring-pool-500/15" />
+                  <p class="err mt-1.5 hidden text-xs text-red-600">Introduce un teléfono válido de 9 cifras.</p>
+                </div>
+              </div>
+
+              <label class="mt-6 flex items-start gap-3 text-sm text-zinc-600">
+                <input id="priv" type="checkbox" class="mt-0.5 h-5 w-5 shrink-0 rounded accent-[#0284C7]" />
+                <span>Acepto la <a href="#" class="underline hover:text-pool-600">política de privacidad</a> y que me contactéis para el presupuesto.</span>
+              </label>
+              <p id="privErr" class="mt-1.5 hidden text-xs text-red-600">Necesitamos tu consentimiento para llamarte.</p>
+
+              <button type="submit" class="mt-7 flex w-full items-center justify-center gap-2 rounded-full bg-carbon-900 px-7 py-4 font-semibold text-white transition hover:bg-pool-600">
+                <i data-lucide="send"></i> Solicitar Visita y Presupuesto
+              </button>
+              <p class="mt-3 text-center text-xs text-zinc-500">Sin compromiso · Visita y medición gratuitas</p>
+            </form>
+
+            <!-- Confirmación -->
+            <div id="ok" class="absolute inset-0 hidden flex-col items-center justify-center bg-white p-8 text-center">
+              <span class="grid h-20 w-20 place-items-center rounded-full bg-pool-100 text-pool-600"><i data-lucide="check-circle-2" style="width:2.5rem;height:2.5rem"></i></span>
+              <h3 class="mt-6 font-display text-2xl font-extrabold text-carbon-900">¡Solicitud recibida, <span id="okNombre"></span>!</h3>
+              <p class="mt-3 max-w-md text-zinc-600" id="okTxt"></p>
+              <a id="okWa" target="_blank" rel="noopener" class="mt-7 inline-flex items-center gap-2 rounded-full bg-[#22C55E] px-6 py-3.5 font-semibold text-white transition hover:bg-[#16A34A]"><i data-lucide="message-circle"></i> Enviar fotos o planos por WhatsApp</a>
+              <button id="okBack" class="mt-4 text-sm font-medium text-zinc-500 underline hover:text-carbon-900">Enviar otra solicitud</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="bg-carbon-900 text-zinc-400">
+    <div class="mx-auto grid max-w-7xl gap-10 px-4 py-16 sm:px-6 md:grid-cols-2 lg:grid-cols-4 lg:px-8">
+      <div class="lg:col-span-2">
+        <div class="flex items-center gap-2.5">
+          <span class="grid h-10 w-10 place-items-center rounded-xl bg-white/5 text-pool-500 ring-1 ring-white/10"><i data-lucide="waves"></i></span>
+          <span class="leading-tight"><span class="block font-display text-lg font-extrabold text-white">SURHABITAT</span><span class="block text-[11px] font-medium uppercase tracking-[.18em] text-zinc-500">Reformas &amp; Piscinas</span></span>
+        </div>
+        <p class="mt-5 max-w-sm text-sm leading-relaxed">Construcción, reformas integrales y piscinas en Chiclana de la Frontera, Novo Sancti Petri, Conil y toda la Costa de la Luz.</p>
+        <p class="mt-5 text-sm">SurHabitat Construcciones S.L. · CIF B-00000000<br />Av. del Mueble, 14 · 11130 Chiclana de la Frontera (Cádiz)</p>
+      </div>
+      <div>
+        <h4 class="font-display text-sm font-bold uppercase tracking-wider text-white">Servicios</h4>
+        <ul class="mt-4 space-y-2.5 text-sm">
+          <li><a href="#servicios" class="hover:text-white">Reformas integrales</a></li>
+          <li><a href="#servicios" class="hover:text-white">Piscinas</a></li>
+          <li><a href="#servicios" class="hover:text-white">Cocinas y baños</a></li>
+          <li><a href="#servicios" class="hover:text-white">Exteriores y pérgolas</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="font-display text-sm font-bold uppercase tracking-wider text-white">Contacto</h4>
+        <ul class="mt-4 space-y-2.5 text-sm">
+          <li><a href="tel:+34956000000" class="hover:text-white">956 000 000</a></li>
+          <li><a href="mailto:hola@surhabitat.es" class="hover:text-white">hola@surhabitat.es</a></li>
+          <li><a href="#presupuesto" class="hover:text-white">Pedir presupuesto</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="border-t border-white/10">
+      <div class="mx-auto flex max-w-7xl flex-col gap-3 px-4 py-6 text-xs sm:flex-row sm:items-center sm:justify-between sm:px-6 lg:px-8">
+        <p>© <span id="year"></span> SurHabitat Reformas &amp; Piscinas. Todos los derechos reservados.</p>
+        <nav class="flex flex-wrap gap-x-5 gap-y-2" aria-label="Legal">
+          <a href="#" class="hover:text-white">Aviso legal</a>
+          <a href="#" class="hover:text-white">Privacidad</a>
+          <a href="#" class="hover:text-white">Cookies</a>
+        </nav>
+      </div>
+    </div>
+  </footer>
+
+  <!-- WhatsApp flotante -->
+  <a id="waFloat" target="_blank" rel="noopener" aria-label="Enviar fotos o planos por WhatsApp"
+     class="wa-pulse group fixed bottom-5 right-5 z-40 isolate flex h-14 w-14 items-center justify-center rounded-full bg-[#22C55E] text-white shadow-xl shadow-green-600/30 transition hover:bg-[#16A34A] sm:bottom-7 sm:right-7 sm:h-16 sm:w-16">
+    <svg viewBox="0 0 24 24" class="h-7 w-7 fill-current" aria-hidden="true"><path d="M17.5 14.4c-.3-.1-1.8-.9-2-1s-.5-.1-.7.1-.8 1-1 1.2-.4.2-.7.1a8 8 0 0 1-2.4-1.5 9 9 0 0 1-1.6-2c-.2-.3 0-.5.1-.6l.5-.6.3-.5v-.5l-1-2.2c-.2-.6-.5-.5-.7-.5h-.6a1.1 1.1 0 0 0-.8.4 3.4 3.4 0 0 0-1 2.5 5.9 5.9 0 0 0 1.2 3.1 13.4 13.4 0 0 0 5.2 4.6c.7.3 1.3.5 1.7.6a4.2 4.2 0 0 0 1.9.1 3.1 3.1 0 0 0 2-1.4 2.5 2.5 0 0 0 .2-1.4c-.1-.2-.3-.2-.6-.4zM12 21.8a9.8 9.8 0 0 1-5-1.4l-.4-.2-3.7 1 1-3.6-.2-.4A9.8 9.8 0 1 1 12 21.8zm8.4-18.2A11.8 11.8 0 0 0 1.8 17.9L.1 24l6.3-1.6A11.8 11.8 0 0 0 12 23.8 11.8 11.8 0 0 0 20.4 3.6z"/></svg>
+    <span class="pointer-events-none absolute right-full mr-3 hidden whitespace-nowrap rounded-full bg-carbon-900 px-4 py-2 text-sm font-medium text-white opacity-0 shadow-lg transition group-hover:opacity-100 md:block">Envíanos fotos o planos</span>
+  </a>
+
+  <script>
+    // ================== CONFIGURACIÓN (cambiar por los datos reales) ==================
+    const CONFIG = {
+      whatsapp: '34644144961', // número con prefijo, sin + ni espacios
+      // Precio orientativo €/m² [mínimo, máximo] por tipo de obra
+      precios: { reforma: [550, 900], piscina: [700, 1200], cocina: [900, 1500], exterior: [120, 320] },
+      etiquetas: { reforma: 'reforma integral', piscina: 'piscina nueva', cocina: 'cocina / baño', exterior: 'obra exterior' },
+    };
+
+    const PROYECTOS = [
+      { cat: 'piscinas',   tag: 'Piscina',          titulo: 'Piscina desbordante y solárium', lugar: 'La Barrosa, Chiclana',     datos: '42 m² · 7 semanas',  img: 'photo-1512917774080-9991f1c4c750' },
+      { cat: 'reformas',   tag: 'Reforma Integral', titulo: 'Reforma integral de chalet',     lugar: 'Roche, Conil',             datos: '210 m² · 4 meses',   img: 'photo-1600596542815-ffad4c1539a9' },
+      { cat: 'reformas',   tag: 'Reforma Integral', titulo: 'Cocina abierta y salón',         lugar: 'Novo Sancti Petri',        datos: '65 m² · 9 semanas',  img: 'photo-1600210492486-724fe5c67fb0' },
+      { cat: 'exteriores', tag: 'Exterior',         titulo: 'Porche bioclimático y tarima',   lugar: 'Conil de la Frontera',     datos: '38 m² · 5 semanas',  img: 'photo-1600047509807-ba8f99d2cdde' },
+      { cat: 'piscinas',   tag: 'Piscina',          titulo: 'Rehabilitación con cloración salina', lugar: 'Pinar de los Franceses, Chiclana', datos: '32 m² · 4 semanas', img: 'photo-1582268611958-ebfd161ef9cf' },
+      { cat: 'exteriores', tag: 'Exterior',         titulo: 'Fachada, muro perimetral y jardín', lugar: 'Vejer de la Frontera',  datos: '160 m² · 8 semanas', img: 'photo-1564013799919-ab600027ffc6' },
+    ];
+
+    // ================== UTILIDADES ==================
+    const $ = (s, c = document) => c.querySelector(s);
+    const $$ = (s, c = document) => [...c.querySelectorAll(s)];
+    const waLink = (txt) => `https://wa.me/${CONFIG.whatsapp}?text=${encodeURIComponent(txt)}`;
+    const eur = (n) => n.toLocaleString('es-ES', { maximumFractionDigits: 0 }) + ' €';
+
+    $('#year').textContent = new Date().getFullYear();
+    $('#waFloat').href = waLink('Hola SurHabitat, os envío fotos/planos de mi vivienda para pedir presupuesto.');
+
+    // ================== NAV: transparente → sólida ==================
+    const nav = $('#nav');
+    const setNav = () => {
+      const solid = window.scrollY > 40 || !$('#mobileMenu').classList.contains('hidden');
+      nav.classList.toggle('bg-white/90', solid);
+      nav.classList.toggle('backdrop-blur-lg', solid);
+      nav.classList.toggle('shadow-sm', solid);
+      $$('.nav-ink', nav).forEach(el => { el.classList.toggle('text-white', !solid); el.classList.toggle('text-carbon-900', solid); });
+      $$('.nav-sub', nav).forEach(el => { el.classList.toggle('text-white/70', !solid); el.classList.toggle('text-zinc-500', solid); });
+      $$('.nav-link', nav).forEach(el => {
+        el.classList.toggle('text-white/85', !solid); el.classList.toggle('hover:text-white', !solid);
+        el.classList.toggle('text-zinc-600', solid); el.classList.toggle('hover:text-carbon-900', solid);
+      });
+    };
+    window.addEventListener('scroll', setNav, { passive: true });
+
+    const menuBtn = $('#menuBtn'), menu = $('#mobileMenu');
+    const toggleMenu = (open) => {
+      menu.classList.toggle('hidden', !open);
+      menuBtn.setAttribute('aria-expanded', open);
+      menuBtn.innerHTML = `<i data-lucide="${open ? 'x' : 'menu'}"></i>`;
+      lucide.createIcons();
+      setNav();
+    };
+    menuBtn.addEventListener('click', () => toggleMenu(menu.classList.contains('hidden')));
+    $$('a', menu).forEach(a => a.addEventListener('click', () => toggleMenu(false)));
+
+    // ================== PROYECTOS + FILTRO ==================
+    const grid = $('#grid');
+    grid.innerHTML = PROYECTOS.map(p => `
+      <article class="project group relative overflow-hidden rounded-3xl bg-carbon-900" data-cat="${p.cat}">
+        <div class="aspect-[4/5] overflow-hidden sm:aspect-[4/5]">
+          <img loading="lazy" class="h-full w-full object-cover" src="https://images.unsplash.com/${p.img}?auto=format&fit=crop&w=900&q=75" alt="${p.titulo} en ${p.lugar}" />
+        </div>
+        <div class="absolute inset-0 bg-gradient-to-t from-carbon-900/95 via-carbon-900/20 to-transparent"></div>
+        <span class="absolute left-5 top-5 rounded-full bg-white/90 px-3 py-1 text-xs font-semibold text-carbon-900 backdrop-blur">${p.tag}</span>
+        <div class="absolute inset-x-0 bottom-0 p-6 text-white">
+          <p class="flex items-center gap-1.5 text-sm text-pool-500"><i data-lucide="map-pin"></i> ${p.lugar}</p>
+          <h3 class="mt-2 font-display text-xl font-bold leading-snug">${p.titulo}</h3>
+          <p class="mt-3 max-h-0 overflow-hidden text-sm text-zinc-300 opacity-0 transition-all duration-500 group-hover:max-h-10 group-hover:opacity-100">${p.datos}</p>
+        </div>
+      </article>`).join('');
+
+    const filtros = $$('.filtro');
+    const paintFiltros = (active) => filtros.forEach(b => {
+      const on = b.dataset.filter === active;
+      b.setAttribute('aria-selected', on);
+      b.classList.toggle('bg-carbon-900', on); b.classList.toggle('text-white', on);
+      b.classList.toggle('text-zinc-600', !on); b.classList.toggle('hover:bg-stone2', !on);
+    });
+    const aplicarFiltro = (f) => {
+      paintFiltros(f);
+      let n = 0;
+      $$('.project', grid).forEach(card => {
+        const show = f === 'todos' || card.dataset.cat === f;
+        card.classList.toggle('is-hidden', !show);
+        if (show) n++;
+      });
+      $('#countTxt').textContent = `${n} ${n === 1 ? 'proyecto' : 'proyectos'}`;
+    };
+    filtros.forEach(b => b.addEventListener('click', () => aplicarFiltro(b.dataset.filter)));
+    aplicarFiltro('todos');
+
+    // ================== CALCULADORA ==================
+    const m2 = $('#m2'), m2Out = $('#m2Out'), est = $('#estimacion');
+    const tipoActual = () => $('input[name="tipo"]:checked').value;
+    const calcular = () => {
+      const m = +m2.value, [a, b] = CONFIG.precios[tipoActual()];
+      m2Out.textContent = `${m} m²`;
+      est.textContent = `${eur(Math.round(m * a / 100) * 100)} – ${eur(Math.round(m * b / 100) * 100)}`;
+      const pct = (m - m2.min) / (m2.max - m2.min) * 100;
+      m2.style.background = `linear-gradient(90deg,#0284C7 ${pct}%,#E4E4E7 ${pct}%)`;
+    };
+    m2.addEventListener('input', calcular);
+    $$('input[name="tipo"]').forEach(r => r.addEventListener('change', () => {
+      // Ajusta un tamaño típico al cambiar de tipo
+      const tipicos = { reforma: 90, piscina: 35, cocina: 15, exterior: 40 };
+      m2.value = tipicos[r.value]; calcular();
+    }));
+    calcular();
+
+    // Las tarjetas de servicio preseleccionan el tipo de obra
+    $$('[data-tipo]').forEach(a => a.addEventListener('click', () => {
+      const r = $(`#t-${a.dataset.tipo}`); if (r) { r.checked = true; r.dispatchEvent(new Event('change')); }
+    }));
+
+    // ================== FORMULARIO ==================
+    const form = $('#form'), ok = $('#ok');
+    const marcar = (input, bad) => {
+      input.classList.toggle('border-red-500', bad);
+      input.classList.toggle('border-zinc-300', !bad);
+      input.parentElement.querySelector('.err')?.classList.toggle('hidden', !bad);
+      input.setAttribute('aria-invalid', bad);
+    };
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const nombre = $('#nombre'), tel = $('#tel'), priv = $('#priv');
+      const telLimpio = tel.value.replace(/[\s.-]/g, '').replace(/^(\+34|0034)/, '');
+      const badNombre = nombre.value.trim().length < 2;
+      const badTel = !/^[6789]\d{8}$/.test(telLimpio);
+      marcar(nombre, badNombre); marcar(tel, badTel);
+      $('#privErr').classList.toggle('hidden', priv.checked);
+      if (badNombre || badTel || !priv.checked) { (badNombre ? nombre : badTel ? tel : priv).focus(); return; }
+
+      const datos = {
+        tipo: CONFIG.etiquetas[tipoActual()], m2: m2.value, localidad: $('#localidad').value,
+        nombre: nombre.value.trim(), tel: telLimpio, estimacion: est.textContent,
+      };
+      // Para recibir las solicitudes por email, conecta Formspree u otro servicio:
+      // fetch('https://formspree.io/f/TU_ID', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(datos) });
+
+      $('#okNombre').textContent = datos.nombre.split(' ')[0];
+      $('#okTxt').textContent = `Te llamaremos al ${datos.tel.replace(/(\d{3})(\d{3})(\d{3})/, '$1 $2 $3')} en menos de 24 horas para concertar la visita técnica gratuita de tu ${datos.tipo} en ${datos.localidad}. Si quieres adelantar, mándanos fotos o planos.`;
+      $('#okWa').href = waLink(`Hola SurHabitat, soy ${datos.nombre}. He pedido presupuesto para una ${datos.tipo} de unos ${datos.m2} m² en ${datos.localidad}. Os envío fotos/planos.`);
+      ok.classList.remove('hidden'); ok.classList.add('flex');
+    });
+    $('#okBack').addEventListener('click', () => { form.reset(); calcular(); ok.classList.add('hidden'); ok.classList.remove('flex'); });
+
+    // ================== ANIMACIONES AL HACER SCROLL ==================
+    const io = new IntersectionObserver((entries) => entries.forEach(en => {
+      if (en.isIntersecting) { en.target.classList.add('is-in'); io.unobserve(en.target); }
+    }), { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+    $$('.reveal').forEach((el, i) => { el.style.transitionDelay = `${(i % 4) * 80}ms`; io.observe(el); });
+
+    lucide.createIcons();
+    setNav();
+  </script>
+<a href="../../index.html#demos" style="position:fixed;right:12px;top:76px;z-index:2147483000;padding:8px 12px;border:1px solid rgba(255,255,255,.3);border-radius:999px;background:#0f1011;color:#fff;font:500 12px/1.2 system-ui,sans-serif;text-decoration:none">&larr; Web de ejemplo &middot; LocalDev</a>
+<script>
+/* LocalDev: dentro del móvil de la web, el pill sobra y los enlaces "#seccion" y focus()
+   solo deben desplazar esta web, no la página de LocalDev que la contiene. */
+(function () {
+  var pill = document.currentScript.previousElementSibling;
+  if (window.self === window.top) return;
+  pill.remove();
+  function headerOffset() {
+    var h = document.querySelector('header, nav');
+    if (!h) return 0;
+    var pos = getComputedStyle(h).position;
+    return pos === 'fixed' || pos === 'sticky' ? h.getBoundingClientRect().height + 8 : 0;
+  }
+  function scrollToEl(el) {
+    var top = el.getBoundingClientRect().top + window.scrollY - headerOffset();
+    window.scrollTo({ top: Math.max(0, top), behavior: 'smooth' });
+  }
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest && e.target.closest('a[href^="#"]');
+    if (!a || e.defaultPrevented) return;
+    var id = a.getAttribute('href').slice(1);
+    var el = id ? document.getElementById(id) : null;
+    if (id && !el) return;
+    e.preventDefault();
+    if (el) scrollToEl(el); else window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+  var focus = HTMLElement.prototype.focus;
+  HTMLElement.prototype.focus = function (opts) {
+    focus.call(this, Object.assign({}, opts, { preventScroll: true }));
+    var r = this.getBoundingClientRect();
+    if (r.top < 0 || r.bottom > window.innerHeight) scrollToEl(this);
+  };
+})();
+</script>
+</body>
+</html>
