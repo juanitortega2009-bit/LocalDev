@@ -287,11 +287,21 @@
   .case__actions .btn { width: 100%; }
 }
 
+/* 3 tarjetas arriba y 2 anchas abajo (6 columnas: 2+2+2 / 3+3) */
 .demos {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(6, 1fr);
   gap: var(--gap);
 }
+.demos > .tile { grid-column: span 2; }
+.demos > .tile--wide {
+  grid-column: span 3;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: 28px;
+}
+.tile--wide .tile__copy { align-self: stretch; justify-content: center; }
 .tile {
   display: flex;
   flex-direction: column;
@@ -304,6 +314,8 @@
 .tile--taller { background: var(--tile-taller); }
 .tile--peluqueria { background: var(--tile-peluqueria); }
 .tile--gimnasio { background: var(--tile-gimnasio); }
+.tile--reformas { background: var(--tile-reformas); }
+.tile--abogados { background: var(--tile-abogados); }
 
 .tile__copy {
   display: flex;
@@ -700,7 +712,8 @@
   .bento__speed, .bento__mobile { grid-column: span 6; }
 
   .demos { grid-template-columns: 1fr; }
-  .tile {
+  .demos > .tile, .demos > .tile--wide { grid-column: auto; }
+  .tile, .demos > .tile--wide {
     flex-direction: row;
     align-items: stretch;
     justify-content: space-between;
@@ -725,7 +738,7 @@
   .bento .card { min-height: 0; }
   .bento__speed { order: -1; }
 
-  .tile {
+  .tile, .demos > .tile--wide {
     flex-direction: column;
     align-items: center;
     gap: 28px;
